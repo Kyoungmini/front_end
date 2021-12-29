@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bind ex</title>
+</head>
+<body>
+    <h1>button을 누르면 1씩 증가 함수 Test를 만드세요</h1>
+    <p>
+        <button id="testBtn">1씩 증가</button>
+        <i id="text"></i>
+    </p>
+<script>
+//let num=0;    
+
+function Test() {
+    this.num=100;
+    // this.callback=function(){
+    //    text.innerText=(this.num++);
+    //    //console.log(this);
+    // }
+    //testBtn.onclick=this.callback.bind(this);
+    testBtn.onclick=()=>{
+        text.innerText=this.num++;
+    }
+}
+new Test();
+
+
+</script>
+
+</body>
+</html>

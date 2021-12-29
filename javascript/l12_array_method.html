@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js Array Method</title>
+</head>
+<body>
+    <h1>배열의 다야한 메서드</h1>
+    <h2>data(요소,item..)를 추가하거나 제거하는 메서드</h2>
+    <p>const array=["a","b","c","d"]</p>
+    <script>const array=["a","b","c","d"];</script>
+     <ul>
+        <li>array.toString(): <script>document.write(array.toString())</script></li>
+         <li>array.pop() :
+             <script>document.write(array.pop());</script>
+         </li>
+         <li>array: <script>document.write(array)</script></li>
+         <li>array.push("d") :
+            <script>document.write(array.push("d"));</script>
+         </li>
+         <li>array: <script>document.write(array)</script></li>
+         <li>array.shift() :
+            <script>document.write(array.shift());</script>
+        </li>
+        <li>array: <script>document.write(array)</script></li>
+        <li>array.unshift("a") :
+            <script>document.write(array.unshift("a"));</script>
+        </li>
+        <li>array: <script>document.write(array)</script></li>
+        <li>array[2]= : "y" 
+            <script>document.write(array[2]="y")</script>
+        </li>
+        <li>array: <script>document.write(array)</script></li>
+        <li>array[10]="z" : 
+            <script>document.write(array[10]="z")</script>
+        </li>
+        <li>array: <script>document.write(array)</script></li>
+     </ul>
+     <h3>array : 객체 [1,2,3..] , Array : 내장객체(예약어)</h3>
+     <h3>array.pop() : 배열의 마지막 아이템을 반환하고 제거한다.</h3>
+     <h3>Array.push(item) : 배열의 마지막에 새 아이템을 추가한다.</h3>
+     <h3>array.shift() : 배열의 처음 아이템을 반환하고 제거한 후 모든 아이템을 한칸 당긴다.</h3>
+     <h3>Array.unshift(item) : 배열의 처음에 아이템을 추가하고 모든 아이템을 한칸 민다.</h3>
+     <h3>array[i] : 특정 index의 값을 바꾼다.</h3>
+     <h3>array[length](item의 길이보다 길때) : 특정 index의 값을 추가한다. </h3>
+
+     <h3>array.slice(start)</h3>
+     <p>배열의 start 부터 끝까지 잘라서 새 배열을 반환</p>
+     <h3>array.slice(start,end)</h3>
+     <p>배열의 start 부터 end(길이)까지 잘라서 새 배열을 반환</p>
+
+     <h3>array.splice(insert_delete_start, delete_length,  item1,item2 ... )</h3>
+     <p>배열의 start 부터 length(길이)까지 자른 후 start 지정에 item 추가</p>
+
+     <h3>array.splice(insert_start, 0,  item1,item2 ... )</h3>
+     <p>배열의 start에 item 추가</p>
+
+     <h3>array.splice(delete_start, delete_length)</h3>
+     <p>배열의 start부터 length까지 삭제하고 반환</p>
+
+<script>
+console.log(array.splice(2,1,"c")); //[y]
+console.log(array);
+console.log(array.splice(4,7)); //[,,,,,,z]
+console.log(array);
+console.log(array.splice(5,0,"e","f")); //[]
+console.log(array);
+
+console.log("array.slice(2,4)",array.slice(2,4));
+console.log(array);
+console.log(array.slice(2));
+console.log(array);
+</script>
+    <h2>배열을 정렬(sort)하는 함수</h2>
+    <p>const array2=["c","f","z","ab","d","A","aa","ac"];</p>
+    <script>const array2=["c","f","z","ab","d","A","aa","ac"];</script>
+    <ul>
+        <li>array2.sort() : 
+            <script> document.write(array2.sort())</script>
+        </li>
+        <li>array2: <script> document.write(array2)</script></li>
+        <li>array2.reverse() : 
+            <script> document.write(array2.reverse())</script>
+        </li>
+    </ul>    
+    <h2>배열을 문자열로 결합하는 함수</h2>
+    <ul>
+        <li>array2.toSting() == array2 : "item,item2,..."</li>
+        <li>array2.join("-") == array2 : "item-item2,..."
+            예)<script> document.write(array2.join("-"))</script>
+        </li>
+    </ul>
+    <h2>배열을 연결하는 함수 array.concat(array2, array3 ...)</h2>
+    <p>문자열의 +와 concat과 같은 원리다.</p>
+ <script>
+     console.log("a"+"b"+"c");
+     console.log("a".concat("b"+"c"));
+     console.log(["a","b"]+["c","d"]+["e","f"]);
+     //["a","b","c","d","e","f"] (X)
+     console.log(["a","b"].concat(["c","d"],["e","f"]));
+ </script>   
+
+</body>
+</html>

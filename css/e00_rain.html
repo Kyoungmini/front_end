@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+html,body{
+    background-color: rgb(12, 10, 59);
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+.w{
+     width: 10px;
+     height: 10px;
+     border-radius: 100% 0% 72% 28% / 70% 0% 100% 30% ;
+     border: .5px solid white;
+     position: absolute;
+     display: inline-block;
+     background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.863));
+     /* transition: all 1s;     */
+}
+ .drop_rain{
+     animation-name: dropRain;
+     animation-duration: 1s; 
+     animation-fill-mode: forwards;
+ }   
+ @keyframes dropRain {
+     100%{
+         top: 100%;
+     }
+ }
+</style>
+<script>
+// <i class="w"></i> 노드 개체 생성 후 left top으로 배치 scale로 크기 조정
+function RainElement(scale,left,top){
+    this.rain=document.createElement("i");
+    this.rain.setAttribute("class","w")
+    this.rain.style.transform=`scale(${scale}) rotate(-45deg)`;
+    this.rain.style.left=left+"px";
+    this.rain.style.top=top+"px";
+    //비에 마우스를 올리면 떨어지는 애니메이션 추가
+    this.rain.onmouseover=function(e){this.classList.add("drop_rain")}
+    return this.rain;
+}
+window.onload=function(){
+
+    let browser_w=(window.innerWidth); 
+    let browser_h=(window.innerHeight);
+
+    for(let i=0; i<1000; i++){
+        //브라우저 너비와 높이 내에서 랜덤한 수로 비의 위치 지정
+        let left=Math.floor( Math.random()*browser_w);
+        let top =Math.floor( Math.random()*browser_h);
+        let scale =( Math.random()*1);
+        const rain=new RainElement(scale,left,top);
+        document.body.append(rain);
+    }
+}
+
+</script>
+<body>
+</body>
+</html>

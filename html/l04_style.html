@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css(Cascding Style Sheets)</title>
+<style>
+/*selector{}*/    
+body{
+    background-color: rgb(241, 255, 214);
+    color: rgb(70, 30, 30);
+}   
+</style>    
+</head>
+<body>
+    <h1>HTML style(속성)로 요소를 꾸미자</h1>
+    <p class="test" style="color:white; 
+    background-color:black; font-size: 20px;">
+       inline css 규칙 : style="name:value; name2:value; name3:value"
+    </p>
+    <p>
+        css는 요소의 레이아웃,색상,텍스트, 크기, 이미지, 배경,... 
+        등 화면에 표시되는 모든 방식을 제공한다.
+    </p>
+    <h2>html 내부 css 적용방법</h2>
+    <!-- ol>li*4 -->
+    <ol>
+        <li>head 태그 안에 style 태그를 작성</li>
+        <li>style 태그 안에 seletor{}를 작성</li>
+        <li>{} 안에 name:value; property:value; 을 작성</li>
+        <li>내부 css는 인라인 css 보다 우선 순위가 낮다</li>
+    </ol>
+
+    <h2>block 요소의 style</h2>
+    <div 
+        style=" border-width: 5px; 
+                border-style: dotted;
+                border-color: red;
+                background-color: rosybrown;
+                padding: 30px 20px;
+                margin: 40px;
+                width: 200px;
+                height: 100px;
+                "
+    >
+        block(div)
+    </div>
+    <h3>content의 높이(height)와 넓이(width)</h3>
+    <p>요소의 내용의 넓이와 높이는 width와 height로 지정할 수 있다.</p>
+    <h3>padding은 컨테츠 주위의 공간</h3>
+    <ul>
+        <li>padding: top right bottom reft; 으로 컨텐츠 주위의 공간을 따로 지정할 수 있다.</li>
+        <li>padding: value; top right bottom reft를 한꺼번에 지정할 수 있다.</li>
+        <li>padding-(top,right,bottom,left): value;  로 한개의 속성만 지정할 수 있다.</li>
+        <li>padding: top (right left) bottom; </li>
+        <li>padding: (top bottom) (right left); </li>
+    </ul>
+    <h3>border(테두리)는 요소의 padding과 margin 사이의 경계선을 작성할 수 있다.</h3>
+    <ul>
+        <li>border-width: 테두리의 너비를 지정가능</li>
+        <li>border-color: 테두리의 색을 지정가능</li>
+        <li>border-style: 테두리의 스타일을 지정가능
+            <ul>
+                <li>solid- 실선</li>
+                <li>dotted-점선</li>
+                <li>dashed-절취선</li>
+                <li>double-이중 실선</li>
+                <li>groove,ridge,inset,outset-3d 효과</li>
+                <li>none-정의하지 않음</li>
+                <li>hedden-숨겨짐</li>
+            </ul>
+        </li>
+        <li>border: width style color; 속기</li>
+        <li>border-(top right bottom left): width style color; 속기</li>
+        <li>border-radius: 단위(%제외); 사각형인 박스모델의 끝을 둥글게 만든다.</li>
+        <li>border-radius: %; 사각형인 박스모델을 둥글게 만든다.</li>
+    </ul>
+    <h3>margin 테두리 밖의 여백(padding과 작성법이 같다)</h3>
+    <p>margin은 padding과 작성법이 같지만 auto라는 value로 box를 정렬할 수 있다.(default: margin-right:auto;)</p>
+    <ul>
+        <li>margin-right:auto;(default) block 요소는 컨테이너(중첩된상위 요소)의 가로를 모두 차지하려한다. 이때 가로길이가 컨테이너보다 작으면 나머지를 여백으로 채운다. 이때 auto가 여백에 해당한다.</li>
+        <li>margin-right: auto; 블럭의 왼쪽 정렬</li>
+        <li>margin-left: auto; 블럭의 오른쪽 정렬</li>
+        <li>margin: top auto bottom; 블럭의 중앙 정렬</li>
+        <li>margin: (top bottom) auto; 블럭의 중앙 정렬</li>
+        <li>margin-left: auto; margin-right:auto; 블럭의 중앙 정렬</li>
+    </ul>
+
+
+</body>
+</html>
+
+
+
+
+

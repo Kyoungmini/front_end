@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css position</title>
+    
+</head>
+<body>
+    <h1>css postion으로 layout을 구성하자</h1>
+    <ul>
+        <li>static(default) : 모든 요소(노드)의 위치를 정의(document를 기준으로)</li>
+        <li>relative : 자식 노드의 기준점 변경</li>
+        <li>absolute : relative인 부모를 기준으로 절대적 위치</li>
+        <li>fixed : viewport를 기준으로 절대적 위치</li>
+        <li>sticky : </li>
+        <!-- <li>transform:translate()</li> -->
+    </ul>
+    <h2>position relative</h2>
+    <ul>
+        <li>static 위치를 기준으로 top,bottom,left right 이동 가능</li>
+        <li style="position: relative; left:20px">다른 노드와 간섭한다.(위치가 이동되면 복사되어서 출력된 거 처럼 기존에 노드 위치에 노드는 존재하지면 출력된 노드는 간섭하지 않는다)</li>
+        <li>z-index를 지정할 수 있다.</li>
+
+    </ul>
+    <h2>position absolute</h2>
+    <ul>
+        <li>조상(부모)의 relative를 기준점으로 노드를 top,bottom,left,right로 이동할 수 있다.</li>
+        <li>만약 조상 중에 relative가 없으면 body를 기준으로 노드를 이동 시킬 수 있다.</li>
+        <li>width:100% default인 block이 absolute가 되면 
+            기준점(top,left)이 되는 조상이 존재하지만 포함 관계가 아니기 때문에 %를 인지할 부모 or 조상이 없다. (width:fit-contnet)
+        </li>
+        <li>absolute 각 노드는 독자적인 존재다. 때문에 각 노드는 서로 간섭하지 않고 간섭하지 않기 위해 z-index가 존재한다.</li>
+    </ul>
+    <h2>position fixed</h2>
+    <ul>
+        <li>노드 개체가 absolute 처럼 독자적으로 존재한다.(다른 노드에 간섭하지 않는다)</li>
+        <li>뷰포트(viewport)를 기준으로 노드를 배치한다.(브라우저의 scroll을 따라다닌다.)</li>
+        <li>독자적인 노드기 때문에 넓이가 fit-content고 z-index가 존재한다.</li>
+    </ul>
+
+    <h2>position sticky</h2>
+    <ul>
+        <li>sticky 지정된 노드는 평소에 static 위치에 존재하다가 스크롤의 의해 view가 바뀌면(플로우 루트에 의해 지정된 임계값[top:0]을 넘으면 마치 fixed 된것 처럼 화면 또는 보모 노드에 고정된다.)</li>
+        <li>sticky 는 최신 등록된 프로퍼티기 때문에  -webkit-sticky 써야한다.</li>
+    </ul>
+    <nav style="
+    background-color: slategray; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 999;
+    opacity: .6;
+    ">
+        foot 네비게이션
+    </nav>
+    <div style="height: 300px; overflow-y: scroll;">
+        <h4 style="background-color: slategrey; position: sticky; top: 0;">제목 1입니다.</h4>
+        <p>내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.</p>
+        <h4 style="background-color: slategrey; position: sticky; top: 0;">제목 2입니다.</h4>
+        <p>내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.</p>
+
+        <h4 style="background-color: slategrey; position: sticky; top: 0;">제목 3입니다.</h4>
+        <p>내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.</p>
+
+        <h4 style="background-color: slategrey; position: sticky; bottom: 0;">제목 4입니다.</h4>
+        <p>내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.</p>
+        <h4 style="background-color: slategrey; position: sticky; bottom: 0;">제목 5입니다.</h4>
+        <p>내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.내용 입니다.</p>
+        <br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+
+<style>
+nav{
+    background-color: #000;
+    color: #fff;
+    /* position: static; (default)*/
+    position: absolute;
+    /* top: 0; */
+    /* left: 0; */
+    bottom: 0;
+    right: 0;
+    /* display: inline-block;  */
+}
+.nav_container{
+    border: 1px solid;
+    position: relative;
+    height: 600px;
+}   
+</style>
+    <nav>
+        <h2>부모가 body인 네비게이션</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+        </ul>
+    </nav>
+    <div class="nav_container">
+        <nav>
+            <h2>.nav_container가 부모인 네비게이션</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </nav>    
+    </div>
+    <h2>absolute 와 z-index</h2>
+<style>
+.box{  
+    width: 100px; 
+    height: 100px; 
+    border: 1px solid;
+    position: absolute;
+}    
+</style>    
+    <div style="position: relative; height: 600px; border: 1px solid;">
+        <p style="background-color: royalblue;">p태그인 블럭 노드</p>
+
+        <div class="box" style="margin-top: 10px; top: 50%; left: 50%; z-index: 3; background-color: red;">red box</div>
+
+        <div class="box" style="bottom: 45%; right: 30%; z-index: 2;background-color: green;">green box</div>
+        
+        <div class="box" style="top: 45%; left: 45%;  z-index: 1;background-color: blue;">blue box</div>
+        <strong style="background-color: blueviolet; position: absolute; top: 50px; left: 50px;">스트롱태그인 인라인 노드</strong>
+        <p style="background-color: royalblue; position: absolute; top: 100px; left: 100px;">p태그인 블럭 노드</p>
+        
+    </div>
+</body>
+</html>

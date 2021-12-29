@@ -1,0 +1,50 @@
+<h3>사원 등록 폼</h3>
+        <form name="registEmp" action="/registEmp" method="GET" onsubmit="event.preventDefault();
+        registSubmitHandler(this,event);">
+            <p><label>empno: 
+                <input type="text" name="empno" value="8000">
+            </label></p>
+            <p><label>ename: 
+                <input type="text" name="ename" value="SMITH2">
+            </label></p>
+            <p><label>job: 
+                <input type="text" name="job" value="SALES">
+            </label></p>
+            <p><label>mgr: 
+                <input type="text" name="mgr" value="7839">
+            </label></p>
+            <p><label>hiredate: 
+                <input type="date" name="hiredate" value="2021-12-26">
+            </label></p>
+            <p><label>sal: 
+                <input type="text" name="sal" value="1000">
+            </label></p>
+            <!-- <p><label>comm: <input type="text" name="sal" value="null"></label></p> -->
+
+            <p><label>deptno: 
+                <!-- db 에서 dept select 해서 출력 -->
+                <select name="deptno" id="">
+                    <option value="10"> ACCOUNTING(NEW YORK)</option>
+                    <option value="20"> RESEARCH(DALLAS)</option>
+                    <option value="30" selected> SALES(CHICAGO)</option>
+                    <option value="40"> OPERATIONS(BOSTON)</option>
+                </select>
+            </label></p>
+<script>
+// function registBtnHander(){
+//     alert("AA")
+// }    
+// registEmp.onsubmit=function(e){
+//     e.preventDefault();
+//     alert("dd");
+// }
+// registBtn.onclick=function(e){
+//     console.log(e);
+// }
+</script>        
+            <button type="reset">리셋</button>
+            <button type="submit">등록</button>
+            <button type="button" id="registBtn"
+                onclick="registBtnHander(this)"
+            >ajax 등록</button>
+        </form>

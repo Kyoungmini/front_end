@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form input</title>
+</head>
+<body>
+    <h1>입력요소인 input,select,button,label ...
+        <label for="aa">등산</label>   
+        <input type="checkbox" id="aa" name="aa" value="1">
+        <label for="bb">요리
+            <input type="checkbox" id="bb" name="aa2" value="2">
+        </label>
+    </h1>
+    <form action="/userInsert.html" name="userInsert"  method="get">
+        <fieldset>
+            <legend>회원가입 form</legend>
+            <label for="userId">
+                id:
+                <input type="text" name="id" id="userId" placeholder="문자열과 숫자를 조합하세요.">
+                <span id="userIdMsg">사용가능한 id 입니다.</span>
+            </label>
+            <br>
+            <label for="userPw">
+                pw:
+                <input type="password" name="id" id="userPw" placeholder="문자열과 숫자를 조합하세요.">
+                <span id="userPwMsg">사용가능한 패스워드 입니다.</span>
+            </label>
+            <br>
+            <label for="userPw2">
+                pw:
+                <input type="password" name="id" id="userPw2" placeholder="문자열과 숫자를 조합하세요.">
+                <span id="userPwMsg2">같은 비밀번호입니다.</span>
+            </label>
+            <br>
+            <!-- 권장하지 않는다 -->
+             <button type="button">
+                 <label for="genderF">여자</label>
+                 <input type="radio" id="genderF" name="gender" value="f" checked>
+            </button>
+
+            <label for="genderM" style="border:1px solid">남자
+                <input type="radio" id="genderM" name="gender" value="m" >
+            </label>
+            <br>
+
+            <span>취미 :</span>
+            <!-- (label>input)*4 -->
+            <label for="userHobby">요리
+                <input id="userHobby" name="hobby" value="요리" type="checkbox" >
+            </label>
+            <label for="userHobby1">그림
+                <input id="userHobby1" checked name="hobby" value="그림" type="checkbox" >
+            </label>
+            <label for="userHobby2">음악
+                <input id="userHobby2"checked name="hobby" value="음악" type="checkbox">
+            </label>
+            <label for="userHobby3">독서
+                <input id="userHobby3" name="hobby" value="독서" type="checkbox" >
+            </label>
+            <span id="hobbyMsg"></span>
+            <br>
+            <label for="userCity">주소 :</label>
+            <select name="city" id="userCity">
+                <option value="">도시선택</option>
+                <option value="서울시">서울시</option>
+                <option value="부산시">부산시</option>
+                <option value="광주시">광주시</option>
+                <optgroup label="경기도">
+                    <option value="파주시">파주시</option>
+                    <option value="고양시">고양시</option>
+                    <option value="양주시">양주시</option>
+                </optgroup>
+            </select>
+            <span id="cityMsg"></span>
+        </fieldset>
+        <button id="userInsertsubmit" name="submitBtn" type="button">제출</button>
+    </form>
+<script>
+//userInsert //formname
+//RadioNodeList 배열 타입이 선택된 value를 출력지원
+console.log(userInsert.gender);
+console.log(userInsert.gender[1].value);
+console.log(userInsert.gender.value);
+
+//RadioNodeList
+console.log(userInsert.hobby);
+//checked=false(default)
+//checked=true === checked 를 속성으로 주면 true인 value를 갖는다.
+//console.log(userInsert.hobby[3].checked);
+
+const checked_value=[];
+for(let i=0; i<userInsert.hobby.length; i++){
+    //console.log(userInsert.hobby[i].value, userInsert.hobby[i].checked);
+    if( userInsert.hobby[i].checked){
+        checked_value.push(userInsert.hobby[i].value);
+    }
+}
+console.log(checked_value);
+
+
+console.log(userInsert.city.value);
+userInsert.city.onchange=function(){
+    console.log(this.values);
+}
+
+userInsert.submitBtn.onclick=function(){
+    console.log(userInsert.city.value=="");
+    console.log(Boolean(userInsert.city.value));
+    let msg="";
+    let color="";
+    if(userInsert.city.value){
+        msg="도시를 입력했습니다.";
+        color="green";
+    }else{
+        msg="도시를 선택하세요."
+        color="red"
+    }
+    cityMsg.innerText=msg;
+    cityMsg.style.color=color;
+    //취미선택 2개이상 검사식
+
+    let checked_lenght=0;
+    for(let i=0; i<userInsert.hobby.length; i++){
+        if(userInsert.hobby[i].checked) ++checked_lenght;
+    }
+    console.log(checked_lenght);
+
+
+   //console.log(userInsert.querySelectorAll("[name='hobby']:checked").length);
+   let hobby_msg="2개 이상 선택하세요";
+   let hobby_color="rgb(255,50,50)";
+
+   if(checked_lenght==1){
+        hobby_msg="1개 더 선택하세요";
+        hobby_color="rgb(200,50,50)";
+   }else if(checked_lenght>=2){
+        hobby_msg="2개이상 선택하셨습니다.";
+        hobby_color="green";
+   }
+   hobbyMsg.innerHTML="<b><i>"+hobby_msg+" </i></b>"
+   hobbyMsg.style.color=hobby_color;
+
+}
+//console.log("[name='hobby']:checked",document.querySelectorAll("[name='hobby']:checked").length);
+
+
+</script>
+</body>
+</html>

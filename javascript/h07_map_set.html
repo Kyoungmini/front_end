@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js map set</title>
+</head>
+<body>
+    <!-- <script>
+        window.onload=function(){
+        const json_user=[{id:"test01",name:"김영수",age:30,phone:"010-1033-4011"},
+                    {id:"test01",name:"최영희",age:30,phone:"010-1033-4011"},
+                    {id:"test01",name:"김아영",age:30,phone:"010-1033-4011"},
+                    {id:"test01",name:"오영수",age:30,phone:"010-1033-4011"},
+                    {id:"test01",name:"이가영",age:30,phone:"010-1033-4011"},
+                    {id:"test01",name:"홍희영",age:30,phone:"010-1033-4011"},
+                    {id:"test01",name:"김영팔",age:30,phone:"010-1033-4011"}]
+            let user_tr_html="";
+            json_user.forEach((user,i)=>{
+                user_tr_html+=`<tr>
+                                <td>0${i}</td>
+                                <td class="id">${user.id}</td>
+                                <td class="name">${user.name}</td>
+                                <td class="age">${user.age}</td>
+                                <td class="tel">${user.phone}</td>
+                            </tr>`;
+            });
+            console.log(document.querySelector("#infoForm"));
+            document.querySelector("#infoForm>tbody").innerHTML=user_tr_html;
+        }
+        </script> -->
+    <h1>자바스크립트 Map Set 문제</h1>
+    <table>
+        <thead>
+            <tr><th>num(순서)</th><th>id</th><th>name</th><th>age</th><th>phone</th></tr>
+        </thead>
+        <tbody>
+            <!-- tr>(td{$$}td{test$$}td{영}td{20}{010-0-0})*7 -->
+            <tr>
+                <td>01</td>
+                <td class="id">test01</td>
+                <td class="name">김영수</td>
+                <td class="age">30</td>
+                <td class="tel">010-1033-4011</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td class="id">test02</td>
+                <td class="name">최영희</td>
+                <td class="age">21</td>
+                <td class="tel">010-2201-4405</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td class="id">test03</td>
+                <td class="name">김아영</td>
+                <td class="age">40</td>
+                <td class="tel">010-4340-1110</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td class="id">test04</td>
+                <td class="name">오영수</td>
+                <td class="age">26</td>
+                <td class="tel">010-4220-1140</td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td class="id">test05</td>
+                <td class="name">이가영</td>
+                <td class="age">24</td>
+                <td class="tel">010-1230-4440</td>
+            </tr>
+            <tr>
+                <td>06</td>
+                <td class="id">test06</td>
+                <td class="name">홍희영</td>
+                <td class="age">19</td>
+                <td class="tel">010-0423-0111</td>
+            </tr>
+            <tr>
+                <td>07</td>
+                <td class="id">test07</td>
+                <td class="name">김영팔</td>
+                <td class="age">49</td>
+                <td class="tel">010-4420-1230</td>
+            </tr>
+        </tbody>
+    </table>
+<script>
+//위 테이블의 data를 UserInfo 객체로 만들어서 num 순서로 배열로 저장하세요.
+//userInfo_arr=[new UserInfo("test01","김영수","30",'010-1033-4011'), new UserInfo(...), ...]
+function UserInfo(){
+
+}
+//위 테이블의 data를 UserInfo 객체로 만들어서 id를 key, userInfo를 value로 num 순서로 Map에 저장하세요.
+//userInfo_map=new Map();
+//userInfo_map.set("test01",new UserInfo("test01","김영수","30",'010-1033-4011'));
+//userInfo_map.set("test02",new UserInfo("test02",....));
+//userInfo_map.set("test03",....);
+//...
+
+</script>
+
+
+</body>
+</html>

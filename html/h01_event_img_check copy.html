@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event homework</title>
+<style>
+.album_container{
+}
+.album_container figure{
+    display: none;   
+    margin: auto;
+    width: 400px;
+    height: 500px;
+    transition: all 500ms;
+}
+.album_container figcaption{
+    color: #fff;
+}
+.album_container figure.active{
+    display: block;
+}
+.album_radio_container{
+    margin: auto;
+    width: fit-content;
+}
+.album{
+
+}
+
+</style>
+</head>
+<div class="album_container">
+    <figure id="fig1" class="" style="background-color: blueviolet;">
+        <figcaption>1번그림</figcaption>
+    </figure>
+    <figure id="fig2" style="background-color: cadetblue">
+        <figcaption>2번그림</figcaption>
+    </figure>
+    <figure id="fig3"  style="background-color: crimson">
+        <figcaption>3번그림</figcaption>
+    </figure>
+    <figure id="fig4"  style="background-color: darkolivegreen">
+        <figcaption>4번그림</figcaption>
+    </figure>
+</div>
+<div class="album_btn_container">
+    <button id="album_prev"> &lt; </button>
+    <button id="album_next"> &gt; </button>
+</div>
+<div class="album_radio_container">
+    <label for="figId1">1번 그림
+        <input type="radio" id="figId1" name="figId" value="fig1">
+    </label>
+    <label for="figId2">2번 그림
+        <input type="radio" id="figId2" name="figId" value="fig2">
+    </label>
+    <label for="figId3">3번 그림
+        <input type="radio" id="figId3" name="figId" value="fig3">
+    </label>      
+    <label for="figId4">4번 그림
+        <input type="radio" id="figId4" name="figId" value="fig4">
+    </label>
+</div>
+    <h1>radio 버튼을 누르면 버튼의 value로 그림의 id 찾아 active 클래스를 추가해 해당 그림만 보이게 하세요.  </h1>
+<script>
+    //fig1.className="active 1 2 3 ";
+    const figId_arr=document.querySelectorAll("[type='radio'][name='figId']");
+    
+    
+    fig1.classList.add("active");
+    figId_arr[0].checked=true;
+    for(let i=0; i<figId_arr.length;i++){
+        figId_arr[i].onchange=function(){
+            let fig_id=(this.value);
+            //기존 active 삭제
+            document.querySelector("figure.active").classList.remove("active");
+            //새로운 acitve 추가
+            document.getElementById(fig_id).classList.add("active");
+        }
+    }
+    album_next.onclick=function(){
+        const checked_fig=document.querySelector("[type='radio'][name='figId']:checked");
+        let next_fig_num=(Number(checked_fig.value.split("g")[1]))+1;
+        document.querySelector("[value='fig"+next_fig_num+"']").checked=true;
+        document.querySelector("#"+checked_fig.value).classList.remove("active");
+        document.querySelector("#fig"+next_fig_num).classList.add("active");
+    }
+
+</script>
+
+<body>
+    
+</body>
+</html>

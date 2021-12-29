@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>jquery form</title>
+</head>
+<script>
+$(function(){
+    $(boxChange).submit(function(e){
+        e.preventDefault();
+        const boxChangeArr= $(boxChange).serializeArray();
+        const box_css={}
+        $.each(boxChangeArr, function(){
+            box_css[this.name]=this.value;
+        });
+        $(boxTest).css(box_css);
+        // $.each($("input"),function(){});
+        // $("input").each(function(){
+        //     console.log(this);
+        // });
+    });
+});
+</script>
+<body>
+    <h1>form으로 sytle을 적용하는 박스 만들기</h1>
+
+    <div class="box_container">
+        <div id="boxTest">box</div>
+    </div>
+    <form name="boxChange">
+        <p>display :
+             <input type="text" name="display" value="inline-block">
+        </p>
+        <p>border-width : 
+            <input type="text" name="border-width" value="1px">
+        </p>
+        <p>border-style : 
+            <input type="text" name="border-style" value="solid">
+
+        </p>
+        <p>border-color : 
+            <input type="text" name="border-color" value="#000">
+        </p>
+        <p>width : 
+            <input type="text" name="width" value="100px">
+        </p>
+        <p>height : 
+            <input type="text" name="height" value="100px">
+        </p>
+        <p>
+            <button type="reset">리셋</button>
+            <button type="submit">제출</button>
+        </p>
+    </form>
+</body>
+</html>

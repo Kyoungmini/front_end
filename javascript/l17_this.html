@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object this</title>
+</head>
+<body>
+    <h1>객체의 필드 접근자 this</h1>
+    <ul>
+        <li>this 는 객체 필드 접근자==객체를 참조한다</li>
+        <li>자바스크립트 최상의 객체 window를 전역에서 this로 접근(전역은 window 필드다)</li>
+        <li>함수에서 this도 window 필드를 참조한다.(함수는 객체가 아니다.) </li>
+        <li>window this >{객체 AA (this==AA)}>{객체 BB (this==BB)}</li>
+        <li>함수가 객체의 프로퍼티를 재정의하면(event재정의) 함수는 객체의 프로퍼티가 되고 이때 this는 해당 객체의 필드접근자가 된다. </li>
+    </ul>
+    <h2>this 사용 예</h2>
+    <ul>
+        <li>
+            script>     this==window    /script   (전역에서 모든 객체의 부모는 window다)
+        </li>
+        <li>function sum(){ this==window }   (함수는 객체가 아니다)</li>
+        <li>element.onclick=function(){ this==element }   ==>브라우저가 요소를 new element() 객체화 했기때문(브라우저에 element는 노드개체(객체)기 때문에 this로 접근가능) </li>
+        <li>function Obj(){ this.a=10;  this==Obj }  ==>new Obj()</li>
+        <li>const jsonObj={
+            a:10,
+            b:20, 
+            sum:function(){
+                retunr this.a+this.b
+            }
+        }(오브젝트를 생성하는 리터럴한방식)</li>
+        <li>function jsonObj(){
+            this.a=10; 
+            this.b=20; 
+            this.sum=function(){
+                return this.a+this.b;
+            }
+        } new jsonObj() (오브젝틀 생성하는 정상적인 방식)
+    </li>
+</ul>
+<script>
+console.log(this);
+console.log(window);
+
+function aa(){
+    console.log(this);
+}
+//함수 (this.속성=""; x)
+aa();
+
+
+function ObjAa(param_id){
+    this.id=param_id;
+    this.getId=function(){
+        //this==ObjAa
+        return "호출한 this.id:"+this.id;
+    }
+    //id는 ObjAa의 필드(.으로 접근가능한 모든 property==자원)
+}
+//객체의 프로토타입 (객체는 아니다)
+//console.log(ObjAa().id);
+console.log(ObjAa.id);
+
+//프로토타입은 설계도(실제하지 않는다)
+console.log(new ObjAa("파라미터로 보낸"));
+console.log(new ObjAa("생성자라 부른다.").id);
+console.log(new ObjAa("aaaaaa").getId());
+//new 연산자로 객체를 만들어야 this로 선언한 필드가 생성된다.
+const obj_aa=new ObjAa();
+
+obj_aa.getId=function(){
+    console.log("obj_aa.getId",this);
+}
+
+obj_aa.getId();
+
+</script>
+    <h2 id="h2Obj">ㅇㅇㅇㅇㅇㅇ</h2>
+<script>
+//console.log(h2Obj);
+h2Obj.onclick=function(){
+    console.log(this);
+}
+//constructor==생성자==SumTwo(para_a, para_b)
+function SumTwo(para_a, para_b){
+    this.a=para_a;
+    this.b=para_b;
+    this.sum=function(){
+        return "a+b="+(this.a+this.b);
+    }
+}
+console.log(SumTwo);
+console.log(SumTwo.prototype);
+const sumTwo=new SumTwo(10,20);
+console.log(sumTwo);
+console.log(sumTwo.a,sumTwo.b,sumTwo.sum());
+
+const sumTwo2=new SumTwo(300,400);
+console.log(sumTwo2);
+
+
+//리터럴한 방식의 객체 선언법(json)
+const litSumTwo={
+    a:10,
+    b:20,
+    sum: function(){
+       return this.a+this.b;
+    }
+}
+console.log(litSumTwo);
+
+</script>
+</body>
+</html>

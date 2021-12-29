@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom homework</title>
+</head>
+<style>
+.progress_container{
+    border:1px solid;
+}
+.progress{
+    height: 10px;
+    background-color: blue;
+
+}
+
+
+</style>
+<body>
+    <h1>document 조작 숙제 </h1>
+
+    <h2>#colorChanage>li 의 innerText로 li의 color를 바꾸세요.</h2>
+    <ul id="colorChanage">
+        <li>red</li>
+        <li>blue</li>
+        <li>yellow</li>
+        <li>pink</li>
+        <li>green</li>
+        <li>rgb(100,100,100)</li>
+    </ul>
+<script>
+    console.log(document.getElementById("colorChanage").getElementsByTagName("li"));
+    console.log(colorChanage.getElementsByTagName("li"));
+    console.log(document.querySelectorAll("#colorChanage>li"));
+    const colorChangeLiArr=document.querySelectorAll("#colorChanage>li");
+    for(let i=0; i<colorChangeLiArr.length; i++){
+        let colorTx=colorChangeLiArr[i].innerText;
+        colorChangeLiArr[i].style.color=colorTx;
+        let colorData=colorChangeLiArr[i].dataset.liColor;
+        colorChangeLiArr[i].style.color=colorData;
+    }
+</script>
+    <div class="progress_container">
+        <div class="progress" data-percent="15"></div>
+    </div>
+    <div class="progress_container">
+        <div class="progress" data-percent="20"></div>
+    </div>
+    <div class="progress_container">
+        <div class="progress" data-percent="60"></div>
+    </div>
+<script>
+    const progress_arr=document.querySelectorAll(".progress_container .progress");
+    for (let i = 0; i < progress_arr.length; i++) {
+        const progress = progress_arr[i];
+        let percent=progress.dataset.percent+"%";
+        progress.style.width=percent;
+        progress.innerHTML=`<b class="percent">${percent}</b>`
+    }
+
+</script>
+    <h2>#indexPrint 에  li 노드 개체를 10개 추가하세요. li node 개체의 text는 00부터 09까지 입니다.</h2>
+    <p>자바스크립트 반복문으로 노드개체를 생성해서 추가하세요</p>
+    <ul id="indexPrint">
+
+    </ul>
+<script>
+// let li_html="";
+// for(let i=1; i<10; i++){
+//     li_html+=`<li>0000${i}</li>`;
+// }
+// indexPrint.innerHTML=li_html;
+
+for(let i=1; i<10; i++){
+
+    let newLi=document.createElement("li");
+    // newTx=document.createTextNode("00"+i);
+    // newLi.append(newTx);
+    newLi.innerText=`00${i}00`;
+    indexPrint.append(newLi)
+}
+</script>
+
+    <h3>결과 예시</h3>
+    <!-- ul>li{$$}*9 -->
+    <ul>
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+        <li>06</li>
+        <li>07</li>
+        <li>08</li>
+        <li>09</li>
+    </ul>
+    <script>
+        const li_arr=["number","string","boolean","Array","Object"]
+    </script>
+    <h2>li_arr 배열을 #typeList에 li로 출력하세요.</h2>
+    <ul id="typeList">
+        
+    </ul>
+    <script>
+        for (let i = 0; i < li_arr.length; i++) {
+            let newLi= document.createElement("li");
+            //newLi.append(document.createTextNode(li_arr[i]));
+            newLi.innerText=li_arr[i];
+            typeList.append(newLi);
+        }
+        let typeList_html="";
+        for (let i = 0; i < li_arr.length; i++) {
+//            typeList_html+="<li>"+li_arr[i]+"</li>";
+            typeList_html+=`<li>${li_arr[i]}</li>`;
+
+        }
+        typeList.innerHTML=typeList_html;
+
+    </script>
+<script>
+
+
+</script>
+
+</body>
+</html>

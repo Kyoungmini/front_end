@@ -1,0 +1,42 @@
+html,body{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: bisque;
+}
+nav.left_nav{
+    font-size: 3vw;
+    width: 20vw;
+    height: 100vh;
+    float: left;
+    /* display: inline-block; */
+    background-color: cadetblue;
+    color: #fff;
+}
+nav.left_nav ul{
+    margin: 0;
+    padding: 0;
+}
+.dropdown .dropdown-menu{
+    display: none;
+    background-color: rgb(51, 90, 92);
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+main.main_container{
+    display: inline-block;
+    width: 80vw;
+}
+.dropdown-right .dropdown-menu{
+    background-color: rgb(51, 90, 92);
+    position: absolute;
+    display: none;
+}
+.dropdown-right:hover .dropdown-menu{
+    display: block;
+    
+
+}

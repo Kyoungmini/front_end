@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css transform</title>
+</head>
+<style>
+.box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    transition: all 500ms;
+}   
+.box_container{
+    border: 1px solid;
+    perspective: 100px;
+    /* height: 200px; */
+}
+</style>
+<script>
+window.onload=function(){
+    const box_arr=document.getElementsByClassName("box"); 
+    for(const box of box_arr){
+        box.onclick=function(){
+            box.style.transform=box.innerText;
+        }
+    }
+}    
+</script>
+
+<body>
+    <h1>css transform으로 노드를 변형하자</h1>
+    <h2>translate로 static 노드 이동</h2>
+    <div class="box_container">
+        <div class="box">translate(100%,100%)</div>
+        <div class="box">translate(100%)</div>
+        <div class="box">translateX(100%)</div>
+        <div class="box">translateY(100%)</div>
+        <div class="box">translateX(400px)</div>
+        <div class="box">translateZ(-600px)</div>
+    </div>
+    <h2>rotate로 노드를 회전</h2>
+    <div class="box_container" style="perspective: none;">
+        <div class="box"> rotateX(180deg)</div>
+        <div class="box"> rotateX(360deg)</div>
+        <div class="box"> rotateX(720deg)</div>
+        <div class="box"> rotateY(180deg)</div>
+        <div class="box"> rotateY(360deg)</div>
+        <div class="box"> rotateY(720deg)</div>
+        <div class="box"> rotateZ(180deg)</div>
+        <div class="box"> rotateZ(360deg) translate(200px)</div>
+        <div class="box"> rotate(.5turn)</div>
+    </div>
+    <h2>scale</h2>
+    <div class="box_container">
+        <div class="box">
+            scale(.5,.5)
+        </div>
+        <div class="box">
+            scale(.5)
+        </div>
+        <div class="box">
+            scale(2,1) translateX(100%)
+        </div>
+        <div class="box">
+            scale(0) 
+        </div>
+    </div>
+    <h2>skew</h2>
+    <div class="box_container" style="perspective: none;">
+        <div class="box">skew(10deg)</div>
+        <div class="box">skew(10deg,10deg)</div>
+        <div class="box">skew(.1turn,.1turn)</div>
+        <div class="box">skew(-36deg,-36deg)</div>
+        <div class="box">skewY(50deg)</div>
+    </div>
+    <h2>matrix(scaleX,sckewY,sckewX,scaleY,translateX,translateY) 생략</h2>
+    
+
+</body>
+</html>

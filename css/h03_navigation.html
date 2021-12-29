@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
+    <link rel="stylesheet"  href="h03_navigation.css">
+
+    <title>homework navigation</title>
+</head>
+<body>
+    <nav class="icon_nav_left">
+        <h1>
+            <i class='fas fa-bars' id="openNav"></i>
+            <a href="/css/">
+            HOME</a></h1>
+        <ul class="navigation">
+            <li class="dropdown">
+                <i class='fab fa-html5' title="HTML"></i>
+                HTML
+                <ul class="dropdown-menu">
+                    <li>block</li>
+                    <li>inline</li>
+                    <li>inline-block</li>
+                    <li>none</li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <i class='fab fa-css3'></i>
+                CSS
+                <ul class="dropdown-menu">
+                    <li>static</li>
+                    <li>relative</li>
+                    <li>absolute</li>
+                    <li>sticky</li>
+                </ul>
+            </li>
+            <li  class="dropdown" >
+                <i class='fab fa-js-square'></i>
+                JavaScript
+                <ul class="dropdown-menu">
+                    <li>Object</li>
+                    <li>Json</li>
+                    <li>Variable</li>
+                    <li>Scope</li>    
+                </ul>
+            </li>
+            <li  class="dropdown" >
+                <i class='fab fa-react'></i>
+                React
+                <ul class="dropdown-menu">
+                    <li>Props</li>
+                    <li>State</li>
+                    <li>Hook</li>
+                    <li>Router</li>    
+                </ul>
+            </li>
+            <li>
+                <i class='	fas fa-arrow-circle-left'></i>
+                close
+            </li>
+        </ul>
+    </nav>
+    <main class="main_container">
+        <h1>과제</h1>
+        <ul>
+            <li>nav에 hover시 확장되는 형태에서 #openNav가 .active시 확장되도록 바꾸세요.</li>
+            <li>네비게이션에 icon을 추가했습니다. 어떻게 추가 되었는지 살펴보세요(예습)</li>
+            <li>네비게이션이 축소되었을 때 아이콘만 보이게 하세요</li>
+            <li>아이콘이 버튼처럼 보이게 만드세요.</li>
+            <li>dropdown-menu는 .active를 추가해서 보이게 하세요.</li>
+        </ul>
+    </main>
+    <script src="h03_navigation.js"></script>
+</body>
+</html>

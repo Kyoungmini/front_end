@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css taransitions</title>
+</head>
+<style>
+.box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    transition: width 2000ms, height 1000ms, border 4000ms, background 3s, border-radius 5000ms;
+    /* transition-timing-function: cubic-bezier(0,1.87,1,-1);
+    transition-delay: 1000ms; */
+    /* s 초 ms 밀리초 */
+}
+.big{
+    width: 200px;
+    height: 200px;
+    border-width: 20px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ;
+    background-color: blueviolet;
+}
+</style>
+<body>
+    <h1>수치가 변경되면 발생하는 애니메이션 Transition</h1>
+    <ul>
+        <li>transition은 css 속성값이 바뀔 때 해당 변화를 일정 시간동안 일어나도록 해서 애니메이션을 만든다.</li>
+        <li>css 속성값은 수치가 있어야하고 animation이 적용가능 한지 확인해야한다.</li>
+        <li>해당 요소에 스타일 속성이 바뀌는 방법은 제한이 없다.(class 추가,삭제,js 직접 지정...)</li>
+    </ul>
+    <h2>transition 속성들</h2>
+    <ul>
+        <li>transition-property: 변화를 감지할 속성, 애니메이션을 적용할 속성(default all)</li>
+        <li>transition-duration: 애니메이션이 일어나는 시간으로 s or ms 로 작성 (default 0)</li>
+        <li>transition-delay:변화를 감지한 후 애니메이션을 시작하는 시간</li>
+        <li>transition-timing-function: 애니메이션이 동작하는 속도 
+            <ul>
+                <li>https://cubic-bezier.com/</li>
+                <li>ease default</li>
+                <li>linear</li>
+                <li>ease-in</li>
+                <li>ease-out</li>
+                <li>ease-in-out</li>
+            </ul>
+        </li>
+        <li>transition: property | duration 속기
+            <ul>
+                <li>transition: property | duration</li>
+                <li>transition: property | duration | delay</li>
+                <li>transition: property | duration | timing</li>
+                <li>transition: property | duration | timing | delay</li>
+                <li>transition: 속기 , 속기, 속기</li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="box_container">
+        <div class="box" id="box1"></div>
+    </div>
+    <button onclick="
+    box1.style.width='200px';
+    box1.style.height='200px';
+    box1.style.borderWidth='20px';
+    ">big</button>
+    <button
+        onclick="box1.classList.toggle('big')"
+    >big class add</button>
+    <ul>
+        <li>sytle 변결할때 inline에 직접 작성하면(js) css 우선 순위가 가장 높아진다.(다른 스타일 적용이 어렵다. internal css로 적용할 수 없다.) </li>
+        <li>sytle에 일관성이 없어진다.=>(유지보수가 힘들다.)</li>
+        <li>코드 작성 시간이 길어진다.</li>
+        <li>특별한 경우가 아닌 이상 자바스크립트로 스타일 적용시 class로 internal css를 변경해야 한다.</li>
+    </ul>
+
+</body>
+</html>

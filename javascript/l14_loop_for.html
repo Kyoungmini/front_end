@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js loop for</title>
+</head>
+<body>
+    <h1>자바스크립트의 반복문</h1>
+    <h2>for 반복문</h2>
+    <p>for(초기문; 조건문; 증감문){조건문이 true일 때 반복 실행}</p>
+    <ul>
+        <li>초기문: let i=0; i는 반복이 처음 실행될 때 한번만 선언된다.</li>
+        <li>조건문: if(조건문)과 같이 Boolean 실행되는 곳으로 조건이 false이면 반복문은 끝이 난다.</li>
+        <li>증감문: 초기값 i를 증가 또는 감소 시켜 조건이 false가 되어 벗어나도록 제한을 거는 곳 
+        예) 100번 실행하는 반복문 for(let i=0; i>-100; i--)
+        </li>
+        <li>for 반복문은 while 반복문에서 초기문,조건문,증감문을 조건문 작성하는 곳에 모두 모아 놓은 형태</li>
+    </ul>
+    <h2>while 반복문</h2>
+    <p>let i=0;(초기문) while(조건문){조건이 true일 때 반복 실행; 증감문;}</p>
+<script>
+const array_num=[10,-10,3,-20.5,0];
+const posi_num=[]; //양수
+const nega_num=[]; //음수
+
+//array_num 에서 양수를 찾아서 양수만 있는 새로운 배열을 만드세요
+
+//for(let i=array_num.length-1; i>=0; i-- ){}
+for (let i = 0; i < array_num.length; i++) {
+    console.log(array_num[i]);
+    if(array_num[i]>0) posi_num.push(array_num[i]);
+}
+console.log(posi_num);
+
+</script>
+
+
+</body>
+</html>

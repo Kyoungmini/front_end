@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css selectors</title>
+</head>
+<body>
+    <h1>css 선택자</h1>
+    <h2>단순 선택자</h2>
+    <ul>
+        <li>id #  아이디 단수 선택자 </li>
+        <li>class . 클래스 복수 선택자 </li>
+        <li>tagName 태그이름 복수 선택자</li>
+    </ul>
+    <h2>Combinator selectors 선택자 조합</h2>
+    <p>DOM 각 오브젝트가 포함관계의 노드를 갖는 tree 구조로  선택자 간의 관계 부모, 형제, 자식, 자손으로 설명 할 수 있다.</p>
+    <ul>
+        <li>" " space:</li>
+        <li>">" :</li>
+        <li>"+" :</li>
+        <li>"~" :</li>
+    </ul>
+
+    <h2>Pseudo-classes 의사 선택자 </h2>
+    <p>노드 개체가 상태가 변하는 것에 따라 찾을 수 있는 선택자로 클래스와 우선 순위가 같다. selector:pseudo-class</p>
+    <ul>
+        <li>:checked</li>
+        <li>:hover</li>
+        <li>:focus</li>
+        <li>:link</li>
+        <li>:visited</li>
+        <li>:active</li>
+        <li>:target</li>
+        <li>:required</li>
+        <li>:not(selector)</li>
+        <li>:nth-child(n)</li>
+    </ul>
+    <h2>Pseudo-Elements 의사 요소 선택자 </h2>
+    <p>노드 개체 내부의 </p>
+    <ul>
+        <li>::after</li>
+        <li>::before</li>
+        <li>::first-letter</li>
+        <li>::first-line</li>
+        <li>::selection</li>
+    </ul>
+    <h2>Attribute Selectors 속성 선택자 </h2>
+    <p>특정 속성이나 속성의 값으로 노드 개체를 찾는 선택자</p>
+    <ul>
+        <li>[attribute]</li>
+        <li>[attribute="value"]</li>
+        <li>[attribute~="value"</li>
+        <li>[attribute|="value"]</li>
+        <li>[attribute^="value"]</li>
+        <li>[attribute$="value"] </li>
+        <li>[attribute*="value"]</li>
+    </ul>
+    
+
+
+</body>
+</html>

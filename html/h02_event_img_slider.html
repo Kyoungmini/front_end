@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event homework</title>
+<style>
+.album_container{
+    margin: auto;
+    width:600px;
+    position: relative;
+    height: 550px;
+    overflow: hidden;
+}
+.album_container figure{
+    display: none;   
+    margin: 20px auto;
+    width: 400px;
+    height: 500px;
+    transition: all 200ms;
+    border-radius: 10px;
+    border: 5px solid white;
+    outline: 1px solid;
+    box-sizing: border-box;
+}
+.album_container figcaption{
+    color: #fff;
+}
+.album_container figure.active,.album_container figure.prev,.album_container figure.next{
+    display: inline-block;
+    position: absolute;   
+}
+.album_container figure.active{
+    left: calc(50% - 200px);
+    z-index: 999;
+}
+.album_container figure.next{
+    left: calc(50% + 250px);
+}
+.album_container figure.prev{
+    left: calc(50% - 650px);
+    /* right: calc(50% + 250px); */
+}
+
+.album_control_container{
+    margin: auto;
+    width: fit-content;
+}
+.album_btn_container{
+    width: 600px;
+    bottom: 50%;
+    position: absolute;
+
+}
+.album_btn_container button.next{
+    position: absolute;
+    right: 0;
+}
+
+</style>
+</head>
+<h1>라디오 버튼은 장식입니다. next prev버튼을 누르면 class를 추가해 앨범 3개를 보이게 하세요.
+    선택자는 없습니다. 배열의 순서로만 보이게 해보세요.
+
+</h1>
+<div id="album_figures" class="album_container">
+
+    <figure style="background-color: blueviolet;" class="">
+        <figcaption>1번그림</figcaption>
+    </figure>
+    <figure style="background-color: cadetblue"  class="">
+        <figcaption>2번그림</figcaption>
+    </figure>
+    <figure  style="background-color: crimson"  class="">
+        <figcaption>3번그림</figcaption>
+    </figure>
+    <figure  style="background-color: darkolivegreen"  class="">
+        <figcaption>4번그림</figcaption>
+    </figure>
+    <figure  style="background-color: rgb(56, 47, 107)" class="">
+        <figcaption>5번그림</figcaption>
+    </figure>
+    <figure  style="background-color: rgb(95, 47, 107)"class="">
+        <figcaption>6번그림</figcaption>
+    </figure>
+
+    <div class="album_btn_container">
+        <button class="btn prev" id="album_prev" type="button"> &lt; </button>
+        <button class="btn next" id="album_next" type="button"> &gt; </button>
+    </div>
+</div>
+<form class="album_control_container" name="album_control">
+        <input type="radio"  name="fig_active" value="1">
+        <input type="radio"  name="fig_active" value="2">
+        <input type="radio"  name="fig_active" value="3">
+        <input type="radio"  name="fig_active" value="4">
+        <input type="radio"  name="fig_active" value="5" checked>
+        <input type="radio"  name="fig_active" value="6">
+</from>
+
+<script>
+
+
+
+const figure_arr=album_figures.getElementsByTagName("figure");
+figure_arr[0].classList.add("active");
+figure_arr[1].classList.add("next");
+figure_arr[figure_arr.length-1].classList.add("prev");
+
+
+album_next.onclick=function(){
+    let active_i=0;
+    let prev_i=0;
+    let next_i=0;
+    for(let i=0; i<figure_arr.length; i++){
+       // console.log(i,figure_arr[i].className=="active");
+       if(figure_arr[i].classList.contains("active")){
+            active_i=i;
+            figure_arr[i].classList.remove("active")
+       }
+       if(figure_arr[i].classList.contains("prev")){
+            prev_i=i;
+            figure_arr[i].classList.remove("prev")
+       }
+       if(figure_arr[i].classList.contains("next")){
+            next_i=i;
+            figure_arr[i].classList.remove("next")
+
+       }
+    }
+    if( (prev_i+1)==figure_arr.length){
+        prev_i=0;
+    }else{
+        ++prev_i;
+        //prev_i+=1;
+        //prev_i=prev_i+1;
+    }
+    active_i=( active_i+1 == figure_arr.length)?  0 :  ++active_i   ;
+    next_i=( next_i+1 == figure_arr.length)?  0 :  ++next_i   ;
+    console.log(prev_i,active_i,next_i);
+    
+    figure_arr[prev_i].classList.add("prev");
+    figure_arr[active_i].classList.add("active");
+    figure_arr[next_i].classList.add("next");
+}
+</script>
+
+<body>
+    
+</body>
+</html>

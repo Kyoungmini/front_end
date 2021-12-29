@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+//자바스크립트!
+document.write("<p>안녕1</p>");
+for(let i=2; i<5 ;i++ ){
+    document.write("<p>안녕"+i+"</p>");
+}
+document.write("<p>안녕5</p>");
+</script>
+<hr>
+
+<h2>비동기식 실행</h2>
+<ul>
+    <li>코드가 순서대로 실행되는 것(동기적실행)=실행이 1개(thread가 1개)
+    </li>
+    <li>코드가 동시에 실행되는 setTimeout,setInterval,Event는 비동기적 실행=(실행이 증가)</li>
+    <li>컴퓨터는 동시에 일을 처리할 수 있기 때문에 코드를 순서대로 한번만 실행하는 것은 비효율적=>실행(thread)을 여려개 생성하는 것이 빠르고 효율적이다.</li>
+    <li>자바스크립트는 EvnetListner에서 계속 thread를 생성할 수있다.</li>
+</ul>
+<div id="root"></div>
+<script>
+    
+root.append("/안녕1");
+
+const p=new Promise(function(resolve,reject){
+    window.setTimeout(function(){
+        root.append("/안녕2");
+    } ,1000);
+});
+p.then(function(){
+    root.append("/안녕3");
+});
+
+
+</script>
+
+</body>
+</html>

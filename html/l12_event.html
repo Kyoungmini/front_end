@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html event</title>
+</head>
+<body>
+    <h1>브라우저가 제공하는 이벤트 리스너를 (콜백함수로)재정의 해보자</h1>
+    <h2>이벤트 용어 설명</h2>
+    <ul>    
+        <li>이벤트(event): 브라우저에 발생하는 (things)를 의미하고 대체로 외부기기(마우스,키보드,터치)의 의해 발생하는 것을 이벤트(document로드,submit,비디오 재생,오류)</li>
+        <li>이벤트리스너(eventListener) : 요소나 브라우저에 재정의할 수 있는 event로 이벤트를 재정의하면 발생하는 이벤트를 계속 듣고 있기 때문에 리스너라 부른다.</li>
+        <li>이벤트핸들러(eventHandler) : 이벤트를 재정의하는 함수를 핸들러(이벤트처리)라 하고 
+            이벤트가 발생할때 호출(실행)되기 때문에 콜백함수(callback)라고도 부른다.
+        </li>
+    </ul>
+    <h2>요소에 이벤트를 재정의하는 방법 3가지</h2>
+    <ul>
+        <li 
+            onmouseenter="
+                this.style.color='red';
+                this.style.backgroundColor='yellow'" 
+            onmouseleave="
+                this.style.color='black'; 
+                this.style.backgroundColor='white'">
+            요소에 직접 정의(유지보수 때문에 권장하지 않음)
+        </li>
+        <li style="font-size: 10px;" id="clickTest">자바스크립트에서 Dom의 속성을 재정의</li>
+        <li id="clickTest2">
+            element(Dom).addEventListener("event",handler,option)
+            이용해서 정의 (ex 8 이하는 동작 x)
+        </li>
+        <li>exploer8이하는 완전히 다른 event 속성을 갖는 경우가 많아서 무조건 jquery로 웹표준을 해야한다.</li>
+    </ul>
+<script>
+//clickTest 누를 때 마다 폰트사이즈가 5px 커지게 하세요.
+
+clickTest.onclick=function(){
+    let fs=this.style.fontSize.split("px")[0];
+    console.log(fs);
+    //+연산은 문자열 연산이 수 연산보다 우선순위가 높다.
+    //"10"+5="105"
+    this.style.fontSize=Number(fs)+5+"px";
+
+    //parseInt("10px")=>10
+    //10px => Number(10)
+    //console.log(parseInt(fs));
+    //this.style.fontSize=parseInt(fs)+5+"px";
+}
+clickTest2.addEventListener("click",function(){});
+
+//function clickHandler(){}
+function aa(){
+   console.log(this.document.getElementById("alertTest"));
+}
+console.log(aa.id);
+console.log(new aa().id);
+const clickAlertHandler=function(){
+    //this==window
+    alert(this.innerText);
+}
+</script>
+    <h2>콜백함수를 정의하고 이벤트리스너를 재정의하자</h2>
+    <ul>
+        <li onclick="clickAlertHandler()">인라인 이벤트 재정의</li>
+        <li id="alertTest">DOM의 이벤트 속성의 재정의</li>
+        <li id="alertTest2">DOM의 addEventListener를 재정의</li>
+    </ul>
+<script>
+   //요소.onclick=function(){  clickAlertHandler();  }
+   //인라인에 이벤트를 재정의하면 함수를 재정의하는 것이아니라 실행을 재정의한다.
+   //this는 함수를 재정의할때 재정의하는 함수에 bind 되어 있다.
+   //인라인에서 this를 사용하면 자바스크립트 최상위 객체인 window를 참조한다.
+    alertTest.onclick=clickAlertHandler;
+    alertTest2.addEventListener("click",clickAlertHandler);
+</script>
+    <h3>인라인 이벤트 재정의시 주의할 점(this bind)</h3>
+    <ul>
+        <li>인라인 이벤트를 콜백함수로 재정의하면 함수의 실행만 재정의 할 수 있다. onclick=function(){   window.hanlder(this==window) }
+            Dom.onclick(){ this 실행 }
+        </li>
+        <li>Dom의 이벤트를 재정의 하는 것은 이벤트를 콜백함수가 대체되는 것이다. Dom.onclick=handler; == Dom.handler</li>
+        <li>this는 필드접근자로 해당 객체를 의미</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js condition</title>
+</head>
+<body>
+    <h1>자바스크립트의 조건문 </h1>
+    <p>10보다 큰 수를 입력하면 alert()이 생성됩니다.
+        <input id="inputNum" type="text" placeholder="10보다 큰수를 입력하세요" value="0">
+    </p>
+<script>
+let a=10; 
+const inputNumEl=document.getElementById("inputNum");
+//console.log(inputNum);
+//console.log(inputNumEl);
+//onchange 입력요소(키보드)에 의해 요소의 값(value)이 바뀌고 focus가 벗어날때 이벤트가 발생한다.
+//onblur 입력요소에서 focus가 벗어날때 이벤트가 발생
+//this function(onchange,onblur ....)이 실행되는 요소
+
+//inputNumEl.onblur=function(){console.log("onblur");}
+
+inputNumEl.onchange=function(){
+    let input_num=this.value;
+    if(input_num>10){
+        alert(input_num);
+    }
+}
+//if(){}
+</script>
+    <input type="text" placeholder="10보다 작은 수 입력"
+        onchange="if(this.value<10){alert(this.value)}"
+    >
+    <!-- 
+        onchange="if(this.value<10){alert(this.value)}"
+        onchange=function(){
+            if(this.value<10){alert(this.value)}
+        }
+     -->
+
+     <h2>조건문 if 작성법</h2>
+     <ul>
+         <li>if(조건문){실행;  block,지역...} : 조건이 true일때 블럭이 실행된다.</li>
+         <li>if는 꼭 소문자로 작성한다. IF (x)</li>
+         <li>실행이 한줄일때 {}를 생략할 수 있다. if(조건)실행;</li>
+         <li>조건 연산자로 ==,=!,!,===,!==,>,<,>=,<=,isArray(),등을 사용할 수 있다.</li>
+         <li>(data)안에 조건 연산자를 사용하지 않으면 => Boolean(data)</li>
+<script>
+if(" ") console.log("Boolean(\" \")", Boolean(" "));
+if(1) console.log("Boolean(1)", Boolean(1));
+
+if("") console.log("Boolean(\"\")", Boolean(""));
+if(0) console.log("Boolean(0)", Boolean(0));
+if(NaN) console.log("Boolean(NaN)", Boolean(NaN));
+if(undefined) console.log("Boolean(undefined)", Boolean(undefined));
+if(null) console.log("Boolean(null)", Boolean(null));
+</script>        
+     </ul>
+     <h2>else if(), else 조건이 참이 아닐 때도 실행해 보자</h2>
+     <ul>
+         <li>if(조건문){true 실행}else{ false 실행}</li>
+         <li>if(조건문){true 실행}else if(조건문){ false 실행}else{나머지}</li>
+         <li>default 값이 else 대신할 수 있다.</li>
+     </ul>
+<script>
+let age =17;
+//35이상은 아저씨, 35 미만은 20이상 총각,  20미만 청소년
+if(age>=35){
+    console.log(age+"는 아저씨");
+}else if(age>=20){
+    console.log(age+"는 총각");
+}else{
+    console.log(age+"는 청소년");
+}
+//50보다 크면 : 성공
+//50 ~ 20 : 재도전
+//20보다 작으면 : 실패
+let msg="실패"; //default 기본값 == else와 동일하게 동작함
+let score=10;
+
+if(score>50){
+    msg="성공";
+}else if(score>=20){
+    msg="재도전"
+}
+
+console.log(msg+" 했습니다.");
+</script>
+    <h2>삼항연산자</h2>
+    <ul>
+        <li>(조건)? true 실행 : false 실행; == 
+            if(조건){ true 실행 }else{ false 실행 }</li>
+        <li>let variable=(조건)?true data : false data;</li>
+        <li>(if조건)? 실행: (else if 조건)? 실행: (else if 조건)? 실행 : else 실행; (사용권장x) </li>
+    </ul>
+<script>
+let num=0;
+//(num>0)? console.log(num+"은 양수입니다.") : console.log(num+"은 음수입니다.");
+(num>0)? 
+    console.log(num+"은 양수입니다.") 
+    :(num==0)?
+        console.log(num+"은 0입니다.")
+        : console.log(num+"은 음수입니다."); 
+//짝수 구하는 식   Boolean(0) ==false 
+
+//num%2==0  연산1)num%2 연산2)0==0 연산3) true
+//연산이 사람의 의식대로 흐르기 때문에 코드를 파악하기 쉽다.
+
+//num%2 연산1)num%2 연산2) false
+//=>연산을 1개 줄인 대신 유지보수(코드를 파악하기 어렵다)가 어렵다.
+
+let result = (num%2)? "홀수" : "짝수";
+
+console.log(`${num}은 ${result}입니다.`);
+</script> 
+</body>
+</html>

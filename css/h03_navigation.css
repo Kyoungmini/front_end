@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+body::before{
+    content: "";
+    display: table;
+    clear: both;
+}
+.main_container{
+}
+.icon_nav_left{
+    background-color: darkcyan;
+    width: 10vw;
+    height: 100vh;
+    overflow: hidden;
+    float: left;
+    color: #fff;
+    transition: all 200ms;
+    margin-right: 5vw;
+}
+.icon_nav_left:hover{
+    width: 35vw;
+}    
+.icon_nav_left ul{
+    padding: 0;
+}
+.icon_nav_left .navigation,
+.icon_nav_left h1 {
+    /* width: 35vw; */
+    white-space: nowrap;
+}
+.icon_nav_left .navigation li,
+.icon_nav_left h1{
+    font-size: 3.5vw;
+}
+.icon_nav_left i{
+    width: 8vw;
+    height: 8vw;
+    line-height: 8vw;
+    margin: 1vw;
+    /* line 이 1개일때 중앙 정렬 */
+    text-align: center;
+    border-radius: 10px;
+    transition: all 200ms;
+}
+.icon_nav_left i:hover{
+    background-color: rgba(245, 245, 220, 0.609);
+    color: rgba(31, 41, 35, 0.877);
+    box-shadow: inset 1px 1px 4px rgb(0, 0, 0);
+}    
+.dropdown-menu{
+    display: none;
+}

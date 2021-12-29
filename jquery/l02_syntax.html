@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jqeury syntax</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+<script>
+console.log(document.querySelector("h1"));
+ window.onload=function(){
+     console.log(document.querySelector("h1"));
+ }
+ //document가 모두 준비된 시점(브라우저가 dom 개체를 모두 생성해서 dom 선택자를 사용할 수 있는 시점)   
+
+ $(document).ready(function(){});  //==window.onload
+ $(function(){
+     console.log($("#test1"));
+    //  $("li").click(function(){
+    //     console.log( $(this).css("width"));
+    //     console.log( this.style.width );
+    //     //$(this).hide()
+    //     $(this).slideUp();
+    //  });
+    // $("li").hover(
+    //     function(){
+    //         $(this).slideUp()
+    //     },function(){
+    //         $(this).slideDown();
+    // });
+    $("li").click(function(){
+        alert($(this).css("height"))
+    }).mouseleave(function(){
+        console.log($(this).css("width"));
+    }).css({backgroundColor:"blue"});
+ });
+//$(window).load(function(){});
+</script>
+<style>
+li{ width: 100%;}
+</style>
+<body>
+    <h1>jqeury 사용방법</h1>
+    <ul id="test1">
+        <li style="width: 100%;">$("css선택자") : 통합된 document 선택자로 모두 복수로 선택 한다.</li>
+        <li>$(function(){}),$(document).ready() == window.onload : document가 모두 load된 시점</li>
+        <li>.css() : .style 해당 노드 개체에 직접 지정한 style만 찾을 수 있는데 .css는 해당 노드 개체의 style의 상태를 알 수 있다.</li>
+        <li>jquery에서 window 대신에 #document 개체를 사용</li>
+        <li>chaining : $().css().click().animate().... 선택자에 박복적으로 함수를 지정할 수 있다.</li>
+    </ul>
+</body>
+</html>

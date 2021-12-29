@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<script>
+ $(function(){
+     userInsert.name.addEventListener("input",function(){
+        console.log(this.value);
+     });
+     //$("form[name='userInsert'] input[name='email']")
+     //$(doucment.forms.userInsert.email)
+     $(userInsert.email).on("input",function(){
+         console.log(this.value);
+     });
+     //let name_val=userInsert.name.value;
+     //let email_val=userInsert.email.value;
+     let userInsert_seri=$(userInsert).serialize();
+     console.log(userInsert_seri);
+     //name=ckm&email=artickm%40gmail.com&password=&massage=&gender=female&age=&birthdate=
+     
+     const userInsert_seri_arr=$(userInsert).serializeArray();
+     console.log(userInsert_seri_arr);
+    // 0: {name: 'name', value: 'ckm'}
+    // 1: {name: 'email', value: 'artickm@gmail.com'}
+    // 2: {name: 'password', value: ''}
+    // 3: {name: 'massage', value: ''}
+    // 4: {name: 'gender', value: 'female'}
+    // 5: {name: 'age', value: ''}
+    // 6: {name: 'birthdate', value: ''}
+   
+    //submit을 막고 유효성 검사를 진행=> 프론트엔드 개발
+    userInsert.onsubmit=function(e){
+        e.preventDefault(); //submit 이벤트를 막는다.
+        $.each($(this).serializeArray(),function(key,value){
+            //console.log(this);
+            //console.log(key,value);
+            console.log(`name:${value.name}`,` value:${value.value}`);
+        });
+    }
+    //$(userInsert).submit(function(e){e.preventDefault() });
+});   
+</script>
+<body>
+    <form name="userInsert" action="aa.jsp">
+        <div>
+            <label for="name">이름</label>
+            <input placeholder="이름을 입력" autofocus type="text" name="name" value="ckm">
+        </div>
+        <div>
+            <label for="email">이메일</label>
+            <input required type="email" name="email" 
+                value="artickm@gmail.com"
+            >
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <label for="massage">메세지</label>
+            <textarea name="massage" cols="30" rows="3"></textarea>
+        </div>
+        <div>
+            <label for="gender">성별</label>
+            <select name="gender">
+                <option value="male">남성</option>
+                <option value="female" selected>여성</option>
+                <option value="other">Other</option>
+            </select> 
+        </div>
+        <div>
+            <label for="age">나이</label>
+            <input type="number" name="age">
+        </div>
+        <div>
+            <label for="bithdate">생년월일</label>
+            <input type="date" name="birthdate">
+        </div>   
+        <button type="reset">리셋</button>
+        <input type="submit" value="확인">
+    </form>
+
+</body>
+</html>

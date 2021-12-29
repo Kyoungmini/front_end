@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>css Box model</title>
+<style>
+#boxModel{
+    background-color: blue;
+    /* overflow: visible;  내부 노드가 더 커도 표시하겠다. */
+    /* overflow: scroll; 내부 노드가 더 크면 스크롤로 표시하겠다.*/
+    /* overflow: hidden; 내부 노드가 커서 벗어난 부분을 표시하지 않겠다. */
+    overflow: hidden;
+    width: 200px;
+    /* height: 1; invaild property value */
+    height: 100px;
+    padding: 20px;
+    border: 5px solid rgb(117, 73, 73);
+    border-radius: 0;
+
+    outline: 3px double blueviolet;
+    outline-offset: 50px;
+
+    /* margin-top: 0;
+    margin-right: auto;
+    margin-left: 0;
+    margin-bottom: 0; */
+    margin: 20px 0 30px auto;
+    transition: all 1000ms;
+    box-sizing: border-box;
+
+    box-shadow: 
+                4px 4px 4px inset, 
+                -4px -4px 10px inset, 
+                10px 10px 12px red,
+               -10px -10px 12px violet,
+               -30px -30px 30px rgb(226, 153, 226),
+               -50px -50px 50px rgb(243, 217, 243);
+}
+#boxContainer:hover #boxModel{ 
+    /* margin: 20px auto 30px 0; auto가 수치가 아니기 때문에 animation이 동작하지 않는다.*/
+    /* margin-right: 50%-75px; css는 연산을 할 수 없다. */
+    /* calc(수  +*-/  수) */
+    margin-right: calc(50% - (100px / 2));
+    margin-top: 200px;
+    outline-offset: 0px;
+    border-radius: 50%;
+    box-shadow: -10px 10px 12px red;
+
+
+}    
+</style>    
+</head>
+<body>
+    <h1>박스 모델링(display: block,inline-block)</h1>
+    <div id="boxContainer">
+        <h4>Box hover</h4>
+        <div id="boxModel">Box</div>
+    </div>
+
+    <ul>
+        <li>width (max,min): content 가로 길이(px,em,%,vw .....)</li>
+        <li>height(max,min): content 세로 길이</li>
+        <li>padding:content와 border 사이의 공간 (top,right,bottom,left)</li>
+        <li>border: box model의 테두리로(실제크기) 두께와 스타일과 색을 지정할 수 있다. (top,right,bottom,left)
+            <ul>
+                <li>-width: 테두리의 두께</li>
+                <li>-style: 테두리의 스타일(solid,dotted,double,groove..,none,hidden)</li>
+                <li>-color: 테두리의 색</li>
+                <li>-radius:테두리를 둥글게(content,padding,outline모두 같이 둥글게 된다.),%는 box를 둥글게 만든다.</li>
+            </ul>
+        </li>
+        <li>outline: 테두리와 여백 사이의 윤관선으로 box model에 포함되지 않아 크기에 적용되지 않고 마이너스를 적용하면 content까지 줄어들 수 있다.
+            <ul>
+                <li>-width: 윤곽선의 두께</li>
+                <li>-style: 윤곽선의 스타일</li>
+                <li>-color: 윤곽선의 색</li>
+                <li>-offset:윤곽선과 border 사이의 여백</li>
+            </ul>
+        </li>
+        <li>margin: box model의 여백으로 block은 left,right에 auto로 box를 정렬할 수 있다.</li>
+        <li>box-shadow:</li>
+        <li>box-sizing: width와 height를 content에서 border까지로 변경하는 속성
+            <ul>
+                <li>content-box(default):width와 height가 content 영역의 크기를 지정</li>
+                <li>border-box: width와 height가 border 영역의 크기를 지정</li>
+            </ul>
+        </li>
+    </ul>
+    
+</body>
+</html>

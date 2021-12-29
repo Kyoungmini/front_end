@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css table</title>
+<style>
+table.default_table{
+    width: 100%;
+    /* border-collapse: separate;  default*/
+    border-collapse: collapse;
+     border: 3px solid black;
+}
+table.default_table thead tr th{
+    height: 5vw;
+}
+table.default_table tbody tr td{
+    /* width: 200px;
+    overflow: hidden;
+    white-space: nowrap; */
+    /* display: table-cell; */
+    vertical-align: bottom;
+    /* vertical-align 수직정렬은 table-cell에서만 동작한다. */
+    height: 7vw;
+}
+/* table-cell 은 고정크기를 지정할 수 없다. */
+table.default_table tbody tr td div{
+    height: 7vw;
+    overflow: auto;
+}
+table.default_table tr:nth-child(1) th:nth-child(1){
+    width: 15%;
+}
+table.default_table thead tr th:nth-child(2){
+    width: 30%;
+}table.default_table thead tr th:nth-child(3){
+    width: 40%;
+}table.default_table thead tr th:nth-child(4){
+    width: 15%;
+}
+
+table.default_table td,table.default_table th{
+    border: 1px solid black;
+}
+table.row_table{
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+
+}
+/* tr는 box 모델이 아니다. */
+table.row_table td, table.row_table th{
+    border-bottom: 1px solid black;
+}
+table.row_table thead th{
+    background-color: gray;
+    color: #fff;
+    padding: 10px 0;
+}
+table.row_table tbody td{
+    padding: 7px 0;
+}
+
+table.row_table tbody tr:hover td{
+    background-color: rgb(223, 219, 219);
+}
+table.row_table tbody tr td:hover{
+    background-color: rgb(206, 202, 202);
+}
+table.row_table tbody tr:nth-child(2n){
+    background-color: rgb(236, 236, 236);
+}
+</style>    
+</head>
+<body>
+    <h1>css로 table 요소를 제어해 보자</h1>
+    <h2>.default_table 디자인</h2>
+    <table class="default_table">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>의미</th>
+                <th>style</th>
+                <th>display</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>div</td>
+                <td>블럭 레이아웃 생성</td>
+                <td>none</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>p</td>
+                <td>단락을 구성</td>
+                <td>margin: 1em auto</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>hn</td>
+                <td>제목태그</td>
+                <td>
+                    margin: 1*n em auto <br>
+                    fontsize: 2*n em
+                </td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>hn</td>
+                <td>제목태그</td>
+                <td>
+                    <div>
+                        margin: 1*n em auto
+                        fontsize: 2*n em
+                        margin: 1*n em auto
+                        fontsize: 2*n em
+                        margin: 1*n em auto
+                        fontsize: 2*n em
+                        margin: 1*n em auto
+                        fontsize: 2*n em
+                        margin: 1*n em auto
+                        fontsize: 2*n em
+                    </div>
+                    
+                </td>
+                <td>block</td>
+            </tr>
+
+        </tbody>    
+    </table>
+<div style="
+width: 200px; 
+height:100px;
+margin-bottom: 100px;
+border: 2px solid;
+">
+    margin: 1*n em auto
+    fontsize: 2*n em
+    margin: 1*n em auto
+    fontsize: 2*n em
+    margin: 1*n em auto
+    fontsize: 2*n em
+    margin: 1*n em auto
+    fontsize: 2*n em
+    margin: 1*n em auto
+    fontsize: 2*n em
+
+
+</div>
+
+
+    <h2>.row_table 디자인</h2>
+    <table class="row_table .stripe">
+        <thead>
+            <tr>
+                <th>이름</th>
+                <th>의미</th>
+                <th>style</th>
+                <th>display</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>div</td>
+                <td>블럭 레이아웃 생성</td>
+                <td>none</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>p</td>
+                <td>단락을 구성</td>
+                <td>margin: 1em auto</td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>hn</td>
+                <td>제목태그</td>
+                <td>
+                    margin: 1*n em auto <br>
+                    fontsize: 2*n em
+                </td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>hn</td>
+                <td>제목태그</td>
+                <td>
+                    margin: 1*n em auto <br>
+                    fontsize: 2*n em
+                </td>
+                <td>block</td>
+            </tr>
+            <tr>
+                <td>hn</td>
+                <td>제목태그</td>
+                <td>
+                    margin: 1*n em auto <br>
+                    fontsize: 2*n em
+                </td>
+                <td>block</td>
+            </tr>
+        </tbody>    
+    </table>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>logical operator</title>
+</head>
+<body>
+    <h1>자바스크립트의 논리 연산자</h1>
+    <p>&&(and) ||(or) !(not) </p>
+
+    <h2>|| (or) 합집합을 의미하는 or(더하기) 연산자 </h2>
+    <ul>
+        <li>사용법: ( (boolean) || (boolan) ) return boolan </li>
+        <li>boolean: "있다", null, >, <, == ,=== ,! !=, !== , A instanceof B, ....</li>
+        <li>둘 중에 하나가 true이면 true를 반환한다.</li>
+        <li>둘다 false일 때 false를 반환한다.</li>
+        <li>true가 있는지 검사하는 연산 flase||true||false||false||false</li>
+        <li>1+0+0+0+0=1</li>
+    </ul>
+    <h2>&& (and) 교집합을 의미하는 and(곱하기) 연산자 </h2>
+    <ul>
+        <li>사용법: ( (boolean) && (boolan) ) return boolan </li>
+        <li>boolean: "있다", null, >, <, == ,=== ,! !=, !== , A instanceof B, ....</li>
+        <li>둘 중에 하나가 false이면 false를 반환한다.</li>
+        <li>둘다 true일 때 true를 반환한다.</li>
+        <li>false가 있는지 검사하는 연산 true&&true&&true&&true&&false</li>
+        <li>1*1*1*1*0*1*1*1=0</li>
+
+    </ul>
+    <h2>연산의 우선 순위</h2>
+    <p>&& 곱하기 연산으로 || or(더하기) 연산보다 우선순위를 갖는다.</p>
+    <p>() > 증감(++,--) > 산술(*\% > +-) > 비교 > 논리(&&>||) > 대입
+    </p>
+    <ul>   
+        <li>true && false || true && false : </li>
+        <li>true && true || true && false : </li>
+        <li>true || true && true || false : </li>
+        <li>true || false && true || false : </li>
+        <li>false || false && true || false : </li>
+        <li>NaN || 2 :</li>
+        <li>NaN && 2 :</li>
+        <li>NaN || 2 && null :</li>
+        <li>NaN && 2 && null :</li>
+        <li>a가 10보다크고 5보다 작다 :</li>
+        <li>a가 5보다크고 10보다 작은 것과 0보다 크고 3보다 작은 것 :</li>
+    </ul>
+    <h2>! not 연산</h2>
+    <ul>
+        <li>!true=false, !false=true</li>
+        <li>!!true=true, !!false=false</li>
+        <li>!(a>0 && a<1) == (a<=0 || a>=1) </li>
+    </ul>
+
+<script>
+console.log("!true :",!true);
+console.log("!(10>3) :",!(10>3));
+console.log("!-10:",!-10);
+console.log("!0:",!0);
+console.log("!null:",!null);
+console.log("!undefined:",!undefined);
+//Number(null) == 0 //null 비어있다 데이터  
+//Number(undefined) == NaN //정의되지 않았다.=??
+
+
+console.log("!!true:",!!true);
+
+console.log("!Boolean(10):",!Boolean(10));
+console.log("!Boolean(0):",!Boolean(0));
+
+/////////////////////////////////////////////////////////////////
+
+//or 연산 ||은 모두가 거짓이더라도 하나만 진실이면 모두가 true
+//모든 것들 중에 하나라도 진실이 있는지 검사
+console.log( "(true)||(false)||(false) :",(true)||(false)||(false) );
+console.log( "(true)||(true)||(false) :",(true)||(true)||(false) );
+console.log( "(true)||(true)||(true) :",(true)||(true)||(true) );
+console.log( "(false)||(false)||(false) :",(false)||(false)||(false) );
+
+//and 연산 &&은 모두가 진실이더라도 하나만 거짓이면 모두가 false
+//모든 것들 중에 하나라도 거짓인지 검사 
+console.log("false&&true&&true :",false&&true&&true);
+console.log("false&&false&&true :",false&&false&&true);
+console.log("false&&false&&false :",false&&false&&false);
+console.log("true&&true&&true :",true&&true&&true);
+
+//(a>5 && a<10) a는 5보다 크고 10보다 작은 수
+let a=4;
+console.log( "(a>5 && a<10) :",(a>5 && a<10) );
+
+if(a>5 && a<10){
+    console.log(a+"는 5보다 크고 10보다 작은 수 입니다.");
+}else{
+    console.log(a+"는 5보다 작거나 10보다 큰 수 입니다.");
+}
+
+if(a<=5 || a>=10){
+    console.log(a+"는 5보다 작거나 10보다 큰 수 입니다.");
+}else{
+    console.log(a+"는 5보다 크고 10보다 작은 수 입니다.");
+}
+
+let score=100;
+let grade="F"; //default == else와 동일
+//100~90 grade="A";
+//90미만~80이상 grade="B";
+//80미만~70이상 grade="C";
+//70미만~60이상 grade="D";
+//60미만~ grade="F"; 
+
+if( score>=95 && score<=100){
+    grade="A+";
+}else if(score<95 && score>=90){
+    grade="A"
+}else if(score<90 && score>=85){
+    grade="B+"
+}else if(score<90 && score>=80){
+    grade="B"
+}else if(score<80 && score>=70){
+    grade="C"
+}else if(score<70 && score>=60){
+    grade="D"
+}
+console.log("당신의 성적은 "+grade+"입니다.");
+
+let score2=Math.floor(score/10);
+let grade2="F";
+console.log(score2);
+console.log("Math.ceil(소수) 올림",Math.ceil(score2)); //9.3=>10
+console.log("Math.floor(소수) 내림",Math.floor(score2)); //9.9=>9
+console.log("Math.floor(소수) 반올림",Math.round(score2)); //9.6=>10
+//90~100 9.0~10  A
+//89~80 8.x 
+if(score2==9||score2==10){
+    grade2="A";
+}else if(score2==8){
+    grade2="B";
+}else if(score2==7){
+    grade2="C";
+}else if(score2==6){
+    grade2="D";
+}
+//7.5~7,9=>8 ==B+ round(7.6)-floor(7.6)==1
+//7.0~7.4=>7 ==B  round(socore2)-floor(socre)==0
+console.log(score2,Math.round(score/10)-Math.floor(score/10));
+if( ( Math.round(score/10)-Math.floor(score/10))==1 || score==100){
+    grade2+="+";
+}
+
+// grade2+=(( Math.round(score/10)-Math.floor(score/10))==1 || score==100)?"+":"";
+
+//switch 와 if else
+//switch가 if else 보다 훨씬 더 빠르게 (검사)동작한다.
+switch(score2){
+    //score2===10 //case 은 엄격한 동등비교를 한다.
+    case 10:
+    case 9:
+        grade2="A";
+        break;
+    case 8:
+        grade2="B";
+        break;
+    case 7:
+        grade2="C";
+        break;
+    case 6:
+        grade2="D";
+        break;
+    default:
+        grade2="F"
+        break;
+}
+
+
+console.log(`${score} 당신의 성적은 ${grade2} 입니다. `);
+
+</script>
+<form action="" name="loginForm">
+    <p>
+        <label for=""> 
+            아이디 <input type="text" name="userId" placeholder="아이디는 4자리 이상입니다." value="art">
+        </label>
+    </p>
+    <p>
+        <label for=""> 
+            패스워드 <input type="password" name="userPw" placeholder="pw는 6자리 이상입니다.">
+        </label>
+    </p>
+    <button type="button" onclick="loginTest()">로그인</button>
+</form>
+
+<script>
+    //아이디와 패스워드가 입력되고 길이가 4와 6이 맞다면 alert( 로그인 성공) 메세지 띄우기
+    //id나 pw가 규칙에 맞지 않으면 label의 color를 red 바꾼다
+    function loginTest(){
+        //if문
+        let id_value=loginForm.userId.value;
+        let pw_value=loginForm.userPw.value;
+
+        //console.log(id_value,pw_value);
+
+        //else if 는 조건이 만족하면 그다음 조건을 검사하지 않는다.
+        if(id_value.length>=4 && pw_value.length>=6){
+            //console.log("if",id_value.length,pw_value.length);
+            alert("로그인 성공");
+            loginForm.style.display="none"
+        }else{
+            if(id_value.length<4){
+                loginForm.userId.parentNode.style.color="red"
+            }else{
+                loginForm.userId.parentNode.style.color="blue"
+            }
+            if(pw_value.length<6){
+                loginForm.userPw.parentNode.style.color="red"
+            }else{
+                loginForm.userPw.parentNode.style.color="blue"
+
+            }
+        }
+
+    }        
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css units</title>
+</head>
+<style>
+/* body,html 
+block default width 100%(viewport);
+      default height auto;(contents 길이)
+*/
+html,body{
+    margin: 0;
+    height: 100%;
+}    
+p{
+    height: 50px;
+    border: 1px solid;
+    box-sizing: border-box;
+    display: inline-block;
+}
+.float_container p{
+    float: left;
+}    
+</style>
+<body>
+    <h1>단위에 대해 알아보자!</h1>
+    <ul>
+        <li>길이에는 절대 길이와 상대 길이로 나뉜다.</li>
+        <li>px는 해상도를 기준으로 길이를 나타내는 절대 길이로 hd(1920*1080)의 브라우저를 기준으로 px를 상상해서 노드를 재단해왔다.</li>
+        <li>다양 디바이스와 hd보다 큰 해상도의 모니터가 등장하면서 px로 지정하는 사이트가 문제를 일으켰다</li>
+        <li>vw,vh 는 viewport의 크기를 기준으로 node를 재단하는 상대 길이로 위와 같은 문제를 해결하기 위해 추가된 단위다. </li>
+        <li>(16px==1em)em은 절대길이면서 상대길이기도 단위로 1em은 root에서 16px로 절대 길이지만 부모의 단위를 기준으로 계속 바뀌기 때문에 상대길이기도 하다.</li>
+    </ul>
+
+
+    <p style="width: 100%;">width: 100%;</p>
+    <p style="width: 1920px;">width: 1920px;</p>
+    <p style="width: 1600px;">width: 1600px;</p>
+    <p style="width: 600px;">width: 600px;</p>
+    <div style="width: 50%;">
+        <p style="width: 50%;"
+        >부모div width: 50%;, 자식 p width: 50%;</p>
+    </div>
+    <div class="float_container" style="width: 100vw;">
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+        <p style="width: 10vw;">width: 10vw;</p>
+    </div>
+    <p style="height: 30vh; width: 100vw;">
+        height: 30vh; width: 100vw;
+    </p>
+    <p style="height: 30%; width: 100%;">
+        height: 30%; width: 100%;
+    </p>
+
+    <h2>em</h2>
+<style>
+ #emTest li{
+     font-size: 1.2em;
+ } 
+/* 1em 16px 글자크기의 최소 단위 처럼 사용 */
+/* root 2em 32px  */
+/* root>li  32px  */
+/* root>li>li  32px*2 em  64px */
+/* root>li>li>li  32px*2*2em  128px */
+
+</style>
+    <ul id="emTest">
+        <li> em:1</li>
+        <li> em:1</li>
+        <li> em:1
+            <ul>
+                <li> em:1</li>
+                <li> em:1</li>
+                <li> em:1
+                    <ul>
+                        <li> em:1</li>
+                        <li> em:1</li>
+                        <li> em:1
+                            <ul>
+                                <li> em:1</li>
+                                <li> em:1</li>
+                                <li> em:1</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+
+    
+</body>
+</html>

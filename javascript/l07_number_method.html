@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js Number method</title>
+</head>
+<body>
+    <h1>래퍼(wrapper) 객체 Number와 유용한 메서드</h1>
+    <p>기본 데이터 타입 number는 이를 보조하는 객체인 Number가 있다.</p>
+    <ul>
+        <li>내장 객체인 Number는 기본데이터 타입인 number를 보조하기 때문에 래퍼(wrapper) 객체로 불린다.</li>
+        <li>기본데이터 타입을 생성할 때 수만 입력하는 것을 리터럴 표기법이라 하고 "표기하는 대로 객체가 생성된다"는 뜻 이다.</li>
+        <li>리터럴 표기법 제공하는 data type은 대체로 기본데이터 타입이고 예외로 [], {}이 있다.</li>
+        <li>리터럴 표기법을 제외한 모든 객체는 "new 객체명()" 방식으로 생성한다.(정규식)</li>
+    </ul>
+<script>
+let instance_num=new Number(10); //소비(삭제를 잘 한다.)가 잘된다.=>instance =>무겁다(정보가 많다)
+let num=10; //수의 정보가 저장되어 있다. => 사용되지 않는다고 바로 삭제하지 않는다.(64bit의 저레벨=>값)
+console.log("instance_num", instance_num);
+console.log("instance_num*3.14", instance_num*3.14);
+console.log("num*3.14", num*3.14);
+</script>
+    <h2>Number 내장객체의 메소드(기본데이터 타입을 보자)</h2>
+    <h3>Number.isNaN("십") : </h3>
+    <h3>Number.isFinite(10/0) : </h3>
+    <h3>Number.isSafeInteger(30) : </h3>
+    <h3>Number.isInteger(30) : </h3>
+    <h3>Number.parseFloat("3.14")==Number() : </h3>
+    <h3>Number.parseInt("333")==Number() : </h3>
+    <h3>Number()</h3>
+    <h2>기본데이터.함수() => new Type(data).함수() 과정을 생략한 함수들</h2>
+    <h3>수.toFixed(0~)</h3>
+    <h3>수.toPrecision(1~)</h3>
+    <h3>수.toExpoential()</h3>
+
+    <h3>new Number(수).toValueOf()</h3>
+    <h3>new Number(수).toString()</h3>
+
+<script>
+console.log("3.14145678.toFixed(5): ",3.14145678.toFixed(5));
+console.log("new Number(3.55).toFixed(1): ",new Number(3.55).toFixed(1));
+
+
+
+</script>   
+</body>
+</html>

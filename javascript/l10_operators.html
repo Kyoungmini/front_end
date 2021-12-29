@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js Operators</title>
+</head>
+<body>
+<script>
+let a=11;
+console.log(10+20); //30
+console.log("10"+20); //"1020"   문자열 연산으로 "+" 동작한다. 
+console.log(10-20); //-10
+console.log(11*11); //121
+console.log(11/3); //3.6666666666666665
+console.log(11%4); //3
+//console.log(++11); //수에 바로 증가or 증감 연산을 사용할 수 없다.
+
+console.log(++a); //a=1+a; ==>log 12
+console.log(a++); //log 12 ==> a=1+a; 
+console.log(a); // 13
+
+let x=2;
+let y=5;
+//let result=0;
+//x=x+y;
+//x+=y;
+//x-=y;
+//x/=y;
+//x*=y
+//x%=y;
+//x=x**y //2의 5제곱 (2016 표준안=>x)
+//x**=y
+x=Math.pow(x,y)
+console.log(x);
+
+</script> 
+    <h1>자바스크립트의 모든 연산자를 알아보자</h1>
+    <h2>문자열을 더하는 +(concat)</h2>
+    <p>"문자열"+"문자열2"==>"문자열문자열2" (문자열과 다른 타입의 data를 + 연산하면 모두 문자열로 형 변환 하거나 toString()으로 문자열을 반환한다.)</p>
+    <h2>숫자의 산술 연산</h2>
+
+    <table border="1" style="width: 100%;" >
+        <tr>
+            <th>operator</th><th>이름</th><th>예시</th>
+            <!-- (tr>td*3)*8 -->
+            <tr>
+                <td>+</td>
+                <td>add</td>
+                <td>a=10+30; a=40;</td>
+            </tr>
+            <tr>
+                <td>-</td>
+                <td>sub</td>
+                <td>a=10-30; a=-20;</td>
+            </tr>
+            <tr>
+                <td>*</td>
+                <td>Mult</td>
+                <td>a=10*30; a=300;</td>
+            </tr>
+            <tr>
+                <td>/</td>
+                <td>div</td>
+                <td>a=-1/0; a=-Infinity;</td>
+            </tr>
+            <tr>
+                <td>%</td>
+                <td>mod</td>
+                <td>a=18%7; a=4;</td>
+            </tr>
+            <tr>
+                <td>++</td>
+                <td>increment</td>
+                <td>a=10; ++a; a=11;</td>
+            </tr>
+            <tr>
+                <td>--</td>
+                <td>decrement</td>
+                <td>a=10; --a; a=9;</td>
+            </tr>
+            <tr>
+                <td>**</td>
+                <td>Exponentiation(ES2016)</td>
+                <td>a=5**3; a=125; == Math,pow(5,3) </td>
+            </tr>
+        </tr>
+    </table>
+    <h2>할당 연산자</h2>
+    <table border="1" style="width: 100%;">
+        <tr>
+            <th>operator</th>
+            <th>예시</th>
+            <th>같은 뜻</th>
+        </tr>
+        <!-- (tr>td{=}*3)*7 -->
+        <tr>
+            <td>=</td>
+            <td>x=y</td>
+            <td>x=y(x가 y를 참조한다.)</td>
+        </tr>
+        <tr>
+            <td>+=</td>
+            <td>x+=10</td>
+            <td>=</td>
+        </tr>
+        <tr>
+            <td>-=</td>
+            <td>x-=10</td>
+            <td>=</td>
+        </tr>
+        <tr>
+            <td>*=</td>
+            <td>=</td>
+            <td>=</td>
+        </tr>
+        <tr>
+            <td>/=</td>
+            <td>=</td>
+            <td>=</td>
+        </tr>
+        <tr>
+            <td>%=</td>
+            <td>=</td>
+            <td>=</td>
+        </tr>
+        <tr>
+            <td>**=</td>
+            <td>=</td>
+            <td>=</td>
+        </tr>
+    </table>
+    <h2>비교 연산자 return boolean</h2>
+    <p>boolean true(참) false(거짓)을 표현하는 data로 비교 연산자의 결과 값이다.</p>
+    <table border="1" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>operator</th>
+                <th>이름</th>
+                <th>설명</th>
+                <th>예시</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- (tr>td*4)*8 -->
+            <tr>
+                <td>a==b</td>
+                <td>동등비교</td>
+                <td>a와 b의 값이 같은지를 비교</td>
+                <td>
+                    10==10 : <script>document.write(10==10);</script> <br>
+                    10==new Number(10) : <script>document.write(10==new Number(10));</script><br>
+                    10=="10" : <script>document.write(10=="10");</script>
+                </td>
+            </tr>
+            <tr>
+                <td>a===b</td>
+                <td>엄격한 동등비교</td>
+                <td>a와 b의 값이 같고 (참조형은 값이 없다.=>복수의 데이터를 구조화하는 pototype을 참조한다.) 타입도 같은지 비교</td>
+                <td>
+                    10==="10" : <script>document.write(10==="10");</script><br>
+                    10===new Number(10) : <script>document.write(10===new Number(10));</script><br>
+                    new Number(10) === new Number(10) : <script>document.write(new Number(10)===new Number(10));</script><br>
+                </td>
+            </tr>
+            <tr>
+                <td>a != b(! not)</td>
+                <td>비동등</td>
+                <td>a와 b의 값이 같지 않은지 비교</td>
+                <td>
+                    10 =! 9 : <script>document.write(10!=9);</script><br>
+                    10 =! "10" : <script>document.write(10!="10");</script><br>
+                    10 =! new String("10") : <script>document.write(10!=new String("10"));</script><br>
+
+                </td>
+            </tr>
+            <tr>
+                <td>a !== b </td>
+                <td>엄격한 비동등</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> a &gt; b </td>
+                <td>초과(크다)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> a &lt; b</td>
+                <td>미만(작다)</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> a &gt;= b</td>
+                <td>이상</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> a &lt;= b</td>
+                <td>이하</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>논리 연산자(&& and,|| or,! not)</h2>
+    <h3>합집합을 나타내는 || (or) 연산자</h3>
+    <h3>교집합을 나타내는 && (and) 연산자</h3>
+    <h3>차집합을 나타내는 ! (not) 연산자</h3>
+<script>
+//if(조건){조건이 true일때 실행}
+
+//35미만 가입가능한 사이트
+let year=2021;
+let user_by=1987;
+let join=true;
+
+//if( (year-user_by+1)>= 35  ){ join=false;}
+
+join=( (year-user_by+1) <35 );
+
+console.log(join);
+
+//(조건)? true 실행 : false 실행; 
+//let join = (조건)? true 참조 : false 참조;
+
+
+//while(조건){조건이 true일때 반복 실행}
+</script>
+
+
+</body>
+</html>

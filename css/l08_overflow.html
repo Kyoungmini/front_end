@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css overflow</title>
+</head>
+<style>
+.box{
+    border: 3px solid green;
+    width: 50vw;
+}
+.mini_box{
+    width: 25vw;
+    height: 25vw;
+    border: 3px solid blue;
+    margin: 1vw;
+    background-color: hotpink;
+    display: inline-block;
+}
+</style>
+<body>
+    <h1>노드의 컨텐츠가 노드의 범위를 넘을 때 보이게 할지 정하는 속성 Overflow</h1>
+    <ul>
+        <li>visible(default) : 컨텐츠가 요소의 박스를 넘어갈때 넘어간 내용을 표시한다.</li>
+        <li>hidden : 박스를 넘어간 내용을 표시하지 않는다.</li>
+        <li>scroll : 박스에 스크롤이 추가된다.</li>
+        <li>auto : 컨텐츠가 박스를 넘어가면 스크롤이 추가된다.</li>
+    </ul>
+    <div class="box">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+    <h2>컨텐츠가 노드의 범위를 넘어가지 않는 이유</h2>
+    <ul>
+        <li>브라우저의 인터페이스가 긴 dom을 보기 위해 스크롤을 내리는 방식으로 이루어진다.=>document의 길이에 제한이 없다.</li>
+        <li>document 노드개체의 길이는 auto로 content가 추가되면 계속 길이가 늘어난다.=>노드개체가 content를 포함하려 노력한다.</li>
+        <li>보통 노드의 길이(height)를 고정하게 되면 content가 박스를 넘어가게 된다. (overflow,white-space)</li>
+    </ul>
+    <table border="1" style="width: 100vw;">
+        <tr>
+            <!-- td{$$안녕}*8 -->
+            <td>01안녕222222</td>
+            <td>02안녕2222222222222222222222222222222222222222222222222222222222222222</td>
+            <td>03안녕</td>
+            <td>04안녕</td>
+            <td>05안녕</td>
+            <td>06안녕</td>
+            <td>07안녕</td>
+            <td>08안녕</td> 
+        </tr>
+    </table>
+    <h2>overflow: visible(default)</h2>
+    <div class="box" style="height: 100px;">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+    <br><br>
+    <h2>overflow: hidden</h2>
+    <div class="box" style="height: 100px; overflow: hidden;">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+    <h2>overflow: scroll</h2>
+    <div class="box" style="height: 100px; overflow: scroll;">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+    <h2>overflow-y: scroll</h2>
+    <div class="box" style="height: 100px; overflow-y: scroll;">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+    <h2>overflow-x: scroll</h2>
+    <div class="box" style="height: 100px;  overflow-x: scroll;">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+    <h2>overflow: auto</h2>
+    <div class="box" style="height: 100px;  overflow: auto;">
+        <p>overflow CSS 단축 속성은 요소의 콘텐츠가 너무 커서 요소의 블록 서식 맥락에 맞출 수 없을 때의 처리법을 지정합니다. overflow-x (en-US), overflow-y (en-US)의 값을 설정합니다.</p>
+    </div>
+
+    <h2>inline-block이 컨텐츠로 있는 노드</h2>
+    <div class="box" style="overflow: visible;">
+        <div class="mini_box" style="">
+            mini-box
+        </div>
+    </div>
+    <h2>inline이 컨텐츠로 있는 노드</h2>
+    <div class="box" style="overflow: visible;">
+        <div class="mini_box" style="display: inline;">
+            mini-box
+        </div>
+        <div class="mini_box" style="display: inline;">
+            mini-box
+        </div>
+        <div class="mini_box" style="display: inline;">
+            mini-box
+        </div>
+        <div class="mini_box" style="display: inline;">
+            mini-box
+        </div>
+    </div>
+    <h2>block이 컨텐츠로 있는 노드</h2>
+    
+    <div class="box" style="overflow: visible;">
+        <div class="mini_box" style="display: block;">
+            mini-box
+        </div>
+    </div>
+    <br><br>
+    <h2>float 컨텐츠가 있는 노드</h2>
+    <p>float 컨텐츠 는 absoule처럼 다른 노드에 간섭하지 않지만 text(inline)만 간섭한다.</p>
+    <div class="box" style="overflow: visible; width: 100vw;">
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+    </div>
+    <h2>float 컨텐츠가 있는 노드의 부모에 overflow: auto</h2>
+    <div class="box" style="overflow: auto; width: 100vw;">
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+        <div class="mini_box" style="float: left;">
+            mini-box
+        </div>
+    </div>
+    <h2>white-space : 컨텐츠(inline) 길이</h2>
+    <h3>white-space: normal</h3>
+    <div class="box" style="white-space: normal;">
+        CSS white-space 속성은 요소가 공백 문자를 처리하는 법을 지정합니다.
+    </div>
+    <h3>white-space: nowrap</h3>
+    <div class="box" style="white-space: nowrap; ">
+        CSS white-space 속성은 요소가 공백 문자를<br>처리하는 법을 지정합니다.
+    </div>
+    <h3>white-space: nowrap; overflow: auto;</h3>
+    <div class="box" style="white-space: nowrap; overflow: auto;">
+        CSS white-space 속성은 요소가 공백 문자를<br> 처리하는 법을 지정합니다.
+    </div>
+
+    <br><br> <br><br>
+</body>
+</html>

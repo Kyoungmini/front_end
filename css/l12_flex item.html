@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css flex</title>
+</head>
+<style>
+.flex_container{
+    display: flex;
+    border: 1px solid;
+    background-color: indianred;
+    height: 60vw;
+    max-height: 200px;
+}
+.flex_container>div{
+    border: 1px solid;
+    background-color: lawngreen;
+    font-size: 4vh;
+    box-sizing: border-box;
+
+}
+
+.flex_container.grow{
+
+    width: 50vw;
+    
+    animation-name: incseaseWidth;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+}
+.flex_container.grow>div{
+}
+@keyframes incseaseWidth{
+    0%{
+        width: 30vw;
+
+    }
+    50%{
+        width: 100vw;
+    }
+
+    100%{
+        width: 30vw;
+    }
+
+}
+
+
+
+</style>
+<body>
+    <h1>flex 아이템 속성으로 세부적인 설정을 하자</h1>
+    <p>크기가 계속 바뀌는 것은 해상도 변경(크로스브라우징)을 의미한다.</p>
+    
+    <h2>flex-bagic</h2>
+    <div class="flex_container grow" id="">
+        <div style="flex-basis: 100px;">100px</div>
+        <div style="flex-basis: 200px;">200px</div>
+        <div style="flex-basis: 150px;">150px</div>
+        <div style="flex-basis: 50px;">50px</div>
+        <div style="flex-basis: 10px;">10px</div>
+    </div>
+    
+    <h2>flex-grow:0</h2>
+    <div class="flex_container grow" id="">
+        <div>abcde</div>
+        <div>abc</div>
+        <div>abcdefg</div>
+        <div>abcd</div>
+        <div>a</div>
+    </div>
+    <h2>flex-grow:1</h2>
+    <div class="flex_container grow" id="">
+        <div style="flex-grow: 1;">flex-grow:1</div>
+        <div style="flex-grow: 1;">flex-grow:1</div>
+        <div style="flex-grow: 1;">flex-grow:1</div>
+        <div style="flex-grow: 1;">flex-grow:1</div>
+        <div style="flex-grow: 1;">flex-grow:1</div>
+    </div>
+
+    <h2>flex-grow</h2>
+    <div class="flex_container grow" id="">
+        <div style="flex-grow: 1;">flex-grow:1</div>
+        <div style="flex-grow: 2;">flex-grow:2</div>
+        <div style="flex-grow: 0;">flex-grow:0</div>
+        <div style="flex-grow: 4;">flex-grow:4</div>
+        <div style="flex-grow: 1;">flex-grow:1</div>
+    </div>
+    <ul>
+        <li>flex-grow : flex item의 기본 비율을 지정</li>
+        <li>flex-grow : default가 0으로 자동으로 비율을 조절하지 않는다.</li>
+        <li>flex-grow가 1이상일때  모든 아이템의 비율을 1로 동일하게 한 후 남은 여백을 나눈다.</li>
+        <li>때문에 화면이 작으면 비율이 1에 가깝게 되고 화면이 커지면 설정한 비율대로 되려 노력하는 것으로 보인다.</li>
+    </ul>
+    <h2>flex-basis:400px; flex-shrink</h2>
+    <div class="flex_container grow" id="">
+        <div style="flex-basis:400px;flex-shrink: 1;">flex-shrink:1</div>
+        <div style="flex-basis:400px;flex-shrink: 2;">flex-shrink:2</div>
+        <div style="flex-basis:400px;flex-shrink: 3;">flex-shrink:3</div>
+        <div style="flex-basis:400px;flex-shrink: 5;">flex-shrink:5</div>
+        <div style="flex-basis:400px;flex-shrink: 0;">flex-shrink:0</div>
+    </div>
+    <ul>
+        <li>flex-shrink : item의 기본값(flex-basis)이 고정 크기일때 그 크기보다 작아지면 더 큰 비율로 줄어들지를 정하는 속성 </li>
+        <li>item이 고정크기가 아니면 동작하지 않는다. </li>
+        <li>flex-shrink : 1 이 default로 고정 크기보다 줄어들 수 있다.</li>
+        <li>아이템을 고정크기로 만들고 싶다면 flex-shrink : 0으로 해야한다.</li>
+    </ul>
+</body>
+</html>

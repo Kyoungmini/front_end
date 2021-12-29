@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>node index html</title>
+</head>
+<body>
+    <h1> url="/"인 http://127.0.0.1:6001/ 서버의 페이지 </h1>
+    <ul>
+        <li><a href="/empList">사원리스트</a></li>
+        <li><a href="/empRegist">사원등록</a></li>
+        <li>
+            <button id="empListBtn">
+                사원리스트 출력(AJAX)
+            </button>
+        </li>
+        <li>
+            <button id="registEmpFormLoad">
+                사원 등록 폼 불러오기
+            </button>
+        </li>
+    </ul>
+    <div id="registEmpContainer"></div>
+    <div id="updateEmpContainer"></div>
+
+    <table  border="1">
+        <thead>
+            <tr>
+                <th>사번</th>
+                <th>이름</th>
+                <th>직업</th>
+                <th>상사(사번)</th>
+                <th>입사일</th>
+                <th>급여</th>
+                <th>커미션</th>
+                <th>부서</th>
+                <th>삭제</th>
+                <th>수정(form)</th>
+            </tr>
+        </thead>
+        <tbody id="empListContainer"></tbody>
+    </table>
+<script>
+function registBtnHander(btn){
+    console.log(btn.form.action);
+}    
+function registSubmitHandler(form_e,e){
+    //url?name=ss&id=ss
+    e.preventDefault();
+    let parameters="/registEmp?"
+    parameters+="ename="+form_e.ename.value+"&";
+    parameters+="empno="+form_e.empno.value+"&";
+    parameters+="job="+form_e.job.value+"&";
+    parameters+="mgr="+form_e.mgr.value+"&";
+    parameters+="hiredate="+form_e.hiredate.value+"&";
+    parameters+="sal="+form_e.sal.value+"&";
+    parameters+="deptno="+form_e.deptno.value;
+    fetch(parameters)
+        .then((res)=>{
+           return res.json()
+        }).then((regist_result)=>{
+           alert(regist_result.empno+"등록 "+regist_result.msg+"했습니다.");
+           callEmpList();
+           registEmpFormLoad.click();
+        })
+}
+registEmpFormLoad.onclick=function(){
+    fetch("/registEmpFormLoad")
+        .then((res)=>{
+            return res.text()
+        }).then((text)=>{
+            registEmpContainer.innerHTML=text;
+        })
+}
+
+function callEmpList(){
+    fetch("/empList")
+        .then((result)=>{
+            return result.json();
+        }).then((empList)=>{
+            empListContainer.innerHTML="";
+            empList.forEach((emp)=>{                
+                let tr_n=document.createElement("tr");
+                for(let key in emp){
+                    let td_n=document.createElement("td");
+                    let text_n=document.createTextNode(emp[key]);
+                    td_n.append(text_n);
+                    tr_n.append(td_n)
+                }
+                // 삭제버튼 만들기
+                let del_td_n=document.createElement("td");
+                let del_btn=document.createElement("button");
+                del_btn.innerText="삭제";
+                del_btn.onclick=(e)=>{deleteEmp(emp.EMPNO)}
+                del_td_n.append(del_btn);
+                tr_n.append(del_td_n)
+
+                // 수정버튼 만들기
+                let update_td_n=document.createElement("td");
+                let update_btn=document.createElement("button");
+                update_btn.innerText="수정";
+                update_btn.onclick=(e)=>{updateEmpForm(emp.EMPNO)}
+                update_td_n.append(update_btn);
+                tr_n.append(update_td_n)
+                empListContainer.append(tr_n)
+            })
+        });
+}
+function updateEmpForm(empno){
+    //updateEmpContainer
+    fetch("/updateEmpFormLoad")
+        .then((res)=>(res.text()))
+        .then((form)=>{
+            updateEmpContainer.innerHTML=form;
+            return fetch("/empLoad?empno="+empno);
+        })
+        .then((res)=>(res.json()))
+        .then((emp)=>{
+            console.log(updateEmp.ename);
+            console.log(emp);
+            updateEmp.empno.value=emp[0].EMPNO;
+            updateEmp.ename.value=emp[0].ENAME;
+            updateEmp.deptno.value=emp[0].DEPTNO;
+            updateEmp.comm.value=emp[0].COMM;
+            updateEmp.job.value=emp[0].JOB;
+            updateEmp.mgr.value=emp[0].MGR;
+            updateEmp.sal.value=emp[0].SAL;
+            updateEmp.hiredate.value=emp[0].HIREDATE;
+
+        })
+
+}
+function deleteEmp(empno){
+    //empDelete?empno=?
+    fetch("/empDelete?empno="+empno,{method:"DELETE"})
+    .then((res)=>(res.json()))
+    .then((del_obj)=>{
+        let msg=del_obj.deleteRow+"개 삭제 "+del_obj.msg+" 했습니다.("+del_obj.empno+")";
+        alert(msg);
+        callEmpList();
+    })
+}
+
+
+empListBtn.addEventListener("click",(e)=>{
+    callEmpList()
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html links</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1 id="homeLink">
+                <a href="/html/">
+                    home
+                </a>
+            </h1>
+            <ul>
+                <li>
+                    <a href="/html/l00_html_intro.html">
+                        intro
+                    </a>
+                </li>
+                <li>basic</li>
+                <li>text</li>
+                <li>attribute</li>
+                <li>style</li>
+                <li>
+                    <a href="/html/l07_links.html">
+                        links
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h2>a(hypertext Anchor) 요소와 href(Hypertext REFerence) </h2>
+    <p>브라우저가 탄생시 가장 먼저 만들어진 ui로 
+        링크된 text를 클릭하면 다른 페이지로 이동하는 원리
+        (html의 hypertext는 a태그를 의미한다.)
+        <a href="https://www.naver.com">
+            네이버
+        </a>
+    </p>
+    <ul>
+        <li>href="/url" : 상대 url로 해당 서버 내부의 
+            다른 페이지로 이동 (navigation 메뉴 역활)
+        </li>
+        <li>
+            href="https://url" : 절대 url로 다른 서버로 이동 (a태그가 참조하는 절대 url로 검색 우선 순위를 늘릴 수 있다.)
+        </li>
+        <li>
+            href="#idName" : dom 내부의 id가 idName 곳으로 스크롤이 이동
+        </li>
+        <li>
+            <a href="javascript:alert('안녕')">
+                href="javascript:alert('안녕')"
+            </a>
+            : 자바스크립트를 실행하는 구문
+        </li>
+        <li>그밖의 download,email(mailto),tel 등이 가능하다.</li>
+    </ul>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<a href="#homeLink">home 버튼으로</a>
+</body>
+</html>

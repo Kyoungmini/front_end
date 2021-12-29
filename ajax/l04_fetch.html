@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>fetch api로 ajax 통신을 해보자</h1>
+    <p><button id="loginBtn">로그인</button></p>
+    <div id="loginInfo">
+
+    </div>
+<script>
+loginBtn.onclick=function(){
+    fetch("loginStatus.json")
+        .then((resp)=>{
+            return (resp.json());
+        }).then((resp_obj)=>{
+            let login_info="";
+            for(let key in resp_obj){
+                login_info+=`<p>${key}:${resp_obj[key]}</p>`
+            }
+            loginInfo.innerHTML=login_info;
+        })
+}
+
+</script>
+</body>
+</html>

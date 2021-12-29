@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>input 요소와 문제</h1>
+
+    <h2>
+         db에서 받아온 데이터를 유저정보수정(userUpdate) 양식에
+         입력하세요.
+    </h2>
+    <h3></h3>
+    <h3>const user_obj={id: "frontendStudy",name:"홍길동",age:"29", gender: "f", hobby: ["fishing","cooking","painting"]};</h3>
+<script>
+const user_obj={id: "frontendStudy",name:"홍길동",age:"29", gender: "f", hobby: ["game","fishing","cooking","painting"],0:"11"};
+function UserObj(){
+    this.id="aa";
+    //this[0]="bb";
+}
+
+
+
+
+
+window.onload=function(){ //html이 모두 로드된 시점
+    console.log(userUpdate);
+    console.log(user_obj.id);
+    console.log(user_obj.hobby);
+    //userId.value=user_obj.id;
+    userUpdate.id.value=user_obj.id;
+    userUpdate.name.value=user_obj.name;
+    userUpdate.age.value=user_obj.age;
+
+    userUpdate.gender.value=user_obj.gender.toUpperCase();
+
+
+    //console.log(document.querySelector("[name='hobby'][value='"+user_obj.hobby[2]+"']").checked=true);
+
+    for(let i=0; i<user_obj.hobby.length; i++){
+        document.querySelector(`[name='hobby'][value='${user_obj.hobby[i]}']`).checked=true;
+    }
+    for(let i=0; i<userUpdate.hobby.length; i++){
+        let hobby_value=(userUpdate.hobby[i].value);
+        for(let j=0; j<user_obj.hobby.length; j++){
+            if(hobby_value==user_obj.hobby[j]){
+                userUpdate.hobby[i].checked=true;
+            }
+        }
+    }
+} 
+
+        console.log(userUpdate);
+
+</script>   
+    <form action="" name="userUpdate">
+        <p>
+            <label for="userId">
+                아이디: 
+                <input type="text" id="userId" name="id">
+            </label>
+        </p>
+        <p>
+            <label for="userName">
+                이름: 
+                <input type="text" id="userName" name="name">
+            </label>
+
+        </p>
+        <p>
+            <label for="userAge">
+                나이: 
+                <input type="number" id="userAge" name="age">
+            </label>
+
+        </p>
+        <p>
+            성별:
+            <label for="genderM">남자
+                <input id="genderM" type="radio" name="gender" value="M">
+            </label>
+            <label for="genderF">여자
+                <input id="genderF" type="radio" name="gender" value="F">
+            </label>
+            <label for="genderZ">무성
+                <input id="genderF" type="radio" name="gender" value="Z" >
+            </label>
+
+        </p>
+        <p>
+            취미:
+            <label for="hobbyGame">게임
+                <input id="hobbyGame" type="checkbox" name="hobby" value="game">
+            </label>
+            <label for="hobbyCooking">요리
+                <input id="hobbyCooking" type="checkbox" name="hobby" value="cooking">
+            </label>
+            <label for="hobbyReading">독서
+                <input id="hobbyReading" type="checkbox" name="hobby" value="reading">
+            </label>
+            <label for="hobbyFishing">낚시
+                <input id="hobbyFishing" type="checkbox" name="hobby" value="fishing">
+            </label>
+
+            <label for="hobbyComic">게임
+                <input id="hobbyComic" type="checkbox" name="hobby" value="comic">
+            </label>
+            <label for="hobbyPainting">그림
+                <input id="hobbyPainting" type="checkbox" name="hobby" value="painting">
+            </label>
+        </p>
+    </form>
+</body>
+</html>
+

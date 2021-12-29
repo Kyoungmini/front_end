@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Window (BOM)</title>
+  </head>
+  <body>
+    <main>
+      <h1>Window(BOM)객체는 브라우저에서 열린 창</h1>
+      <p>script에서 this로 취급되는 window는 최상위 객체다.
+        <br>window.document 로 document는 window 하위 객체고 이때 window는 생략가능하다.
+        <br>window는 브라우저의 모든 정보를 확인할 수 있는 Brower Object Model이다
+      </p>
+      <h2>새창 띄우기</h2>
+<script>
+console.table(window.location);
+console.table(window.history);
+
+console.log("window.screenLeft",window.screenLeft);
+console.log("window.screenTop",window.screenTop);
+console.log("window.outerWidth",window.outerWidth);
+console.log("window.outerHeight",window.outerHeight);
+console.log("window.innerWidth",window.innerWidth);
+console.log("window.innerHeight",window.innerHeight);
+window.console.table(window.screen)
+let naver_window;
+</script>
+      
+      <ul>
+        <li>window.open(url,name,specs,replace) : 새 브라우저 or 새 창을 연다
+          <button type="button" onclick="
+          naver_window=window.open('','naver','width=200,height=400');"
+          >windowOpen test</button>
+        </li>
+        <li>window.close() : 
+          <button onclick="naver_window.close()">close()</button>
+        </li>
+        <li>windowObject.resizeBy(width,height) : 창의 크기를 현재 크기보다 더 크게 조정한다.
+          <button type="button" onclick="naver_window.resizeBy(300,300)">windowResizeBy(600,600)</button>
+        </li>
+        <li>windowObject.resizTo(width,height) : 창의 크기를 지정된 너비와 높이로 조정한다.
+          <button type="button" onclick="naver_window.resizeTo(300,300)">windowResizeTo(600,600)</button>
+        </li>
+        <li>test : 입력받은 크기로 testWindow 크기 조정
+          <form name="windowResize" action="index.html" method="post">
+            <br> 가로 : <input type="text" name="winWidth" value="500">
+            <br> 세로 : <input type="text" name="winHeight" value="600">
+            <br> <button type="button" onclick="testResize()" name="button">변경</button>
+          </form>
+        </li>
+        <li>moveBy(x,y) : 현재 위치를 기준으로 창을 이동</li>
+        <li>moveTo(x,y) : 창을 지정 위치로 이동</li>
+        <li>test : 입력받은 크기로 testWindow 위치 조정
+          <form name="winMove" action="index.html" method="post">
+            <br> x : <input type="text" name="moveX" value="2500">
+            <br> y : <input type="text" name="moveY" value="600">
+            <!-- <br> <button type="button" onclick="testMove()" name="button">변경</button> -->
+            <br> <button type="button"
+            onclick="testWindow.moveTo(winMove.moveX.value, winMove.moveY.value)"
+            name="button">변경</button>
+          </form>
+        </li>
+      </ul>
+      <h2>함수를 주기적으로 호출하기</h2>
+      <ul>
+        <li>setInterval(function,milliseconds) : 함수를 지정 간격(밀리초)으로 호출한다.</li>
+        <li>clearInterval(intervalObject) : 인터벌 함수의 타이머를 초기</li>
+
+        <li><button type="button" onclick="setInt()">1초마다 숫자증가</button>
+           ++num : <span id="intervalNum">0</span>
+
+           <button type="button" onclick="clrInt()">stop</button>
+        </li>
+        <li><button type="button" onclick="startClock()">시간보기</button>
+            시간 : <b id="interClock"></b>
+            <button type="button" onclick="clearClock()">stop</button>
+        </li>
+<script>
+let num=0;
+// 스레드를 브라우저가 관리
+let inc_num;
+function setInt(){
+  inc_num=window.setInterval(function(){
+      //console.log(++num);
+      intervalNum.innerHTML=`<b>${++num}</b>`;
+  },1000);
+    
+}
+function clrInt(){
+  window.clearInterval(inc_num);
+}
+let inc_clock;
+function startClock(){
+  inc_clock=window.setInterval(()=>{
+    interClock.innerHTML=`<i>${new Date().toLocaleTimeString()}</i>`
+  },1000)
+}
+function clearClock(){
+  window.clearInterval(inc_clock);
+}
+</script>          
+        <h3> 3분 타이머 만들기</h3>
+        <h4>
+          <button>start</button>
+          <b id="sec">180</b>   
+          <button>stop</button> 
+        </h4>
+<script></script>
+        <h2>함수를 특정 시간에 호출</h2>
+        <ul>
+          <li>setTimeout(function,milliseconds) : 지정된 시간(밀리초)에 함수를 한번 호출함</li>
+          <li>clearTimeout(timeOutObject) : 지정된 시간에 함수를 호출하기 전에 멈추는 함수</li>
+          <li><button type="button"
+             onclick="window.setTimeout(function(){alert('안녕하세요')},2000);" >
+             2초뒤 경고창</button></li>
+        </ul>
+        <h2>브라우저의 크기와 위치 정보(수정불가)</h2>
+         <ul>
+           <li>screenX, screenY(screenLeft, screenTop) : 브라우저의 x,y좌표</li>
+           <li>outerWidth, outerHeight : 모든 인터페이스 요소를 포함한 브라우저의 너비와 높이</li>
+           <li>innerWidth, innerHeight : 스크롤 막대를 포함한 창의 크기(뷰포트)</li>
+         </ul>
+         <h2>브라우저의 방문 기록 history</h2>
+         <p>window.history는 사용자가 방문한 url을 포함한다.</p>
+         <ul>
+           <li>history.lenth : 히스토리 목록에 url 수 (max:50, 읽기전용)</li>
+           <li>history.back() : 히스토리 목록에서 이전 url을 로드 (뒤로가기)</li>
+           <li>history.foward() : 히스토리 목록에서 다음 url을 로드 (앞으로가기)</li>
+           <li>history.go(num) : 특정 기록목록에 url 로드</li>
+         </ul>
+         <h2>위치객체 location</h2>
+         <p>window.location은 url 정보가 포함되어 있다.</p>
+         <ul>
+          <li>location.href : 현제 페이지의 전체 url을 반환하고 특정 페이지로 이동할 수 있다.</li>
+          <li>location.hostname : 현재 url의 호스트 이름을 반환한다.</li>
+          <li>location.reload() : 현재 문서를 새로고침한다.</li>
+         </ul>
+<script>
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

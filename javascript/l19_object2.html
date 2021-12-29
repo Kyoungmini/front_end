@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript Object</title>
+</head>
+<body>
+    <h1>자바스크립트 Object 심화</h1>
+    <h2>object의 undefined된 프로퍼티와 매개변수</h2>
+    <ul>
+        <li>this.property; : undefined된 상태로 객체로 생성될 때 삭제</li>
+        <li>this.property=undefined; :undefined가 참조된 객체로 생성 </li>
+        <li>function A(parameter){} new A(); : 객체를 생성할때 매개변수를 선언하지 않으면 매개변수의 상태는 undefined가 된다. </li>
+    </ul>
+    <h2>객체의 프로퍼티(속성,필드)를 삭제하는 delete</h2>
+    <ul>
+        <li>delete obj.property :객체의 해당 필드를 삭제하고 true를 반환</li>
+        <li>해당 필드가 존재하지 않아도 없기 때문에 삭제시 true 반환</li>
+        <li>객체의 프로퍼티를 정의할 때 삭제할 수 없는 non-configurable를 줄 수 있는데 이 상태의 프로퍼티는 삭제 시도시 false를 반환한다.</li>
+        <li>변수로 선언된 window의 필드는 삭제될 수 없다.</li>
+    </ul>
+    
+    <h2>객체를 생성하는 특별한 방법들</h2>
+    <ul>
+        <li>정규식 : function Obj(a){this.a=a;} const obj=new Obj("bb");</li>
+        <li>리터럴 : const obj={ a : "aa"}
+            <ul>
+                <li>단점  : 매개변수를 지정할 수 없어서 값이 정해진다.</li>
+                <li>장점  : 코드가 짧아서 유지보수가 편하다.</li>
+                <li>장접2 : 코드가 명시적이라 작업 속도가 빠르다. </li>
+            </ul>
+        </li>
+        <li>리터럴응용 : function(paraA){return { a: paraA }}</li>
+        <li>Object객체이용 :  const obj= new Object(); obj.a="aa";</li>
+    </ul>
+    <h2>객체의 필드를 확인하는 in과 반복문 for in, for of</h2>
+    <ul id="inTest" class="a b c">
+        <li>사용법 : "필드명" in Obj  예) "length" in array</li>
+        <li>in 연산자는 객체에 해당 필드가 있는지 검사하고 이때 필드명은 문자열이어야 한다.</li>
+        <li>in으로 배열의 key도 검사할 수 있다.</li>
+        <li>for in 사용법:  for(let property in obj){ }</li>
+        <li>for in은 개체에 필드가 있을때 까지 검사하면서 반복문을 실행하고 있대 필드가 있으면 in 왼쪽에 선언한 변수에 필드명이 참조된다.</li>
+        <li>for of 사용법: for( item of iteratorObj){}</li>
+        <li>for of는 참조형 데이터 타입의 객체 중에 Symbol.iterator가 있는 객체만 사용가능(Array,Map,Set,HTMLCollection,NodeList) </li>
+        <li>Symbol.iterator가 있는 객체는 정렬이 되어 있고 next()라는 함수로 값이 있는지 검사하고 반환할 수 있다.</li>
+    </ul>
+<script>
+class AA{}
+const inTest=document.getElementById("inTest");
+inTest.onclick=function(){this.style.color="red"};
+console.log(`"className" in inTest`,"className" in inTest);
+
+// for(let key in inTest){
+//     console.log(key,inTest[key]);
+// }
+
+
+
+//class는 예약어와 곁치기 때문에 className이라 바꿔서 필드에 저장
+const arr= ["a","b","c"];
+console.log("0 in arr",0 in arr);
+console.log("'0' in arr","0" in arr);
+console.log("'3' in arr","3" in arr);
+console.log("'length' in arr","length" in arr);
+
+function Obj(email){
+    this.name;
+    //undefined 되어있는 속성(필드,프로퍼티)는 생성되지 않는다.
+    this.age=undefined;
+    
+    this.email=email;
+    //매개변수를 생략하면 매개변수의 값이 undefined로 넘어온다.
+}
+//console.log(Obj);
+//console.log(Obj());
+console.log(new Obj);//오류지만 엔진에서 오류를 수정(x)
+console.log(new Obj());
+//let a;  == let a=undefined;
+//let a;  !== let a=undefined;
+const obj=new Obj("aa@aa");
+
+//delete 
+console.log("delete obj.name22",delete obj.name222); 
+
+console.log(obj);
+
+let a;
+console.log("let a;",a);
+
+//undefined 정의되지 않았다는 의미를 갖는 기본데이터타입 ==>데이터가 존재
+//undefined 정의되지 않은 상태를 확인하기 위한 데이터
+let b=undefined; 
+//바보같은 개발자 행동
+console.log("let b=undefined;",b);
+
+var c="안녕"; //let c, const c (변수) ==> window의 프로퍼티 (삭제될 수 없다)
+
+console.log(window.c);
+
+console.log(delete a);
+console.log(delete b);
+console.log(delete window.c);
+
+
+function obj_return0(p_a, p_b, p_c){
+    const newObj=new Object();//new Object() == { }
+    newObj["a"]=p_a;
+    newObj.b=p_b;
+    newObj.c=p_c;
+    return newObj;
+}
+const obj4=obj_return0("이상한","선언을","만들지마");
+console.log(obj4);
+
+
+function obj_return(p_a, p_b, p_c){
+    return {a:p_a,b:p_b,c:p_c};
+}
+
+
+const obj2=obj_return("안녕","나는","개발자야");
+console.log(obj2);
+
+function ObjReturn(p_a, p_b, p_c){
+    this.a=p_a;
+    this.b=p_b;
+    this.c=p_c;
+}
+const obj3=new ObjReturn("aa","bb","cc");
+console.log(obj3);
+
+for(let key in obj3){
+    console.log(key,obj3[key]);
+}
+//for(item of obj3){    console.log(item);}
+
+for(item of arr){
+    console.log(item);
+}
+for(let i=0; i<arr.length; i++){
+    let item=arr[i];
+    console.log(item);
+}
+//NodeList, HTMLCollection. radioList => 정렬된 객체 for of 상용가능
+
+const li_arr=document.getElementsByTagName("li");
+
+console.log(li_arr);
+for(let i = 0; i < li_arr.length; i++) {
+    const item = li_arr[i];
+    item.style.color="red";
+}
+for(const item of li_arr ){
+    item.style.backgroundColor="#aaa"
+}
+
+</script>
+    
+
+</body>
+</html>

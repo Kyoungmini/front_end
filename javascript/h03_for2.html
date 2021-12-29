@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework for2</title>
+</head>
+<body>
+    <h1>2차원 배열 문제</h1>
+
+    <h2>
+        const nums=[10,2,1,-4,29,50,0]; <br>
+        const sort_nums=[]    
+    </h2>
+<script>
+    const nums=[10,2,1,-4,29,50,0]; 
+    const sort_nums=[];     
+    let length=nums.length; //nums.length가 nums.splice()로 계속 변경 되기 때문에 초기값으로 설정
+
+    for(let i=0; i<length; i++){
+        let max=-Infinity;
+        let max_i=0;
+        for (let j = 0; j< nums.length; j++) {
+            if(max<nums[j]) {
+                max=nums[j];
+                max_i=j;
+            }           
+        }
+        nums.splice(max_i,1);
+        sort_nums.push(max);
+
+        console.log("sort_nums[]=",sort_nums,",nums[]=",nums);
+
+    }
+    console.log("last sort_nums[]=",sort_nums,",nums[]=",nums);
+
+
+
+</script>
+    <h3>sort_nums=[50,29,10,2,1,0,-4] 의 결과를 만드세요 (선택정렬)</h3>
+    <ol>
+        <li>max=50; nums=[10,2,1,-4,29,0]; sort_nums=[50];</li>
+        <li>max=29; nums=[10,2,1,-4,0]; sort_nums=[50,29];</li>
+        <li>max=10; nums=[2,1,-4,0]; sort_nums=[50,29,10];</li>
+        <li>max=2;  nums=[1,-4,0]; sort_nums=[50,29,10,2];</li>
+        <li>max=1;  nums=[-4,0]; sort_nums=[50,29,10,2,1];</li>
+        <li>max=0;  nums=[-4]; sort_nums=[50,29,10,2,1,0];</li>
+        <li>max=-4; nums=[]; sort_nums=[50,29,10,2,1,0,-4];</li>
+    </ol>
+
+    <h3>규칙을 찾아서 2차원 배열식으로 바꾸세요(반복문을 2중으로 만드세요.)</h3>
+    <h3>const nums2=[10,2,1,-4,29,50,0];  => nums2=[50,29,10,2,1,0,-4];  </h3>
+    <ol>
+        <li>max=50; temp=num2[0] num2=[50,   2,1,-4,29,10,0]</li>
+        <li>max=29; temp=num2[1] num2=[50,29,   1,-4,2,10,0]</li>
+        <li>max=10; temp=num2[2] num2=[50,29,10,   -4,2,1,0]</li>
+        <li>max=2;  temp=num2[3] num2=[50,29,10,2,   -4,1,0]</li>
+        <li>max=1;  temp=num2[4] num2=[50,29,10,2,1,   -4,0]</li>
+        <li>max=0;  temp=num2[5] num2=[50,29,10,2,1,0,   -4]</li>
+        <li>max=-4; temp=num2[6] num2=[50,29,10,2,1,0,-4   ]</li>
+    </ol>
+    <script>
+        const nums2=[10,2,1,-4,29,50,0];
+        // let max2=-Infinity;
+        // let max2_i=0;
+        // let temp=0;
+        // for(let i=0; i<nums2.length; i++){
+        //     if(max2<nums2[i]){
+        //         max2=nums2[i];
+        //         max2_i=i;
+        //     }
+        // }
+        // console.log(nums2);
+        
+        // temp=nums2[0];
+        // nums2[0]=max2;
+        // nums2[max2_i]=temp;
+        // console.log(nums2);
+        
+        // max2=-Infinity;
+        // max2_i=0;
+        // temp=0;
+        // for(let i=1; i<nums2.length; i++){
+        //     if(max2<nums2[i]){
+        //         max2=nums2[i];
+        //         max2_i=i;
+        //     }
+        // }        
+        // temp=nums2[1];
+        // nums2[1]=max2;
+        // nums2[max2_i]=temp;
+        // console.log(nums2);
+
+
+        // max2=-Infinity;
+        // max2_i=0;
+        // temp=0;
+        // for(let i=2; i<nums2.length; i++){
+        //     if(max2<nums2[i]){
+        //         max2=nums2[i];
+        //         max2_i=i;
+        //     }
+        // }        
+        // temp=nums2[2];
+        // nums2[2]=max2;
+        // nums2[max2_i]=temp;
+        // console.log(nums2);
+        for(let i=0; i<nums2.length; i++){
+            let max=-Infinity;
+            let max_i=0;
+            let temp=nums2[i];
+            for(let j=i; j<nums2.length; j++  ){
+                if(nums2[j]>max){
+                    max=nums2[j];
+                    max_i=j;
+                }
+            }
+            nums2[i]=max;
+            nums2[max_i]=temp;
+        }
+        console.log(nums2);
+
+    </script>
+    <h3>const nums2=[-4,2,1,10];  => nums2=[10,2,1,-4]; (버블정렬) </h3>
+    <p>앞뒤 값을 비교해서 더 큰것을 옮긴다.(밀어내기 정렬)</p>
+
+    <ol>
+        <!-- n번째와 n+1번째를 비교한후 작은 것을 뒤로 옮긴다. -->
+        <li>num2[0]>nums[1]  [2,-4,1,10]  </li>
+        <li>num2[1]>nums[2]  [2,1,-4,10]  </li>
+        <li>num2[2]>nums[3]  [2,1,10,-4]  </li>
+        <!-- 가장 작은 수가 뒤로가면 1차 정렬이 끝난다. -->
+        <!-- 마지막 가장 작은 수는 그대로 두고 나머지 중 작은 수를 찾아 뒤로 옮긴다. -->
+        <li>num2[0]>nums[1]  [2,1,10,-4]  </li>
+        <li>num2[0]>nums[1]  [2,10,1,-4]  </li>
+        <!-- 그 다음 작은 수가 뒤로가면 2차 정렬이 끝난다. -->
+        <li>num2[0]>nums[1]  [10,2,1,-4]  </li>
+        <!-- 작은 수를 다 밀어내면 모든 정렬이 끝난다.  -->
+    </ol>
+
+</body>
+</html>

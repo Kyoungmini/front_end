@@ -1,0 +1,36 @@
+body{
+    background: linear-gradient(to right,rgb(232, 250, 244), rgb(88, 163, 139));
+}
+.dropdown_active .dropdown_menu{
+    display: none;
+}
+/* :active 마우스를 누르고 있을 때 */
+.dropdown_active .dropdown_btn.active+.dropdown_menu{
+    display: block;
+}
+
+.dropdown_container ul{
+    max-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style: none;
+    background-color: rgba(255,255,255,.6);
+    transition: max-height 600ms;
+    box-shadow: 5px 5px 4px rgba(0,0,0,.3);
+}
+.dropdown_container:hover button+ul{
+    /* height: 150px; */
+    max-height: 500px;
+}
+.dropdown_container ul>li{
+    padding: 5px;
+    border-bottom: 1px solid rgba(0,0,0,.3);
+}
+.dropdown_container ul>li:hover{
+    background-color:  rgba(0,0,0,.1);
+}
+
+.dropdown_container ul>li>a{
+
+}

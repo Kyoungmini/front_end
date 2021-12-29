@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js foreach</title>
+</head>
+<body>
+    <h1>foreach 문제</h1>
+    <ul id="test1"></ul>
+    <script>
+    const arr=["사과","배","수박","메론"];
+    const li_arr=[];
+    //const newLi=docuement.createElement("li");
+    //결과 li_arr= [newLi("사과"),newLi("배"),newLi("수박"),newLi("메론")];
+    //위 배열을 li 객체로 만들어서 li_arr에 참조시키세요
+    //li_arr를 test1에 출력하세요.
+    //문제1 for 로 작성
+    //문제2 map 로 작성
+    </script>
+    <h2>Array.filter innerText가 숫자인것을 삭제하세요.</h2>
+    <p>NodeList에는 filter가 없습니다.(forEach뿐이다)</p>
+    <p>HTMLCollection에는 forEach가 없습니다.(for of 사용가능)</p>
+    <p>li_arr2는 NodeList 를 Array로 바꾼 것입니다. </p>
+    <p>li_arr2의 filter를 이용해 숫자가 있는 li를 삭제하고 test에 다시 출력하세요.</p>
+    <p></p>
+    <ul id="test2">
+        <li>a</li>
+        <li>b</li>
+        <li>c</li>
+        <li>20</li>
+        <li>d</li>
+        <li>e</li>
+        <li>f</li>
+    </ul>
+    <script>
+const li_nodeList=document.querySelectorAll("#test2>li");
+const li_htmlcllection=test2.getElementsByTagName ("li");
+
+console.log(li_nodeList);
+console.log(li_htmlcllection);
+
+const li_arr2=[];
+li_nodeList.forEach(function(item,i){
+    li_arr2[i]=item;
+})
+console.log(li_arr2);
+    </script>
+    <style>
+        .active{color:chocolate;}
+    </style>
+    <h2>foreach 를 이용해 #test3>li 에 click하면 "active" class가 추가되도록 재정의 하세요. </h2>
+    <ul id="test3">
+        <li>01click</li>
+        <li class="active">02click</li>
+        <li>03click</li>
+        <li>04click</li>
+        <li>05click</li>
+        <li>06click</li>
+    </ul>
+    <button type="button" id="insertB"> #test3>li에 b태그 추가</button>
+    <h2>위 버튼을 누를시 #test3>li 에 b태그를 추가하세요. 아래 결과</h2>
+    <ul>
+        <li><b>01click</b></li>
+        <li class="active"><b>02click</b></li>
+        <li><b>03click</b></li>
+        <li><b>04click</b></li>
+        <li><b>05click</b></li>
+        <li><b>06click</b></li>
+    </ul>
+
+    <h2></h2>
+    <div id=test4>
+
+    </div>
+    <script></script>
+</body>
+</html>

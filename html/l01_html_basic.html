@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<!-- 주석 본문에 포함되지 않는 참고 내용 -->
+<!-- DOCTYPE html 이 문서가 html5 형식을 따른다고 정의 -->
+<html>
+    <head>
+        <title>기본 html</title>
+        <meta charset="UTF-8">
+        <meta name="keywords" content="HTML, Frontend">
+        <!-- <meta http-equiv="refresh" content="10"> -->
+<style>
+/* .className */
+.color_blue{
+    color: blue;
+}
+
+</style>        
+    </head>
+    <body>
+        <h1>HTML Basic</h1>
+        <h3>HTML 문서의 구조</h3>
+        <ul>
+            <li>!DOCTYPE html: 문서의 유형을 선언(html5)</li>
+            <li>html : 문서의 루트(트리구조에서 시작에 해당)</li>
+            <li>head : html 의 메타정보(meta)로 1개 존재한다.
+                (charset, 검색엔진 키워드,작성자,새로고침간격, 웹사이트가 잘 보이는 기기 설정)</li>
+            <li>head : style, script, title 등을 추가로 작성할 수 있다.</li>
+            <li>body : 문서의 내용(본문)을 작성하는 곳 html에 1개 존재할 수 있다.</li>
+        </ul>
+        <br>
+        <hr>
+        <h3>html Element(요소)란?</h3>
+        <ul>
+            <li>html 요소는 태그를 포함하는 내용(컨텐츠)로 브라우저가 해석해서 객체로 생상한다.</li>
+            <li>요소는 다른 <b>요소</b>를 포함할 수 있다.(중첩가능)</li>
+            <li>html 과 body 처럼 본문에 1개만 존재하는 요소가 있다. 이것들을 root 요소라 한다.</li>
+            <li>br,hr 처럼 내용이 없는 빈요소가 존재한다.</li>
+            <li> h1(제목태그) 태그는 여러개 작성할 수 있지만 
+                검색엔진에서 활용하는 요소이기 때문에 1개 존재하는 것을 기대한다.
+            </li>
+            <li>태그,요소,노드는 같은 것을 의미한다.</li>
+        </ul>
+        <br><hr>
+        <h3>html과 DOM Tree 구조</h3>
+        <p>html과 xml은 tree 구조의 Document로 이를 DOM Tree라 부른다. </p>
+        <ul>
+            <li>최상위 요소가 존재한다.</li>
+            <li class="color_blue">각 요소를 노드라 부른다.</li>
+            <li>각 요소를 구조화 하기 용이하다.(요소들을 중첩할 수 있기 때문에)</li>
+            <li>노드를 검색하기 용이하다.(구조화되어 있기 때문에)
+                예) html>body>ul:eq(2)>li:eq(2n)
+            </li>
+            <li style="color: red">
+                html과 xml의 요소는 속성(attribute)를 지정할 수 있고 각 요소를 속성으로 특별하게 할 수 있다.
+            </li>
+            <li>html 요소는 크게 블럭과 <small>인라인</small>으로 구분 할 수 있다.(그래픽으로 구조화)</li>
+            <li class="color_blue">html 요소는 class와 id로 검색(traversing)을 더욱 용이하게 할 수 있다.</li>
+        </ul>
+        <br>
+        <hr>
+        <h3>html 주석</h3>
+        <p>주석은 본문에 표시되지 않는 내용으로 html 문서를 문서화(설명)하는 데 도움을 준다,</p>
+
+        <!-- 회원 가입에 필요한 요소입니다. -->
+        <ul>
+            <li> < !-- 주석 -- > </li>
+            <li>주석은 개발자간의 소통을 위해 존재한다.</li>
+            <li>주석은 개발에 아주 중요한 요소로 유지보수 시간을 크게 단축시킬 수 있다.</li>
+            <li>주석으로 사용하지 않는 코드를 숨길 수 있다.</li>
+            <!-- <li>사용되지 않는 요소</li> -->
+            <!--li>사용되지 않는 요소</li-->
+            <li>주석으로 사용하지 않는 글자(inline)를 숨길 수 있다. <!--aa--> </li>
+        </ul>
+        <br>
+        <hr>
+        <h3>html 혼자서 공부하는 법</h3>
+        <ul>
+            <li>생활코딩 : https://opentutorials.org/course/2039</li>
+            <li>모질라 : https://developer.mozilla.org/ko/docs/Web/HTML</li>
+            <li>w3schools : https://www.w3schools.com/html/html_elements.asp</li>
+        </ul>
+
+        <br>
+        <hr>
+        <h3>html의 기본요소(가장 사용이 많이되는 요소)</h3>
+        <p>
+            사용빈도가 많은 요소를 기본요소라 부르고 p,br,h1~6,hr,주석,(a,div) 태그가 있다.
+        </p>
+        <h4>단락 요소인 p와 hn 그리고 시멘틱(semantics)</h4>
+        <p>단락 요소란 한줄을 <b>블럭</b>으로 가지는 요소 구역을 나누기 위해 사용</p>
+        <ul>
+            <li>단락 요소는 문서의 한 단락을 표현하고 위아래 여백(margin)을 형성한다.</li>
+            <li>단락 요소는 display block이라는 스타일이 적용된다.</li>
+            <li>p와 hn 요소의 차이는 글자크기와 글자 두께 뿐이다.</li>
+            <li>각 요소는 의미론적으로 사용될 수 있다.</li>
+            <li>b,strong 둘다 글자 두껍게 한다.(font-weight:bold)
+                하지만 b는 글자를 두껍게 할때 사용되고 strong은 글자를 강조할때 사용된다.(semantics)
+            </li>
+            <li>제목 태그인 hn은 검색 엔진이 웹 페이지의 구조와 내용을 색인화 할때 사용된다. 특히 h1은 웹페이가 검색될때 키워드로 사용되기 때문에 1개 작성하는 것이 좋다.</li>
+            <li>
+                단락 태그 p는 글 내용의 한 단락을 구성하기 위해 존재한다.
+                p와 비슷한 역활을 하는 것으로 pre,br(line breaks),hr(horiaontal rule) 등이 있다.
+            </li>
+            <li>       
+                p(paragraphs) 태그(pre를 제외한 단락태그)는 엔터로 
+                문단을 나눈 것이 적용되지     않는다. 문단을 나누려면 꼭 br이나 hr을 사용하거나 다른 단락 태그로 문단을 나눠야한다.
+                (엔터와 2개 이상의 띄어쓰기는 1개의 공백으로 인식)
+            </li>
+            <li>
+                p,hn 요소는 마지막 단락이기를 기대한다.
+                (p 요소 안에 다른 다락 태그를 중첩하는 것은 좋은 방식이 아니다.)
+            </li>
+            <li>pre(preformatted text)는 띄어쓰기가 많은 내용을 인용할때 많이 사용된다.</li>
+        </ul>
+        <hr>
+        <h6>좋지 못한 방식</h6>
+        <p>
+            첫번째 단락
+            <p> 중첩된 두번째 단락</p>
+        </p>
+        <hr>
+        <h6>좋은 방식</h6>
+        <p>첫번째 단락</p>
+        <p>두번째 단락</p>
+        <hr>
+        <h6>제목 태그</h6>
+        <h1>
+            h1 태           
+            그입니다.        
+        </h1>
+        <h2>h2 태그입니다.</h2>
+        <h3>h3 태그입니다.</h3>
+        <h4>h4 태그입니다.</h4>
+        <h5>h5 태그입니다.</h5>
+        <h6>h6 태그입니다.</h6>
+        <p><b><big>p 태그입니다.</big></b></p>
+        <hr>
+        <h6>pre 사용 예</h6>
+        <p class="제목">진달래꽃</p>
+        <p clss="글쓴이">김소월</p>
+        <p class="쓰인날짜">(1922년 원문 표기)</p>
+        <pre class="내용">
+            나보기가 역겨워
+            가실ᄯᅢ에는
+            말업시 고히 보내드리우리다
+
+            寧邊에藥山
+            진달내ᄭᅩᆺ
+            아름ᄯᅡ다 가실길에 ᄲᅮ리우리다
+            
+            가시는거름거름
+            노힌그ᄭᅩᆺ츨
+            삽분히즈려밟고 가시옵소서
+            
+            나보기가 역겨워
+            가실ᄯᅢ에는
+            죽어도아니 눈물흘니우리다
+            (현대 표기)
+            나 보기가 역겨워
+            가실 때에는
+            말없이 고이 보내 드리우리다
+            
+            영변에 약산
+            진달래꽃
+            아름 따다 가실 길에 뿌리우리다
+            
+            가시는 걸음 걸음
+            놓인 그 꽃을
+            사뿐히 즈려밟고 가시옵소서
+            
+            나 보기가 역겨워
+            가실 때에는
+            죽어도 아니 눈물 흘리우리다  
+        </pre>
+            
+        
+
+
+        </p>
+    </body>
+</html>

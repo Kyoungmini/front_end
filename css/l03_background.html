@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css Background</title>
+<style>
+.img_container{
+    background-color: rgb(37, 40, 85);
+}
+.img_container img{
+    height: 200px;
+}
+</style>
+</head>
+<body>
+    <h1>css의 background 속성을 알아보자</h1>
+    <div class="img_container">
+        <img width="200" src="/css/img/강아지1.jpg">
+    <!-- 
+        서버주소(절대경로)/css/background.html 
+        "/" : 절대경로는 서버 이하의 주소를 수정
+        서버주소(절대경로) +  /css/img/강아지1.jpg 
+    -->
+        <img width="200" src="img/강아지3.jpg" alt="말티즈">
+    <!-- 
+        서버주소/css/(상대경로)background.html 
+        "파일이름" or "./"  or "../" :상대경로는 해당 html 파일을 기준으로 주소 수정
+        서버주소/css/(상대경로)+img/강아지3.jpg
+    -->
+        <img width="200" src="./img/강아지2.jpg" alt="찾지 못한 강아지">
+        <img src="../css/img/강아지4.jpg" alt="">
+    </div>    
+    <h2>image를 포함하는 노드 개체 img 태그</h2>
+    <ul>
+        <li>src : 이미지 경로</li>
+        <li>alt : 이미지를 찾지 못할 시 대체되는 텍스트</li>
+        <li>width height : style.width  style.height에 적용되는 px 길이로 둘다 적용하면 노드 개체의 이미지 비율이 맞지 않게 조절된다. </li>
+    </ul>
+    <h2>절대경로와 상대경로</h2>
+    <ul>
+        <li>"/경로/파일" :</li>
+        <li>"파일"=="./파일" :</li>
+        <li>"../파일" :</li>
+        <li>상대경로가 복잡해 지면 꼭 절대경로를 사용한다.</li>
+        <li>navigation은 무조건 절대경로를 사용한다.</li>
+    </ul>
+<style>
+.back_img{
+    background-image: url("/css/img/강아지5.jpg");
+    background-size: 200px; 
+    /* 200px(가로) auto(세로) ==200px */
+    width: 200px;
+    height: 200px;
+    color: white;
+}
+</style>    
+    <div class="back_img">
+         <p>강아지 사진입니다.</p>
+         <p>말티즈 사진입니다.</p>
+         <img src="/css/img/강아지1.jpg" width="100" alt="">
+    </div>
+<style>
+.back_img2{
+    width: 200px;
+    height: 400px;
+    overflow-y: scroll;
+    background-color: violet;
+    background-image: 
+    url("/css/img/강아지2.jpg"),
+    url("/css/img/강아지3.jpg"),
+    url("/css/img/강아지4.jpg");
+    background-repeat: no-repeat,no-repeat, no-repeat;
+    background-size: contain ,100px 100px, auto 100%;
+    background-position:30% 30%, center,center;
+}    
+</style>  
+    <div class="back_img2">
+        <p>width: 100% ,height auto</p>
+        <br><br><br><br><br><br><br><br><br><br>
+        <p>a</p>
+        <br><br><br><br><br><br><br><br><br><br>
+        <p>b</p>
+        <br><br><br><br><br><br><br><br><br><br>
+        <p>c</p>
+        <br><br><br><br><br><br><br><br><br><br>
+        <p>d</p>
+        <br><br><br><br><br><br><br><br><br><br>
+
+    </div>
+</body>
+    <h2>background-image</h2>
+    <ul>
+        <li>background-image: url("경로") : 해당 노드에 image가 배경으로 추가</li>
+        <li>background-image: url("경로"),url("경로"),url("경로") .. :복수의 이미지 추가</li>
+        <li>background-image가 추가된 해당 노드에 부피(가로X세로)가 존재하지 않으면 image가 출력되지 않는다.</li>
+    </ul>
+    <h3>background-repeat</h3>
+    <ul>
+        <li>repeat(default) : repeat repeat</li>
+        <li>repeat-x : x축 반복</li>
+        <li>repeat-y : y축 반복</li>
+        <li>no-repeat : 반복하지 않음</li>
+        <li>space :여백 있는 반복</li>
+        <li>round :공간을 채우는 반복</li>
+    </ul>
+    <h3>background-position</h3>
+    <p>배경의 위치를 조정하는 속성(no-repeat)</p>
+    <ul>
+        <li>가로(right,left) 세로(bottom,top):center, px, % default(left top)</li>
+        <li>bottom == center bottom</li>
+        <li>left == left center</li>
+        <li>50px == 50px 50px or 100% == 100% 100% or center == 50% 50%</li>
+    </ul>
+    <h3>background-size</h3>
+    <ul>
+        <li>가로 세로: 수치(px,%,vw,em...) auto</li>
+        <li>가로 auto or 세로 auto : 비율에 맞춰서 수치가 바뀌는 값</li>
+        <li>auto auto (default): 기존 크기</li>
+        <li>cover : 이미지 비율보다 가로가 크면 가로를 100%, 이미지 비율보다 세로가 크면 세로를 100%로 자유롭게 변경하며 배경의 커버가 되도록 한다.(position:center)</li>
+        <li>contain : 이미지가 짤리지 않도록 최대 크기를 유지</li>
+    </ul>
+    <h3>background-attachment</h3>
+    <ul>
+        <li>scroll: document를 기준으로 배경을 위치함</li>
+        <li>fixed: view를 기준으로 배경을 위치함(scroll을 따라다님)</li>
+        <li>local: node를 기준으로 배경을 위치</li>
+    </ul>
+    <h3>background-origin(box-sizing 비슷)</h3>
+    <ul>
+        <li>padding-box(default)</li>
+        <li>border-box</li>
+        <li>content-box</li>
+    </ul>
+    <h3>background-blend-mode</h3>
+    <p>이미지가 배경과 혼합될 때 어떻게 표현될지 결정</p>
+<style>
+.back_img3{
+    border: 10px dotted chocolate;
+    width: 200px;
+    height: 200px;
+    padding: 30px;
+    background-image: url("/css/img/강아지1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: cornflowerblue;
+    /* background-origin: content-box; */
+} 
+.back_attach{
+     width: 100%; 
+     height: 500px;  
+     overflow: scroll;
+     /*  background-image 사이즈와 overflow는 별개*/
+     border: 1px solid;
+     background-image: url("img/강아지2.jpg");
+     background-attachment: fixed;
+     position: relative;
+}   
+.back_attach nav{
+    background-color: #000;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 50px;
+}  
+</style>
+    <div class="back_attach" id="backAttach">
+        <nav>
+            <button class="back_attach_btn">fixed</button>
+            <button class="back_attach_btn">scroll</button>
+            <button class="back_attach_btn">local</button>
+        </nav>
+        <div style="width: 200px;
+                    height: 200px;
+                    border: 2px solid rgba(255,255,255,.3);
+                    background-color: rgba(255,255,255,.3);
+                    backdrop-filter: blur(2px);
+"
+                    >
+        
+        </div>
+        <p>01 번째 줄</p>
+        <p>02 번째 줄</p>
+        <p>03 번째 줄</p>
+        <p>04 번째 줄</p>
+        <p>05 번째 줄</p>
+        <p>06 번째 줄</p>
+        <p>07 번째 줄</p>
+        <p>08 번째 줄</p>
+        <p>09 번째 줄</p>
+        <p>10 번째 줄</p>
+        <p>11 번째 줄</p>
+        <p>12 번째 줄</p>
+        <p>13 번째 줄</p>
+        <p>14 번째 줄</p>
+        <p>15 번째 줄</p>
+        <p>16 번째 줄</p>
+        <p>17 번째 줄</p>
+        <p>18 번째 줄</p>
+        <p>19 번째 줄</p>
+        <p>20 번째 줄</p>
+        <p>21 번째 줄</p>
+        <p>22 번째 줄</p>
+        <p>23 번째 줄</p>
+        <p>24 번째 줄</p>
+        <p>25 번째 줄</p>
+        <p>26 번째 줄</p>
+        <p>27 번째 줄</p>
+        <p>28 번째 줄</p>
+        <p>29 번째 줄</p>
+        <p>30 번째 줄</p>
+        <p>31 번째 줄</p>
+        <p>32 번째 줄</p>
+        <p>33 번째 줄</p>
+        <p>34 번째 줄</p>
+        <p>35 번째 줄</p>
+        <p>36 번째 줄</p>
+        <p>37 번째 줄</p>
+        <p>38 번째 줄</p>
+        <p>39 번째 줄</p>
+        <p>40 번째 줄</p>
+        <p>41 번째 줄</p>
+        <p>42 번째 줄</p>
+        <p>43 번째 줄</p>
+        <p>44 번째 줄</p>
+        <p>45 번째 줄</p>
+        <p>46 번째 줄</p>
+        <p>47 번째 줄</p>
+        <p>48 번째 줄</p>
+        <p>49 번째 줄</p>
+        <p>50 번째 줄</p>
+        <p>51 번째 줄</p>
+        <p>52 번째 줄</p>
+        <p>53 번째 줄</p>
+        <p>54 번째 줄</p>
+        <p>55 번째 줄</p>
+        <p>56 번째 줄</p>
+        <p>57 번째 줄</p>
+        <p>58 번째 줄</p>
+        <p>59 번째 줄</p>
+        <p>60 번째 줄</p>
+        <p>61 번째 줄</p>
+        <p>62 번째 줄</p>
+        <p>63 번째 줄</p>
+        <p>64 번째 줄</p>
+        <p>65 번째 줄</p>
+        <p>66 번째 줄</p>
+        <p>67 번째 줄</p>
+        <p>68 번째 줄</p>
+        <p>69 번째 줄</p>
+        <p>70 번째 줄</p>
+        <p>71 번째 줄</p>
+        <p>72 번째 줄</p>
+        <p>73 번째 줄</p>
+        <p>74 번째 줄</p>
+        <p>75 번째 줄</p>
+        <p>76 번째 줄</p>
+        <p>77 번째 줄</p>
+        <p>78 번째 줄</p>
+        <p>79 번째 줄</p>
+        <p>80 번째 줄</p>
+        <p>81 번째 줄</p>
+        <p>82 번째 줄</p>
+        <p>83 번째 줄</p>
+        <p>84 번째 줄</p>
+        <p>85 번째 줄</p>
+        <p>86 번째 줄</p>
+        <p>87 번째 줄</p>
+        <p>88 번째 줄</p>
+        <p>89 번째 줄</p>
+        <p>90 번째 줄</p>
+        <p>91 번째 줄</p>
+        <p>92 번째 줄</p>
+        <p>93 번째 줄</p>
+        <p>94 번째 줄</p>
+        <p>95 번째 줄</p>
+        <p>96 번째 줄</p>
+        <p>97 번째 줄</p>
+        <p>98 번째 줄</p>
+        <p>99 번째 줄</p>
+        <p>100 번째 줄</p>
+    </div>
+
+    <div class="back_img3" id="originImg">
+    </div>
+    <button 
+    onclick="originImg.style.backgroundOrigin='border-box'">
+    border-box</button>
+    <button
+    onclick="originImg.style.backgroundOrigin='padding-box'">
+    padding-box</button>
+    <button
+    onclick="originImg.style.backgroundOrigin='content-box'"
+    >content-box</button>
+
+    <h2>background-color</h2>
+    <p>노드 개체에 색을 지정</p>
+    <h3>background: linear-gradient() : 막대형 그라데이션</h3>
+    <h3>background: radial-gradient() : 방사형 그라데이션</h3>
+
+    <h3>background-clip</h3>
+    <p>노드 개체에 색과 그라데이션이 표현되는 영역(content,padding,border-box(default))</p>
+
+    <h2>filter</h2>
+    <p>노드 개체에 그래픽(흐림,흑백,밝게..) 효과를 적용</p>
+    <h2>backdrop-filter</h2>
+    <p>노드 개체 뒤 노드의 그래픽 효과를 적용(반투명효과)</p>
+    <div style="width: 200px; 
+                height: 200px;
+                padding: 30px;
+                border: 20px violet;
+                border-style: double;
+                background: radial-gradient(red 30%,green 10%, blue);
+                background-clip: content-box;
+                ">
+    </div>
+
+
+    <br><br><br><br><br><br><br><br>
+    
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br>
+<script>
+const back_attch_btns=document.getElementsByClassName("back_attach_btn");
+for(const btn of  back_attch_btns){
+    btn.onclick=function(){
+        let val=this.innerText;
+        backAttach.style.backgroundAttachment=val;
+    }
+}
+
+</script>
+</html>

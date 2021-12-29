@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>jquery index</title>
+</head>
+<script>
+window.onload=function(){
+    const li_arr=$("li"); 
+    console.log(li_arr);
+    li_arr.on("mouseleave",function(e){
+        $(e.target).css({color:"blue",fontSize:"40px"})
+        //this.css()
+    });
+
+    const li_arr2=document.getElementsByTagName("li");
+    for (let li of li_arr2){
+        li.onmouseover=function(){
+            li.style.color="red";
+            li.style.background="puple";
+       }
+    }
+}    
+</script>
+<body>
+    <h1>jqeury를 이해하고 사용해보자</h1>
+    <ul>
+        <li>cdn  jqeury link 사용할때 압축되지 않은 것을 사용</li>
+        <li>$ : jqeury 최상위 객체로 $를 사용하는 framework에서는 이름을 바꿔야한다.</li>
+        <li>$() : ==document.querySelectorAll() 처럼 dom을 검색하는 도구 return jqueryCollection</li>
+        <li>jQeury.fn.init(jqueryCollection)에는 자바스크립트 document에서 제공하는 함수와 이름이 비슷한 함수를 포함한다. 예)onclick=>click,styel=>css</li>
+        <li>jquery 함수는 반복을 자동으로 포함하고 있다.</li>
+        <li>jquery 에는 javascript에서 제공하지 않는 함수도 존재한다. (hover(function,function))</li>
+        <li>이벤트함수는 on을 제거하면 모두 존재한다.</li>
+        <li>on("이벤트이름",function)으로 작성가능</li>
+        <li>자바스크립트 dom에 jqeury 함수를 사용할 수 없다
+            예) this.css("color","red")(x)=> $(this).css("color","red")(o)
+        </li>
+    </ul>
+</body>
+</html>

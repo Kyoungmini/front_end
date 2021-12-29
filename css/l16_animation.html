@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css animation</title>
+</head>
+<style>
+.box_container{
+    width: 100%;
+    height: 400px;
+    border: 1px solid;
+    position: relative;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    background-color: burlywood;
+    transition: 
+    margin-left 200ms 0ms,
+    margin-top 200ms 200ms,
+    margin-right 200ms 400ms,
+    margin-bottom 200ms 600ms;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.ani_move{
+    animation-name: aniMove;
+    animation-duration: 4s;  
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-direction: normal;
+}
+@keyframes aniMove {
+    /* to{} */
+    25%{
+        top: 0;
+        left: calc(100% - 100px);
+    }
+    50%{
+        top: calc(100% - 100px);
+        left: calc(100% - 100px);
+
+    }
+    75%{
+        top: calc(100% - 100px);
+        left: 0;
+
+    }
+    100%{ top:0; left: 0;}
+    /*  100%의 값이 기존 값과 같다면 생략할 수 있다. */
+}
+.move{
+    margin-left: calc(100% - 100px);
+    margin-top: calc(100% - 100px);
+    margin-right: 400px;
+    margin-top: 400px;
+}
+</style>
+<body>
+   <h1>css animation으로 복작한 애니메이션을 만들어 보자</h1> 
+
+   <div class="box_container">
+       <div class="box"
+        onclick="this.classList.toggle('move')"
+       >box를 클릭</div>
+   </div>
+   <ul>
+       <li>transition으로 복잡한 애니메이션을 만들 수 없다.</li>
+       <li>복잡한 애니메이션을 만들기 위해서는 animation 속성을 지정하고 @keyframes으로 frame마다 애니메션을 분활 적용해야한다.</li>
+   </ul>
+   <div class="box_container">
+        <div class="box" id="box2"
+        onclick="this.classList.toggle('ani_move')"
+        >box를 클릭</div>
+    </div>
+    <p>
+        <button onclick="box2.style.animationPlayState='paused'">
+            ani_paused
+        </button>
+        <button onclick="box2.style.animationPlayState='running'">ani_running</button>
+        <select name="" id=""
+            onchange="box2.style.animationDirection=this.value"
+        >
+            <option value="noraml">noraml</option>
+            <option value="reverse">reverse</option>
+            <option value="alternate">alternate</option>
+            <option value="alternate-reverse">alternate-reverse</option>
+        </select>
+    </p>
+<style>
+.move_box{
+    animation-name: moveBox2;
+    animation-delay: 3s;
+    animation-duration: 1s;
+}
+@keyframes moveBox2 {
+    0%{
+        background-color: red;
+        transform: rotate(20deg);
+    }
+    100%{
+        left: 100%;
+    }
+}
+</style>
+    <h2>animation-fill-mode</h2>
+    <h3>animation-fill-mode: none</h3>
+    <div class="box_container" style="height: 100px;">
+        <div class="box move_box" style="animation-fill-mode: none;"></div>
+    </div>
+    <h3>animation-fill-mode: forwards</h3>
+    <div class="box_container"style="height: 100px;">
+        <div class="box move_box"
+        style="animation-fill-mode: forwards;"
+        ></div>
+    </div>
+    <h3>animation-fill-mode: backwards</h3>
+    <div class="box_container"style="height: 100px;">
+        <div class="box move_box"
+        style="animation-fill-mode: backwards;"
+        ></div>
+    </div>
+    <h3>animation-fill-mode: both</h3>
+    <div class="box_container"style="height: 100px;">
+        <div class="box move_box"
+        style="animation-fill-mode: both;"
+        ></div>
+    </div>
+    <h2>animation 속성들</h2>
+    <ul>
+        <li>animation-name: @keyframes의 이름</li>
+        <li>animation-duration:  @keyframes 0~100%까지 걸리는 시간</li>
+        <li>animation-timing-function: 애니메이션 속도 함수</li>
+        <li>animation-delay: 애니메이션이 시작을 대기하는 시간</li>
+        <li>animation-iteration-count: 반복 재생하는 횟수(default:1) 1~,infinite </li>
+        <li>animation-play-state: 재생 상태( paused, running ) 애니메이션의 이름을 노드에 추가하면 자동으로 running이 된다. </li>
+        <li>animation-direction : 애니메이션 진행 방향 (0~100%)
+            <ul>
+                <li>normal : from 0 => to 100</li>
+                <li>reverse : to => from</li>
+                <li>alternate(iteration-count>1) : 홀수 normal, 짝수 reverse</li>
+                <li>alternate-reverse(iteration-count>1) : 홀수 reverse, 짝수 normal</li>
+            </ul>
+        </li>
+        <li>animation-fill-mode: keyframes의 from과 to 일때 상태를 결정
+            <ul>
+                <li>none : from 일때 from의 스타일 적용하지 않고 대기(delay)하다가 애니메이션이 시작될 때 from의 스타일 적용하면서 to까지 진행되고 to가 완료되면 애니메이션 시작 전으로 되돌린다. </li>
+                <li>forwards : from 이 none과 동일하고 애니메이션이 완료되면 to 지점에서 멈춘다.</li>
+                <li>backwards :from에서 적용될 css를 모두 적용하고 대기하다가 애니메이션을 실행하고 완료되면 애니메이션 시작 전으로 되돌린다.</li>
+                <li>both : from이 backwards와 같고 to가 forwards가 같다.</li>
+            </ul>
+
+        </li>
+    </ul>
+</body>
+</html>

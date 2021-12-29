@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css taransform3d</title>
+</head>
+<style>
+.box{
+    width: 100px;
+    height: 100px;
+    border: 1px solid;
+    background-color: rosybrown;
+}
+.box_container{
+    display: flex;
+    justify-content: space-evenly;
+    border: 1px solid;
+}
+.rotate_x_60{
+    transform: rotateX(60deg);
+}
+.pers_rotate_x_60{
+    /* perspective를 꼭 먼저 작성해야한다. */
+    transform:  perspective(500px) rotateX(60deg);
+    /* 트랜스폼의 중복 속성은 연결해서 작성해야한다. 
+    transform: perspective(500px);
+    transform: rotateX(60deg); */
+}
+
+</style>
+<body>
+    <h1>taransform3d와 perspective를 이해하자</h1>
+    <h2>box_container perspective:none</h2>
+    <div class="box_container">
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+    </div>
+    <h2>box_container perspective:500px</h2>
+    <div class="box_container" style="perspective: 500px;">
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+        <div class="box rotate_x_60"></div>
+    </div>
+    <h2>box transform: perspective(600px) rotateX(60deg)</h2>
+    <div class="box_container">
+        <div class="box pers_rotate_x_60"></div>
+        <div class="box pers_rotate_x_60"></div>
+        <div class="box pers_rotate_x_60"></div>
+        <div class="box pers_rotate_x_60"></div>
+        <div class="box pers_rotate_x_60"></div>
+    </div>
+
+</body>
+</html>

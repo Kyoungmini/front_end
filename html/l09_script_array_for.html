@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array for</title>
+</head>
+<body>
+    <h1>자바스크립트의 배열과 반복문</h1>
+    <h2>[] 복수의 data를 참조하는 배열</h2>
+    <ul>
+        <li>선언법1: let car_arr=[value,value,value,...];</li>
+        <li>선언법2: let car_arr=[];car_arr[0]=value; car_arr[1]=value;... </li>
+        <li>선언법3: let car_arr=new Array(value,value,value,...);</li>
+        <li>lenght : 배열의 길이(1부터시작)</li>
+        <li>배열은 data를 순서를 이용해서 그룹핑하는 것으로 이때 순서가 key 가 된다.(0부터 시작)</li>
+        <li>배열을 참조하는 변수에 [key]를 쓰면 해당하는 위치에 저장된 data가 반환된다. 예)car_arr[2]=>return "gv80"</li>
+    </ul>
+<script>
+let car1="qm3";    
+let car2="xm3";
+let car3="gv80";
+let car4="morning";
+let car5="ray";
+
+let car_arr=["qm3","xm3","gv80","morning","ray"];
+let car_arr2=[
+    "qm3",
+    "xm3",
+    "gv80",
+    "morning",
+    "ray"
+];
+let car_arr3=[];
+car_arr3[0]="qm3";
+car_arr3[1]="xm3";
+car_arr3[2]="gv80";
+car_arr3[3]="morning";
+car_arr3[4]="ray";
+//document.getElementsByTagName("p")
+//한개의 data로 묶어서 반환할 수 있다.
+</script>
+    <h2>자바스크립트의 반복문 (for)</h2>
+
+ <script>
+let i=0;
+//while(조건){조건이 true일때 반복해서 실행}
+//0<1 ;=>return true
+//1<1 ;=>return false
+while(i<2){
+    console.log(i+"한번 실행된다.");
+    i=i+1;
+}
+//while(0<2=>true){i=0+1;}
+//while(1<2=>true){i=1+1;}
+//while(2<2=>false){실행되지 않음!}=>반복문이 끝난다.
+
+let key=0;
+while(key<car_arr.length){
+    console.log(car_arr[key]);
+    key=key+1;
+}
+let li_arr=document.getElementsByTagName("li");
+key=0;
+while(key<li_arr.length){
+    console.log(li_arr[key]);
+    key=key+1;
+}
+
+ </script>   
+    
+</body>
+</html>

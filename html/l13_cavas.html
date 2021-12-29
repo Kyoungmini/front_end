@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>html cavs</title>
+  </head>
+  <body>
+    <main>
+      <h1>html canvas</h1>
+      <p>cavas는 웹 페이지에 그래픽을 그려주는 컨테이너다.
+        canvas는 자바스크립트로 그래픽을 그린다.
+      </p>
+      <article>
+        <h1>strokeRect(x1,y1,x2,y2) 사각형 그리기</h1>
+        <ul>
+          <li>fillStyle : 색이 있는 사각형 색 지정</li>
+          <li>fillRect : 색이 있는 사각형 그리기</li>
+          <li>strokeRect : 사각형 테두리 그리기</li>
+          <li>clearRect : 사각형 모양의 지우개</li>
+        </ul>
+        <div class="canvas_container">
+          <canvas id="canvas1" width="300" height="300"
+          style="border:1px solid black;">
+            웹브라우저가 canvas를 지원하지 않습니다!(라는 문자만 출력)
+          </canvas>
+        </div>
+<script>
+var c1=document.getElementById("canvas1").getContext("2d");
+//c1=>getContext("2d") 붓을 생
+c1.strokeRect(160,160,100,100);
+c1.fillStyle="red";//fillRect의 색 지정
+c1.fillRect(160,160,100,100);
+c1.clearRect(80,80,100,100); //지우개 사각형
+
+c1.strokeRect(10,10,200,200);
+</script>
+      </article>
+      <article>
+        <h2>lineTo 선그리기</h2>
+        <ul>
+          <li>moveTo : 선이 시작될 좌표</li>
+          <li>lineTo : 선이 끝나는 좌표(연속으로 지정할 수 있음)</li>
+          <li>stroke : 선 그리기 시작</li>
+        </ul>
+        <div class="canvas_container">
+          <canvas id="canvas2" width="300" height="300" style="border:1px solid black;"></canvas>
+        </div>
+      </article>
+<script>
+  var c2 = document.getElementById("canvas2").getContext("2d");
+  //선긋기 전에 포이트를 그릴 곳으로 이동
+  c2.moveTo(0,0);
+  c2.lineTo(300,100);
+  c2.lineTo(0,300);
+  c2.lineTo(150,0);
+  c2.lineTo(300,300);
+  c2.lineTo(0,0);
+  c2.fillStyle="blue";
+  c2.fill();
+  c2.strokeStyle="red";
+  c2.lineWidth="4";
+  c2.stroke();//lineTo로 지정한 좌표를 순서대로 따라다니며 그린다.
+</script>
+    <article>
+      <h2>Colors, Styles, Shadows 속성 주기</h2>
+      <ul>
+        <li>fillStyle : 색, 공간기울기색(gradient),패턴을 채우는 설정</li>
+        <li>strokeStyle : 색, 공간기울기색(gradient),패턴을 그리는 설정(lineWidth로 두께 설정)</li>
+        <li>shadowColor : 그림자 색</li>
+        <li>shadowBlur : 그림자 흐려짐 정도</li>
+        <li>shadowOffsetX : 그림자 수평 이동(양수:오른쪽,음수:왼쪽)</li>
+        <li>shadowOffsetY : 그림자 수직 이동(양수:아래쪽,음수:윗쪽)</li>
+      </ul>
+      <canvas id="canvas3" width="300" height="300" style="border:1px solid black"></canvas>
+    </article>
+<script>
+var c3=document.getElementById("canvas3").getContext("2d");
+c3.shadowBlur=5;
+c3.shadowColor="rgb(0,0,0)";
+c3.lineWidth=5;
+c3.shadowOffsetX=-20;
+c3.shadowOffsetY=-20;
+c3.strokeStyle="rgb(150,80,150)"
+c3.strokeRect(75,75,150,150);
+
+c3.shadowBlur=10;
+c3.shadowColor="rgb(50,10,50)"
+c3.shadowOffsetX=25;
+c3.shadowOffsetY=25;
+c3.fillStyle="rgba(200,100,200,.6)"
+c3.fillRect(75,75,150,150);
+</script>
+    <article>
+      <h2>Gradient 번지는 색(기울기색)</h2>
+      <p>createLinearGradient(x0,y0,x1,y1)</p>
+      <ul>
+        <li>x0 :그래디언트 시작점 x 좌표</li>
+        <li>y0 :그래디언트 시작점 y 좌표</li>
+        <li>x1 :그래디언트 끝점 x 좌표</li>
+        <li>y1 :그래디언트 끝점 y 좌표</li>
+      </ul>
+      <div class="canvas_container">
+        <canvas id="canvas4" width="300" height="300" style="border:1px solid black"></canvas>
+      </div>
+    </article>
+<script>
+var c4=document.getElementById("canvas4").getContext("2d");
+var gradient= c4.createLinearGradient(50,50,200,0);
+gradient.addColorStop(0,"rgb(50,50,50)");
+gradient.addColorStop(1,"rgb(250,100,100)");
+
+c4.shadowBlur=10;
+c4.shadowColor="rgb(50,10,50)"
+c4.shadowOffsetX=8;
+c4.shadowOffsetY=5;
+c4.fillStyle=gradient;
+c4.font="50px Arial black"
+c4.fillText("CANVAS",20,150 );
+//c4.fillRect(75,75,150,150);
+</script>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css flex</title>
+</head>
+<style>
+.flex_container{
+    display: flex;
+    border: 1px solid;
+    background-color: indianred;
+    height: 60vw;
+    max-height: 200px;
+}
+.flex_container>div{
+    border: 1px solid;
+    background-color: lawngreen;
+    font-size: 4vh;
+}
+
+.float_container{
+    border: 1px solid;
+    background-color: indianred;
+}
+
+
+.float_container::after{
+   content: "";
+   display: block;
+   clear: both;
+}
+.float_container>div{
+    /* display: inline-block; */
+    float: left;
+    border: 1px solid;
+    background-color: lawngreen;
+    font-size: 4vh;
+    height: 60vw;
+    max-height: 200px;
+
+}
+</style>
+<body>
+    <h1>flex로 한줄 레이아웃을 정렬하자</h1>
+
+    <div class="flex_container">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+        <div>04</div>
+        <div>05</div>
+    </div>
+    <h2>float 정렬</h2>
+    <div class="float_container">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+        <div>04</div>
+        <div>05</div>
+    </div>
+    <h2>flex-direction :</h2>
+    <div class="flex_container" id="flexTest">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+        <div style="font-size: 6vh;">04</div>
+        <div>05</div>
+        <div>06</div>
+        <div>07</div>
+        <div>08</div>
+        <div>09</div>
+        <div>10</div>
+    </div>
+<script>
+window.onload=function(){
+
+    document.querySelectorAll("#flexForm [type=radio]").forEach((radio)=>{
+        radio.addEventListener("change",(e)=>{
+                flexTest.style[e.target.name]=e.target.value;
+        })
+    })
+      
+}
+</script>
+    <h2>flex container 속성</h2>
+    <form id="flexForm">
+        <ul>
+            <li>flex-direction:
+                row
+                <input type="radio" name="flex-direction" value="row">,
+                row-reverse
+                <input type="radio" name="flex-direction" value="row-reverse">,
+                column
+                <input type="radio" name="flex-direction" value="column">,
+                column-reverse
+                <input type="radio" name="flex-direction" value="column-reverse">
+            </li>
+            <li>flex-wrap :
+                nowrap
+                <input type="radio" name="flex-wrap" value="nowrap">,
+                wrap
+                <input type="radio" name="flex-wrap" value="wrap">,
+                wrap-reverse
+                <input type="radio" name="flex-wrap" value="wrap-reverse">
+
+            </li>
+            <li>justify-content :
+                flex-start
+                <input type="radio" name="justify-content" value="flex-start">,
+                flex-end
+                <input type="radio" name="justify-content" value="flex-end">,
+                center
+                <input type="radio" name="justify-content" value="center">,
+                space-between
+                <input type="radio" name="justify-content" value="space-between">,
+                space-around
+                <input type="radio" name="justify-content" value="space-around">,
+                space-evenly
+                <input type="radio" name="justify-content" value="space-evenly">
+
+            </li>
+            <li>align-items :
+                stretch
+                <input type="radio" name="align-items" value="stretch">,
+                flex-start
+                <input type="radio" name="align-items" value="flex-start">,
+                center
+                <input type="radio" name="align-items" value="center">,
+                flex-end
+                <input type="radio" name="align-items" value="flex-end">,
+                baseline
+                <input type="radio" name="align-items" value="baseline">,
+
+            </li>
+
+        </ul>
+    </form>
+    <h3> flex-direction 배치 방향</h3>
+    <ul>
+        <li>
+            row (default) :아이템 행(가로) 방향으로 배치
+        </li>
+        <li>
+            row-reverse : 아이템들 역순으로 가로 배치
+        </li>
+        <li>
+            column :아이템 열(세로) 방향으로 배치</li>
+        <li>
+            column-reverse :아이템 역순으로 세로 배치</li>
+    </ul>
+    <h3>flex-wrap 줄넘김 처리 (white-space와 동일) </h3>
+    <ul>
+        <li>
+            nowrap (기본값) 아이템이 줄바꿈하지 않고 부모 밖으로 보임</li>
+        <li>
+            wrap 아이템이 부모의 크기를 넘으면 줄바꿈을 함
+        </li>
+        <li>
+            wrap-reverse 줄바꿈을 하고 아이템을 역순으로 배치</li>
+    </ul>
+    <h3>justify-content 공백으로 아이템 정렬하기</h3>
+    <ul>
+        <li>flex-start : (기본값)부모노드 시작점부터 아이템 채우기 ( 처음에서 정렬 )</li>
+    
+        <li>flex-end :부모노드 끝지점부터 아이템 채우기 ( 끝에서 정렬 )</li>
+        <li>center : 아이템을 부모노드 중앙부터 채우기 (중앙정렬)</li>
+        <li>space-between : 부모노드 시작점과 끝지점에 아이템을 채우기 (공백을 중앙에 두기)</li>
+        <li>space-around : 아이템이 공백을 일정하게 나누기(margin)</li>
+        <li>space-evenly : 아이템 사이에 일정한 공백 만들기 (IE,Edge X=>space-around))</li>
+    </ul>
+
+    <h3>align-items: 아이템 세로 정렬</h3>
+    <ul>
+        <li>stretch  : 아이템들이 부모를 가득 채움</li>
+    
+        <li>flex-start :아이템을 시작점으로 정렬</li>
+        <li>center :  (중앙정렬)</li>
+        <li>flex-end : 아이템을 끝으로 정렬</li>
+        <li>baseline : 아이템을 텍스트 베이스라인 기준 정렬</li>
+    </ul>
+
+        
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html script</title>
+</head>
+<body>
+    <h1>html에서 자바스크립트를 작성하고 DOM(Document Object Model)을 조작하자</h1>
+    <p>작성법: script 태그를 작성하고 document 객체의 함수를 사용</p>
+
+    <h2>브라우저가 DOM을 생성하는 순서와 자바스크립트의 동작</h2>
+    <ul>
+        <li>브라우저는 url 주소로 http 통신(요청)을 한 후 html 문서를 받는다(응답)</li>
+        <li>받은 문서를 해석한다.(DOM Tree를 구성한다)</li>
+        <li>html 에 작성된 순서대로 document의 객체(node)를 생성한다.</li>
+        <li>이 때 script가 생성되지 않은 객체를 참조하면 undefined(정의되지 않은)
+            상태로 오류를 발생시킨다.
+        </li>
+    </ul>
+<!-- script 태그를 작성할때 포함관계 상관없이 가장 안쪽으로 들여쓴다.  -->
+<script>
+//주석!!
+//String 문자열(문자의 집합==text)   "문자열"or'문자열'or`문자열`
+//document : 브라우저가 html 문서를 해석후 tree 구조로 만들어낸 객체(DOM)
+document.getElementById("colorBlue").style.color="blue";
+colorBlue.style.color="blue";    
+</script>
+    <p  id="colorBlue">자바스크립트로 글자를 파란색으로 바꾼다.</p>
+    <h2>자바스크립트와 프론트엔드</h2>
+    <p>프로트엔드는 브라우저(사용자ux/ui)단을 다룬다.</p>
+    <ul>
+        <li>html 문서는 서버에 저장되어 있다.</li>
+        <li>html 문서는 브라우저에 의해 해석된다.</li>
+        <li>style(css) 는 html과 같이 해석되고 html 생성될 때 스타일 적용한다.</li>
+        <li>javascript 문서도 html 문서와 같이 서버에 저장된다.</li>
+        <li>javascript 는 html 문서를 해석하고 객체로 만들면서 실행된다.</li>
+        <li>사용자가 생성된 dom 객체를 다룬다는 것은 javascript를 다룬다는 뜻이다.
+            (브라우저에서 자바스크립트가 동적으로 동작하고 있다.)
+        </li>
+    </ul>
+    <h2>
+        Document Object Model(DOM) Tree (문서 객체 모델)
+    </h2>
+    <p>HTML을 위한 표준 객체 모델로 브라우저의 프로그래밍 인터페이스다 </p>
+    <ul>
+        <li>HTML 요소(태그)를 Object(객체)로 생성한다.</li>
+        <li>모든 html 요소의 속성을(attribute)를 Element. 으로 접근할 수 있고
+            이를 "property 를 구성한다"고 할 수 있다. 
+        </li>
+        <li id="hoverLi">모든 html Object를 액세스 하는 방법을 제공한다.(getElementById())</li>
+        <li onmouseenter="this.style.color='red'"
+            onmouseleave="this.style.color='blue'"
+        >모든 html Object의 이벤트 속성을 제공한다.</li>
+    </ul>
+<script>
+//const hoverLi=document.getElementById("hoverLi");
+//브라우저가 아이디는 위와 같은 일을 미리 해놓는다.
+//console : 브라우저에 테스트 할 수 있는 창(콘솔창)
+//console.log() : 콘솔창에 로그를 출력할 수 있다.(개발자가 테스트할 수 있다.)
+window.console.log(document.getElementById("hoverLi"));
+console.log(hoverLi);
+hoverLi.onmouseenter=function(){
+    //this 는 이벤트가 발생한 객체자신    
+    this.style.color="white";
+    this.style.background="black";
+}
+//재정의 : 존재하거나 하지 않는 코드를 다시 작성하는 것
+</script>
+    <hr>
+    <h2>자바스크립트 문법</h2>
+
+    <h3>자바스크립트의 변수(var(x),let)</h3>
+    <p>객체(데이터)를 참조하는 것을 변수(참조하는 값이 바뀔 수 있는)</p>
+    <ul>
+        <li>데이터를 <strong>재사용</strong>하기 위해서(개발단)</li>
+        <li>거의 대부분의 프로그래밍 언어는 엔진에서 데이터를 관리하는데 사용되지 않는 데이터를 삭제하는 시스템(garbage collection)이 존재한다. 이때 변수가 참조하는 데이터는 다시 사용될 수 있다고 생각한다.(시스템단)</li>
+        <li>가독성을 높인다.(data를 참조하는 변수의 이름)</li>
+        <li>data가 재사용되기 때문에 <strong>중복을 제거</strong></li>
+        <li>data 중복되지 않기 때문에 <strong>유지보수</strong> 용이하다.</li>
+    </ul>
+<script>
+let a ="a var 입니다."+" ";
+//"a 변수 입니다." : 객체를 생성한다.(메모리에 저장한다.)
+//"a 변수 입니다." : 객체(데이터) 객체의 타입은 문자열
+//객체(데이터) : 메모리에 저장된 (주소가 있음)
+//let a; : a라는 변수를 선언(변수를 생성)
+//a=="a 변수 입니다."; : a가 데이터의 주소를 참조한다.
+console.log(a); //a를 출력에 재사용
+console.log("a: "+a); //a를 연산에 재사용
+
+a="b 라는 데이터를 참조하는 a 변수";
+//"b 라는 데이터를 참조하는 a 변수" : 객체 생성
+//a="b 라는 데이터를 참조하는 a 변수"; : a가 데이터를 참조한다.
+//a가 참조하는 데이터가 바뀔 수 있어서 변수라 불린다!
+</script>
+<h3>자바스크립트의 함수(function)</h3>
+<p>자바스크립트의 함수는 일반 프로그래밍에서 사용되는 함수와 동일하다.</p>
+<ul>
+    <li>작성법(선언법) : function 이름(매개변수,매개변수2..){실행; 실행2;.. return 반환값 }</li>
+    <li>매개변수와 반환값은 생략할 수 있다.</li>
+    <li>이름은 중복될 수 없다.</li>
+    <li>document,window,id,formName 같은 약속된 이름을 사용할 수 없다.</li>  
+    <li>매개변수(parameter)는 let var을 생략할 수 있고 함수 내부({})에서만 사용된다.</li> 
+    <li>함수를 실행할때는 "함수이름();" 을 작성하면 되고 함수에 반환값이 지정되어 있으면 값을 반환한다.</li>
+    <li>매개변수는 함수가 실행될 때 값을 지정한다.sum(20,30);</li>
+    <li>여러 실행을 묶어 놓은 집합으로 재사용을 목적으로 한다.</li>
+</ul>
+<script>
+let c=0;   
+function sum(a=0, b=0){
+   return a+b;
+}
+function avg(a=0,b=0,c=0){
+    return (a+b+c)/3
+}
+// 10,20 큰 따옴표""나 작은따옴표'',백틱``으로 표기하지 않은 수를 Number type이라 한다.
+console.log(sum());
+console.log(sum(10,20));
+console.log(sum("십",'이십')/2);
+//NaN(Not a Number:오류) : 수가 아닌 것을 연산할 때 발생하는 오류
+
+</script>
+    <h3>html javascript의 약속된 객체</h3>
+    <ul>
+        <li>window : 브라우저 객체(BOM)가 DOM을 포함한다.</li>
+        <li>document : html 문서 객체(DOM)</li>
+
+        <li>String : 개발자에게 필요한 문자열을 제공</li>
+        <li>Number : 개발자에게 필요한 수를 제공</li>
+        <li>Boolean : 개발자에게 필요한 참과 거짓을 제공</li>
+        <li>Array : 개발자에게 필요한 배열을 제공</li>
+        
+        <li>Date : 개발자에게 필요한 시간을 제공</li>
+        <li>Math : 개발자에게 필요한 연산을 제공</li>
+    </ul>
+    <h3>document가 제공하는 요소를 찾기위한 함수(return Element or HTML Collection)</h3>
+    <p>HTML Collection : 복수의 Elements가 참조될때 도움을 주는 객체</p>
+    <ul>
+        <li>document.getElementsByTagName("tagName")=>return HTMLCollection</li>
+        <li>document.getElementsByClassName("className")=>return HTMLCollection</li>
+        <li>document.querySelectorAll("cssSelector")=>return HTMLCollection</li>
+        <li>
+            document.querySelector("cssSelector")=>return Element (선택된 복수의 elements 중에 처음 한개만 참조한다.)
+        </li>
+        <li>
+            document.getElementById("id")=>return Element
+        </li>
+    </ul>
+<script>
+let h3s=document.getElementsByTagName("h3");
+console.log(h3s.length);
+console.log(h3s[0]);
+console.log(h3s[1]);
+console.log(h3s[2]);
+console.log(h3s[3]);
+
+//console.log(document.querySelector("li"));
+</script>
+
+</body>
+</html>

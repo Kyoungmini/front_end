@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>from html</title>
+</head>
+<body>**
+    <h1>양식을 제출하는 form 요소</h1>
+    <p>파라미터를 서버와 통신할때 포함시키기 위해 form 양식 요소를 제공하고 있다.</p>
+    <ul>
+        <li>action : 서버의 url</li>
+        <li>method : 서버와 통신하는 방법 default get
+            <ul>
+                <li>get: 특정페이지를 요청할때 페이지의 정보를 다르게 하기 위해 사용 
+                    ?param=value&param=value&....
+                    예)naver.com/앨범?search="산"&page=4;
+                </li>
+                <li>post: 양식을 처리하는 페이지를 요청할 때 사용하고 처리 상태에 따라 다른 페이지를 서버에서 제공한다. 파리미터는 html 문서 해더 정보에 포함된다.
+                    예)회원가입,로그인,설문조사제출,회원정보수정,삭제....
+                </li>
+                <li>target : 양식 제출 시 받은 응답을 표시할 창의 위치
+                    <ul>
+                        <li>_self(default) :동일한 창에 표시</li>
+                        <li>_blank : 새 창이나 프레임에 표시</li>
+                        <li>_parent : 상위 프레임에 표시</li>
+                        <li>_top : 창 전체에 표시</li>
+                    </ul>
+                </li>
+            </ul>
+
+        </li>
+        <li>name : document에서 유일한 이름으로 js에서 document.forms에서 참조한다.</li>
+
+    </ul>
+    <form action="/l01" method="get" name="loginForm" target="_top">
+        <input type="text" name="id" value="artistckm">
+        <input type="password" name="pw" value="123123123">
+        <button type="submit">제출</button>
+        <button type="button">클릭</button>
+        <button type="reset">초기화</button>
+        <input type="button" name="" value="InputClick">
+    </form>
+    <br>
+    <form action="/l01" method="post">
+        <input type="text" name="id" value="artistckm">
+        <input type="password" name="pw" value="123123123">
+        <button type="submit">제출</button>
+    </form>
+    <a href="/l01?search=산&page=4">파라미터가 포함된 a 태그</a>
+</body>
+</html>

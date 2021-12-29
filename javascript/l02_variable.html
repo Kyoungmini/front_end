@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript variable</title>
+</head>
+<body>
+    <h1>자바스크립트에서 사용되는 변수(var,let)</h1>
+    <p>모든 프로그래밍에서 데이터를 참조하기 위해 변수를 사용한다. 이때 참조하는 데이터가 바뀔 수 있어서 변수라 한다.</p>
+    <h2>변수에 대한 잘못된 인식(설명)</h2>
+    <ul>
+        <li>데이터를 저장하는 저장소</li>
+        <li>데이터를 저장한다.</li>
+        <li>데이터를 담는 그릇,상자, 데이터를 변수에 담는다</li>
+    </ul>
+    <h2>변수를 선언할 때 발생하는 순서</h2>
+    <p>let variable = 10;</p>
+    <ol>
+        <li>10 이라는 숫자가 메모리에 저장된다(주소 @11011001).</li>
+        <li>varialbe이라는 변수가 선언된다.(let)</li>
+        <li>varialbe이 @11011001을 참조한다.</li>
+    </ol>
+    <p>let variable = 10+20;</p>
+    <ol>
+        <li>10 이라는 숫자가 메모리에 저장된다(주소 @11011001).</li>
+        <li>20 이라는 숫자가 메모리에 저장된다(주소 @11111001).</li>
+        <li>10과 20을 + 연산을 한다.</li>
+        <li>연산된 결과 30 이라는 숫자가 메모리에 저장된다(주소 @11111011).</li>
+
+        <li>varialbe이라는 변수가 선언된다.(let)</li>
+        <li>varialbe이 @11111011을 참조한다.</li>
+    </ol>
+    <h2>변수의 이름을 명명하는 규칙</h2>
+    <ul>
+        <li>영문 소문자와 대문자,숫자,$,_를 조합해서 사용한다.</li>
+        
+        <li>let user_name; (o)</li>
+        <li>let userName; (o)</li>
+        <li>let userName123; (o)</li>
+
+        <li>let UserName; (△)</li>
+        <li>let 유저이름; (△:권장하지 않음), 영어만 사용하기를 권장함</li>
+        <li>let class,for,document,+,-,window,....;(x) : 약속어(예약어)를 사용하지 않는다.</li>
+        <li>let li,h3,ol,body,color..; (x) : html과 css 이름 </li>
+        <li>let h3_array,colorUl; (o)</li>
+        <li>let 1,1a; (x) 숫자로만 되거나 숫자가 앞에 오는 이름</li>
+        <li>let user-name; (x) '-' 하이픈을 사용할 수다</li>
+        <li>let UserName; let userName; let user_name; (△) : 단어조합은 같은데 다르게 하는 방법</li>
+    </ul>
+    <h2>변수명이 중요한 이유와 바람직한 변수명</h2>
+    <p>본인이 개발할 때 작성한 변수를 찾지 못하는 경우가 많다.=>다른 개발자가 나의 코드를 분석할 수 있을까??(유지보수)</p>
+    <ul>
+        <li>변수명을 보고 어떤 역할인지 알 수 있어야한다.</li>
+        <li>다른 동료와 약속된 언어(단어)를 사용해야한다.=>약속을 만들어라(user,client,id...)</li>
+        <li>라이브러리(개발된js)에서 사용되는 이름을 참고하는 것도 좋은 방법이다.</li>
+        <li>줄임말을 피하세요.(예외 다른 개발자가 코드를 분석하기 힘들게 할때)</li>
+    </ul>
+    <h2>블럭({}) 구분이 모호해서 사용이 금지된 var</h2>
+    <p>var은 가장 오래된 변수로 let과 const 나오기 전까지 사용되던 변수이다. 지금은 문제가 발생해서 사용되지 않는다.</p>
+    <ul>
+        <li>var는 블럭 스코브가 없다.</li>
+        <li>var로 변수를 선언하면 최상위 블럭인 전역(전체영역)에 선언된다.</li>
+        <li>전역이 아닌 것을 전역으로 만드는 것을 호이스팅(hoisting)이라 하고 
+            var는 호이스팅 때문에 사용되지 않는다.
+        </li>
+    </ul>
+<script>
+//글로벌스코브 (최상위 블럭)
+let a="a변수";    
+    {
+        let b="b변수";
+        console.log(a+b);
+    }
+//console.log(b); //오류 정상
+//자바스크립트 오류가 발생하면 다음 코드는 실행되지 않는다.
+//b가 {}을 벗어날 수 없는 것을 "블럭 구분이 명확하다" or "블럭 스코브가 있다."로 설명한다.=>상식
+    {
+        var c="c변수";
+        d="선언되지 않은 변수";
+        //앞에 자동으로 var가 붙는다. (x)
+        console.log(c);
+        console.log(d);
+    }
+    console.log(c);
+    console.log(d);
+</script>
+    <h2>var 동일한 변수지만 블럭스코프가 있는 let</h2>
+    <p>var을 사용하지 않고 let을 사용하면 된다. 자바스크립트에서 let이 유일한 변수다.=>모던 자바스크립트를 쓴다, 모던한 방식이다, 최신 자바스크립트 문법이다.</p>
+
+</body>
+</html>

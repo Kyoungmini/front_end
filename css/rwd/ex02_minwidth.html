@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+html{
+    background-color: rgb(255, 209, 209);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-size: 4vw;
+
+}
+
+@media (min-width: 576px) { 
+    html{
+        background-color: rgb(209, 212, 255);
+        font-size: 3.5vw;
+    }
+}
+@media (min-width: 768px) {  
+    html{
+        background-color: rgb(209, 255, 249);
+        font-size: 3vw;
+
+    }
+}
+@media (min-width: 992px) { 
+    html{
+        background-color: rgb(208, 255, 181);
+        font-size: 2vw;
+
+    } 
+}
+@media (min-width: 1200px) { 
+    html{
+        background-color: rgb(253, 181, 255);
+        font-size: 1.5vw;
+
+    }  
+}
+</style>
+<script>
+window.onresize=function(){
+    windowWidth.innerText=( window.innerWidth)+"px";
+}
+</script>
+<body>
+    <h1>pageX: <i id="windowWidth"></i> </h1>
+    <ul>
+        <li>default width > 576px : 작은 폰</li>
+
+        <li>@media (min-width: 576px) : 큰 폰</li>
+        <li>@media (min-width: 768px) : 테블릿</li>
+        <li>@media (min-width: 992px) : 모니터</li>
+        <li>@media (min-width: 1200px) : 큰 모니터</li>
+    </ul>
+</body>
+</html>

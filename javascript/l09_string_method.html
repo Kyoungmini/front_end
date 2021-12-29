@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js String method</title>
+</head>
+<body>
+    <h1>기본데이터 타입 string의 래퍼 객체인 String의 메소드와 속성(property)를 알아보자</h1>
+<!-- 
+    1. String.LENGTH == 상수(필드) =>객체로 생성하지 않아도 전역에 존재한다.
+    2. new String().length == 속성(필드),property
+    3. "문자열".length == 불가능 (기본데이터 타입에 필드는 없다.) ==> 자바스크립트는 2번과 같은 행위를 생략해서 불가능을 가능하게 만드는 것
+    4. new String().slice()== 함수(필드)
+    5. "".slice() ==> 3번과 동일
+ -->
+    <h2>String의 속성</h2>
+    <ul>
+        <li>"문자열".length : 문자열의 길이(1부터시작) </li>
+    </ul>
+    <h2>String 메소드</h2>
+    <h3>"문자열".charAt() == "문자열"[] :
+        <script>
+            document.write("문자열".charAt(0));
+        </script>
+
+    </h3>
+    <h3>"문자열".charCodeAt() (문자의 유니코드 번호) : 
+        <script>
+            document.write("문자열".charCodeAt(0));
+        </script>
+    </h3>
+    <h3>"문자열".concat("문자열2","문자열3",...) == "문자열"+"문자열2"+"문자열3"...: 다하기 연산</h3>
+
+    <h3>"  문자열   ".trim() == "문자열"  : 공백제거   </h3>
+    <h3>"가,나,다,라".split(",") == ["가","나","다","라"] : 특정문자를 기준으로 문자열을 자르고 배열로 변환한다.</h3>
+<script>
+console.log("가,나,다,라".split(""));   
+</script>
+
+</body>
+</html>

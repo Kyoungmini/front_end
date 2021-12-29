@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax login</title>
+</head>
+<body>
+    <h1>ajax로 로그인 구현</h1>
+    <form name="loginForm" action="loginStatus.json" method="post">
+        <p>
+            <label for="">id</label>
+            <input type="text" name="userId">
+        </p>
+        <p>
+            <label for="">pw</label>
+            <input type="text" name="userId">
+        </p>
+        <p><button type="submit">로그인</button></p>
+    </form>
+    <h2>JSON과 Object의 차이와 parse()</h2>
+    <ul>
+        <li>Object : javascript에서 사용하는 최상위 객체</li>
+        <li>Object의 리터럴 표기법(명세서) : { key: value,key: value}</li>
+        <li>Object 명세서는 모든 기본데이터 타입을 문자열로 표기할 수 있다.</li>
+        <li>JSON : JavaScript Object Notation으로 자바스크립트의 구조화된 오브젝트 명세서를 문자열로 표기한 표준 포맷</li>
+        <li>JSON 표기법 : '{"key":"value","key":13,"key":true}'</li>
+        <li>문자열로만 구성된 표기법으로 네트워크 전송에 유리하고 JSON 데이터를 오브젝트로 변환할 수 있어 웹 어플리케이션에 유리한 방식(xml과 비교)</li>
+        <li>tree 구조를 갖고 tag와 tag의 속성으로 value를 지정하는 xml 보다 문자열로만 된 json이 훨씬 가볍고 빠르다.  </li>
+        <li>Object 자바스크립트에 종속(프로토타입), JSON 모든언어에 독립(문자열)</li>
+        <li>모든 JSON은 Object가 될수 있다(parse)</li>
+        <li>Object는 모두 JSON이 될 수 없다. function</li>
+    </ul>
+
+
+<script>
+// loginStatus.json
+// 데이터 베이스 서버에서 id와 pw가 동일한지 검사하는 페이지
+// 동일하면 json data인 login : true 를 반환(respons)
+// 동일하지 않으면 login: false를 반환 
+
+//form 이 비동기식 통신을 하기 위해서는 submit이 일어나면 안된다.
+console.log(loginForm);
+loginForm.onsubmit=function(e){
+    e.preventDefault();
+    let url = "loginStatus.json" //로그인 한후 결과 반환 페이지
+    const req= new XMLHttpRequest();
+    req.open("GET",url);
+    req.onload=function(){
+        //통신이 완료되면 req(this)에 본문이 넘어온다. 
+        let login_json=JSON.parse(this.response);
+        if(login_json.login){
+            loginForm.innerHTML=`
+                <div>
+                    <p>${login_json.userName}
+                        (${login_json["userId"]})
+                        환영합니다!
+                    </p>
+                <div>
+            `;
+        }else{
+            alert("id or pw를 확인하세요");
+        }
+
+    }
+    req.send()
+}
+class User{ 
+    constructor(pw){this.pw=pw}
+};
+const obj={name:"ckm",age:36,login:true, user: new User("1234"), call:function(){return this.name}}
+//프로토 타입이 있는 객체다 =>통신을 할 때 사용 불가
+//통신은 문자열만 가능
+//객체를 통신에 사용하려면 문자로 변경가능한 type 사용해야한다.(함수 삭제,객체=>객체)
+console.log(JSON.stringify(obj));
+//{"name":"ckm","age":36,"login":true,"user":{"pw":"1234"}}
+const obj_txt='{"name":"최경민", "age":36, "married":true }';
+console.log(JSON.parse(obj_txt));
+
+
+
+</script>
+
+</body>
+</html>

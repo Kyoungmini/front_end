@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object homework</title>
+</head>
+<body>
+    <h1>Object 활용</h1>
+    <h2>Object를 이용해 노드개체 생성하기</h2>
+    <ul id="testUl">
+
+    </ul>
+    <form name="createEl">
+        <label for="">
+            selector
+            <input type="text" name="selector" value="#testUl" >
+        </label>
+        <br>
+        <label for="">
+            tagName
+            <input type="text" name="tagName" value="li" >
+        </label>
+        <br>
+        <label for="">
+            innerText
+            <input type="text" name="innerTx" value=""  >
+        </label>
+        <br>
+        <label for="">
+            style.color
+            <input type="text" name="styleColor" value="#0f0"  >
+        </label>
+        <br>
+        <button type="button" name="btn" >노드개체 생성 및 등록</button>
+    </form>
+<script>
+    testUl.innerHTML=`<li>안녕</li>`;
+    function CreateDom(para_tagName,para_innerTx){
+        this.tagName=para_tagName;
+        this.innerTx=para_innerTx;
+        this.getDom=function(){
+            const newDom=document.createElement(this.tagName);
+            const newTx=document.createTextNode(this.innerTx);
+            newDom.append(newTx);
+            return newDom;
+        }
+    }
+    createEl.btn.onclick=function(){
+        let tagNameVal=createEl.tagName.value;
+        let innerTxVal=createEl.innerTx.value;
+        let selectorVal=createEl.selector.value;
+        let styleColor=createEl.styleColor.value;
+        const newDom=new CreateDom(tagNameVal,innerTxVal);
+        const dom=newDom.getDom()
+        dom.style.color=styleColor;
+        document.querySelector(selectorVal).append(dom);
+        console.log(selectorVal,tagNameVal,innerTxVal,styleColor);
+    }
+    </script>
+    <div id="styleBox">box</div>
+    <h2>박스 style 조절하는 form</h2>
+    <form name="boxUpdate">
+        <label for="">
+            width
+            <input type="text" name="box_width" value="100px" >
+        </label>
+        <br>
+        <label for="">
+            height
+            <input type="text" name="box_height" value="200px" >
+        </label>
+        <br>
+        <label for="">
+            margin
+            <input type="text" name="box_margin" value="10px" >
+        </label><br>
+        <label for="">
+            padding
+            <input type="text" name="box_padding" value="20px" >
+        </label><br>
+        <label for="">
+            border
+            <input type="text" name="box_border" value="2px" >
+        </label><br>
+        <label for="">
+            border_style
+            <input type="text" name="box_border_style" value="solid" >
+        </label><br>
+        <label for="">
+            border_color
+            <input type="text" name="box_border_color" value="solid" >
+        </label>
+        <button type="button" name="btn">#styleBox 조절하기</button>
+    </form>
+
+    <style>
+        .active{color:red}
+        .link{color:blue}
+    </style>
+     <h2>css 선택자로 찾은 복수의 노드의 특정 class를 삭제하거나 더하는 객체를 만드세요</h2>
+     <p>new classControl("#classText>li").remove("active") : active class 모두 삭제  </p>
+     <p>new classControl("#classText>li").remove("link") : link class 모두 추가  </p>
+     <ul id="classText">
+         <li>0</li>
+         <li>1</li>
+         <li class="active">2</li>
+         <li>3</li>
+         <li class="active">4</li>
+     </ul>
+<script>
+function classControl(selector){
+    this.add=function(className){
+    
+    }
+    this.remove=function(className){
+
+    }
+}
+</script>
+
+
+<script>
+const insertJson=new Object();
+insertJson["a"]="A";
+insertJson["bb"]="BB";
+insertJson["cc"]="CC";
+console.log(insertJson);
+
+for(key in insertJson){
+    console.log(key,insertJson[key]);
+}
+//name 이 있는 
+const boxUpdateNames= document.querySelectorAll("[name='boxUpdate'] [name]");
+
+console.log(boxUpdateNames);
+for(let i=0; i<boxUpdateNames.length; i++){
+    let input_name=boxUpdateNames[i].name;
+    let input_value=boxUpdateNames[i].value;
+    insertJson[input_name]=input_value;
+}
+console.log(insertJson);
+//위 코드를 참고해서 json의 formdata를 출력하는 객체를 만드세요.
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework for</title>
+</head>
+<body>
+    <h1>논리적 사고를 기르기 위한 반복문 테스트</h1>
+    <h2>const num_arr=[10,-20,0,100,50,5.5]</h2>
+    <h2>문제1 : 반복문을 사용해서 num_arr의 최대값을 구하세요.</h2>
+    <p>정답 :  </p>
+<script>
+const num_arr=[10,-20,0,100,50,5.5];
+let max=-Infinity;
+let min=Infinity;
+
+for(let i=0; i<num_arr.length; i++){
+    //console.log(`  num_arr[${i}]`,  num_arr[i]);
+    if(max<num_arr[i]){
+        max=num_arr[i];
+    }
+    if(min>num_arr[i]){
+        min=num_arr[i];
+    }
+    
+}console.log("문제1 max:",max);
+console.log("문제2 min:",min);
+
+</script>  
+    <h2>문제2 : 반복문을 사용해서 num_arr의 최소값을 구하세요.</h2>
+    <p>정답 :  </p>
+    <p>최대값과 최소값의 힌트 : 최대값이나 최소값을 찾으면 변수에 참조하고 다른 값과 비교</p>
+    
+    <h2>const num_arr2=[10,-20,"이백",0,100,50,5.5,"사십"]</h2>
+    <h2>문제3 : num_arr2에서 문자열을 삭제하세요.</h2>
+    <p>정답 :  </p>
+<script>
+const num_arr2=[10,-20,"이백",0,100,50,5.5,"사십"];
+for(let i=0; i<num_arr2.length; i++){
+    //NaN,0 부울값은 false
+    //if( Number.isNaN (Number(num_arr2[i]))){
+    // if(typeof num_arr2[i]  == "string"){
+    //     num_arr2.splice(i,1);
+    // }
+    if(!(typeof num_arr2[i]=="number")){
+        num_arr2.splice(i,1);
+    }
+}
+console.log(num_arr2);
+
+
+// console.log(Boolean(NaN));
+// console.log(Boolean(0));
+// console.log(Boolean(null));
+// console.log(Boolean(undefined));
+</script>
+    <h2>const two_d_arr=[[3,4,5,1,2],[30,40,"오십",10,20],[-30,-40,-50,-10,-20]]</h2>
+    <h2>문제4: two_d_arr 모든 data를 출력하세요.(힌트: 반복문 안에 반복문)</h2>
+    <p>정답 :  </p>
+<script>
+const two_d_arr=[
+    [3,4,5,1,2],
+    [30,40,"오십",10,20],
+    [-30,-40,-50,-10,-20]
+];
+// for (let i = 0; i < two_d_arr[0].length; i++) {
+//     const element = two_d_arr[0][i];
+//     console.log(element);
+// }
+// for (let i = 0; i < two_d_arr[1].length; i++) {
+//     const element = two_d_arr[1][i];
+//     console.log(element);
+// }
+// for (let i = 0; i < two_d_arr[2].length; i++) {
+//     const element = two_d_arr[2][i];
+//     console.log(element);
+// }
+//i=0 [j=1:3, j=2:4, j=3:5, j=4:1, j=5:2]
+//i=1 [30, 40, '오십', 10, 20]
+//i=2 [-30, -40, -50, -10, -20]
+for (let i = 0; i < two_d_arr.length; i++) {
+    for(let j=0; j<two_d_arr[i].length; j++){
+        //console.log(two_d_arr[i][j]);
+        //if(!(new Number(typeof two_d_arr[i][j]) instanceof Number)){
+        if(!(typeof two_d_arr[i][j]==="number")){
+            two_d_arr[i].splice(j,1);
+        }
+    }
+}
+console.log(two_d_arr);    
+
+console.log("10 instanceof Number",10 instanceof Number);
+console.log("new Number(10) instanceof Number",new Number(10) instanceof Number);
+console.log("'' instanceof String","문자열" instanceof String);
+console.log("new String('') instanceof String",new String("문자열") instanceof String);
+
+</script>
+
+    <h2>문제5: two_d_arr data 중에 문자열을 찾아서 삭제하세요.</h2>
+    <p>정답 :  </p>
+    <hr>
+    <ul id="numsUl">
+        <li><i>40</i></li>
+        <li>4</li>
+        <li>사</li>
+        <li>10</li>
+        <li>1</li>
+        <li>백</li>
+        <li>40</li>
+        <li>삼십</li>
+        <li>30</li>
+    </ul>
+<script>
+//document
+//document.getElementById("idName"); //element
+//document.getElementsByClassName("className"); //htmlCollection == Array
+const li_array=document.querySelectorAll("#numsUl>li");////htmlCollection == Array
+//console.log(li_array[0].innerHTML);
+//NaN로 대소를 배교하면 무조건 false
+//console.log(Number(NaN),-Infinity<NaN);
+//console.log(Number(undefined),-Infinity<Number(undefined));
+//console.log(Number(null),-Infinity<Number(null));
+let li_max=-Infinity;
+let li_min=Infinity;
+let li_max_i=0;
+let li_min_i=0;
+
+for(let i=0; i<li_array.length; i++){
+    console.log(li_array[i].innerText);
+    //"삼십" => "삼".charCodeAt();==49340
+    let inTx= Number(li_array[i].innerText);
+    console.log("inTx", inTx);
+    console.log("isNaN(inTx)",isNaN(inTx));
+    if(isNaN(inTx)){ //문자열
+        li_array[i].style.background="yellow"
+    }else{
+        if(li_max<inTx){
+            li_max=li_array[i].innerText;
+            li_max_i=i;
+        }
+        if(li_min>inTx){
+            li_min=li_array[i].innerText;
+            li_min_i=i;
+        }
+    }
+}
+li_array[li_max_i].style.background="red";
+li_array[li_min_i].style.background="blue";
+
+console.log(li_max,li_max_i);
+console.log(li_min,li_min_i);
+
+</script>
+    <h2>문제1 : numsUl의 li(#numsUl>li)에서 최대값을 찾으세요(backgroud:red).</h2>
+    <h2>문제2 : numsUl의 li(#numsUl>li)에서 최소값을 찾으세요(backgroud:blue).</h2>
+    <h2>문제3 : numsUl의 li(#numsUl>li)에서 문자열을 찾으세요(backgroud:yellow).</h2>
+</body>
+</html>

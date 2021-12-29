@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box test</title>
+    <style>
+        #boxTest{
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            transition: all 500ms;
+        }
+        .ckm_btn{
+            width: 150px;
+            height: 40px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background-color: rgba(235, 121, 235, .2);
+            border: 1px solid beige;
+            border-radius: 10px;
+
+        }
+        .ckm_btn .impact{
+            display: inline-block;
+            width: 0px;
+            height: 0px;
+            background-color: rgb(235, 121, 235);
+            border-radius: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            z-index: 0;
+            transition: all 400ms;
+        }
+        .ckm_btn .text{
+            position: relative;
+            z-index: 1;
+        }
+
+        </style>
+<script>
+window.onload=function(){
+    ckm_btns=document.getElementsByClassName("ckm_btn");
+    for(const btn of ckm_btns){
+        btn.onmousemove=function(event){
+            const impact=btn.querySelector('.impact');
+            impact.style.width=10+"px";
+            impact.style.height=10+"px";
+            impact.style.left=(event.clientX-this.offsetLeft)+"px";
+            impact.style.top=(event.clientY-this.offsetRight)+"px";
+
+        }
+
+        btn.onmousedown=function(event){
+            const impact=btn.querySelector('.impact');
+            impact.style.width=200+"px";
+            impact.style.height=200+"px";
+            impact.style.left=(event.clientX-this.offsetLeft)+"px";
+            impact.style.top=(event.clientY-this.offsetRight)+"px";
+
+        }
+        btn.onmouseleave=function(event){
+            const impact=btn.querySelector('.impact');
+            impact.style.width=0+"px";
+            impact.style.height=0+"px";
+
+
+        }
+
+    }
+    rageTest.addEventListener("input",function(e){
+        console.log(this.value);
+    });
+
+
+}
+
+</script>
+</head>
+<body>
+    <input type="range" list="tickmarks" id="rageTest">
+    <datalist id="tickmarks">
+        <option value="0" label="0%"></option>
+        <option value="10"></option>
+        <option value="20"></option>
+        <option value="30"></option>
+        <option value="40"></option>
+        <option value="50"></option>
+        <option value="60"></option>
+        <option value="70"></option>
+        <option value="80"></option>
+        <option value="90"></option>
+        <option value="100"></option>
+    </datalist>
+<style>
+body{
+    background-color: cadetblue;
+
+}
+.ckm_btn_glass{
+    border-radius: 20px;
+    width: 150px;
+    height: 40px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: rgba(255,255,255,.1);
+    border-color: rgba(255,255,255,.3) rgba(255,255,255,.2);
+    color: rgba(255, 255, 255, 0.7);
+    transition: 200ms;
+    position: relative;
+    z-index: 999;
+    backdrop-filter: blur(15px);
+
+}
+.ckm_btn_glass:hover{
+    color: rgba(255, 255, 255, 1);
+    border-color: rgba(255,255,255,.8) rgba(255,255,255,.6);
+
+}
+.ckm_btn_glass::before{
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(192, 83, 178);
+    z-index: -999;
+}
+
+</style>    
+<p>
+    <button class="ckm_btn_glass">
+        클릭 테스트
+    </button>
+
+</p>
+<br>
+    <button class="ckm_btn">
+        <span class="impact"></span>
+        <span class="text">클릭 테스트</span> 
+    </button>
+    <h1>box를 자바스크립트로 제어해 보자</h1>
+    <div class="box_container">
+        <div id="boxTest"></div>
+    </div>
+    <form name="boxControl">
+        <p>
+            <label for="">
+                background-color :
+                <input type="color" name="backgroundColor">
+            </label>
+        </p>
+        <p>
+            <button type="button"> #boxTest style 바꾸기</button>
+            <button type="reset">초기화</button>
+         </p>
+    </form>
+<script>
+//boxControl : document.fomrs["box_container"]    
+//console.log(boxControl.backgroundColor.value);
+boxControl.backgroundColor.onchange=function(){
+    //console.log(this.value);
+    boxTest.style["backgroundColor"]=this.value;
+}
+
+</script>
+
+
+
+</body>
+</html>

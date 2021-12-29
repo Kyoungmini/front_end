@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event object</title>
+</head>
+<body>
+
+    <h1 id="hoverE">이벤트 발생시 이벤트 정보를 담는 Event Object</h1>
+
+    <h2>MouseEvent Object 마우스 이벤트가 발생시 생성되는 객체</h2>
+    <ul>
+        <li>MouseEvent.button : 이벤트 발생 시 누른 버튼 번호(0:왼쪽,1:휠,2:오른쪽)=>누르지 않은 상태 확인x</li>
+        <li>MouseEvent.whitch : 이벤트 발생 시 누른 버튼 번호(0:누르지않음,1:왼쪽,2:휠,3:오른쪽)</li>
+        <li>MouseEvent.buttons : 이벤트 발생 시 누른 버튼 번호(0:누르지않음,1:왼쪽,2:오른쪽,3:왼쪽+오른쪽,4휠,5~7:조합,8:뒤로가기, 16:앞으로가기)</li>
+        <li>pageX,Y :</li>
+        <li>screenX,Y :</li>
+        <li>clientX,Y :</li>
+        <li>offsetX,Y : 이벤트가 발생한 노드를 기준으로 마우스 포인트 좌표</li>
+    </ul>
+<style>
+ #mouseEventInfo{
+     height: 500px;
+     border: 1px solid;
+     position: relative;
+ }
+ #mouseInfo{
+     position: absolute;
+     border: 1px solid;
+     left: 50px;
+     top: 50px;
+ }   
+</style>    
+    <div id="mouseEventInfo">
+        <p id="mouseInfo"></p>
+
+    </div>    
+<script>
+mouseEventInfo.addEventListener("mousemove",(e)=>{
+    mouseInfo.innerHTML=
+    `e.page x,y :${e.pageX}px,${e.pageY}px<br>
+     e.client x,y :${e.clientX}px,${e.clientY}px<br>
+     e.screen x,y :${e.screenX}px,${e.screenY}px<br>
+     e.offset x,y :${e.offsetX}px,${e.offsetY}px<br>
+     `;
+     mouseInfo.style.left=e.offsetX+"px";
+     mouseInfo.style.top=e.offsetY+"px";
+});
+
+
+
+hoverE.onmouseover=function(e){
+    //console.log(e.target);
+    //console.log("dom 에서 x,y 좌표:",e.pageX,e.pageY);
+    //console.log("브라우저(viewport) 에서 x,y 좌표:",e.clientX,e.clientY);
+    //console.log("모니터 에서 x,y 좌표:",e.screenX,e.screenY);
+    console.log(e.button);
+}
+
+
+</script>
+
+</body>
+</html>

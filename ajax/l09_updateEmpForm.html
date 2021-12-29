@@ -1,0 +1,35 @@
+<h3>사원 수정 폼</h3>
+        <form name="updateEmp" action="/updateEmp" method="GET" onsubmit="event.preventDefault();
+        updateSubmitHandler(this,event);">
+            <p><label>empno: 
+                <input type="text" name="empno" readonly >
+            </label></p>
+            <p><label>ename: 
+                <input type="text" name="ename" >
+            </label></p>
+            <p><label>job: 
+                <input type="text" name="job">
+            </label></p>
+            <p><label>mgr: 
+                <input type="text" name="mgr">
+            </label></p>
+            <p><label>hiredate: 
+                <input type="date" name="hiredate" readonly>
+            </label></p>
+            <p><label>sal: 
+                <input type="text" name="sal">
+            </label></p>
+            <p><label>comm: 
+                <input type="text" name="comm">
+            </label></p>
+            <p><label>deptno: 
+                <select name="deptno" id="">
+                    <option value="10"> ACCOUNTING(NEW YORK)</option>
+                    <option value="20"> RESEARCH(DALLAS)</option>
+                    <option value="30"> SALES(CHICAGO)</option>
+                    <option value="40"> OPERATIONS(BOSTON)</option>
+                </select>
+            </label></p>
+            <button type="reset">리셋</button>
+            <button type="submit">수정</button>
+        </form>

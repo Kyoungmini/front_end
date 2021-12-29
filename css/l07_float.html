@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css float</title>
+</head>
+<body>
+    <h1>css float 블럭 정렬하기</h1>
+    <ul>
+        <li>float는 글자에 블럭을 삽입하기 위해 만들어짐</li>
+        <li>float가 적용된 노드는 글자로 취급받고 블럭의 부피가 무시당한다.</li>
+        <li>float의 부피가 무시당하기 때문에 부모노드가 float 노드를 인지하지 못하는 것으로 보인다.</li>
+        <li>float는 노드는 인접한(부모,형제) 다른 노드의 인라인만 간섭한다.</li>
+    </ul>
+    <h2>부모노드가 인지 못하는 float 노드의 부피</h2>
+    <div style="border: 1px solid red;">
+        <div style="float: left;
+            width: 200px; height: 200px; border: 1px solid;">
+            float:left box
+            <br>float:left box
+            <br>float:left box
+            <br>float:left box
+            <br>float:left box
+            <br>float:left box
+            <br>float:left box
+            <br>float:left box
+        </div>
+        CSS 속성(property) float 은 한 요소(element)가 보통 흐름(normal flow :position static)으로부터 빠져 텍스트 및 인라인(inline) 요소가 그 주위를 감싸는 자기 컨테이너의 좌우측을 따라 배치되어야 함을 지정합니다.
+        <div>
+            인접한 형제 노드
+        </div>
+    </div>
+    <div>
+        부모의 인접한 형제노드
+    </div>
+    <h2 style="clear: left;">다중 float 사용으로 레이아웃 구성하기 </h2>
+
+<style>
+.container{
+    border: 1px solid;
+}
+.col{
+    width: 25%;
+    margin: 0;
+    border: 1px solid;
+    box-sizing: border-box;
+    height: 100px;
+    background-color: beige;
+    display: inline-block; 
+}
+.float_left .col{
+    float: left;
+}
+.clearfix{
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>    
+    <div class="container">
+        <h3>.col width:25%로 4개의 block이 나란이 존재하기를 기대한다. </h3>
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+    </div>
+    <br><br><br><br><br><br><br>
+
+    <div class="container float_left">
+        <h3>block은 서로 간섭을 피하기 위해 자동으로 간격이 존재하고 inline은 간섭을 피하지 않는다. 때문에 float 가 지정된 node는 간격이 없다.</h3>
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+    </div>
+    <br><br><br><br><br><br><br>
+    <div class="container float_left"
+        style="overflow: auto;"
+    >
+        <h3>float 노드는 부피가 없어서 부모노드가 자식인 float 노드를 인지하지 못한다.</h3>
+        <h3>자식 노드가 부모노드보다 크지만 출력되는 현상은 overflow 의 visible 때문이다.</h3>
+        <h3>overflow 노드에 추가된 inline이 노드의 부피보다 클때 보이게할지 or 안보이게 할지 or 스크롤을 줄지 정하는 속성</h3>
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+    </div>
+    <br><br><br>
+
+    <div class="container float_left"
+        style="display: inline-block; width:100%" 
+    >
+        <h3>float 노드가 inline이기 때문에 부모 노드가 inline-block이면 float인 자식 노드를 포함시킬 수 있다.</h3>
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+    </div>
+    <br><br><br>
+
+    <div class="container float_left clearfix">
+        <h3>float 노드가 inline이기 때문에 부모 노드가 inline-block이면 float인 자식 노드를 포함시킬 수 있다.</h3>
+        <div class="col">1</div>
+        <div class="col">2</div>
+        <div class="col">3</div>
+        <div class="col">4</div>
+        <!-- <table style="clear: both;"></table> -->
+    </div>
+
+</body>
+</html>

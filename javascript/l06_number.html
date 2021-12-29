@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js Number</title>
+</head>
+<body>
+    <h1>숫자와 부동 소수점을 포함하는 기본 데이터 타입 Number</h1>
+    <p>number는 64비트의 부동 소수점인 숫자를 저장한다. 분수(0~51), 지수(52~62) 부호(.) 63에 저장된다.</p>
+    <p>number는 분수와 지수가 나뉘어 저장되기 때문에 표현할 수 있는 가장 큰 수와 가장 큰 정수는 다른다. </p>
+    <ul>
+        <li>Number.MAX_VALUE : 
+            <script>document.write( Number.MAX_VALUE )</script>
+        </li>
+        <li>Number.MIN_VALUE : 
+            <script>document.write( Number.MIN_VALUE )</script>
+        </li>
+        <li>Number.MAX_SAFE_INTEGER : 
+            <script>document.write( Number.MAX_SAFE_INTEGER )</script>
+        </li>
+        <li>900719925474099155 : 
+            <script>document.write( 900719925474099155 )</script>
+        </li>
+
+        <li>Number.MIN_SAFE_INTEGER : 
+            <script>document.write( Number.MIN_SAFE_INTEGER )</script>
+        </li>
+        <li>-900719925474099155 : 
+            <script>document.write( -900719925474099155 )</script>
+        </li>
+    </ul>
+    <h2>Number() data를 숫자로 변경하는 함수</h2>
+    <p>숫자로 변경할 수 없을 때 Not a Number</p>
+    <ul>
+        <li>"10"+1 : 
+            <script>document.write("10"+1)</script>
+        </li>
+
+        <li>Number("10")+1 : 
+            <script>document.write(Number("10")+1)</script>
+        </li>
+        <li>Number("  10 ")+1 : 
+            <script>document.write(Number("  10 ")+1)</script>
+        </li>
+        <li>Number("ten") : 
+            <script>document.write(Number("ten"))</script>
+        </li>
+        <li>Number("5.345")*2 : 
+            <script>document.write(Number("5.345")*2)</script>
+        </li>
+        <li>Number("53 45") : 
+            <script>document.write(Number("53 45"))</script>
+        </li>
+        <li>Number("a") : 
+            <script>document.write(Number("a"))</script>
+        </li>
+        <li>Number(new Date()) : 
+            <script>document.write(Number(new Date()))</script>
+        </li>
+        <li>Number(new Date("1970-01-01")) : 
+            <script>document.write(Number(new Date("1970-01-01")))</script>
+        </li>
+        <li>Number(true) : 
+            <script>document.write(Number(true))</script>
+        </li>
+        <li>Number(false) : 
+            <script>document.write(Number(false))</script>
+        </li>
+        <li>Number(null) : 
+            <script>document.write(Number(null))</script>
+        </li>
+        <li>Number(undefined) : 
+            <script>document.write(Number(undefined))</script>
+        </li>
+    </ul>
+<!-- https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number -->
+</body>
+</html>
